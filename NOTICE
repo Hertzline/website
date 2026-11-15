@@ -21,11 +21,11 @@ sharp
   https://github.com/Instrument/instrument-sans
   https://fontsource.org/fonts/instrument-sans
 
-@fontsource/ibm-plex-mono (IBM Plex Mono)
+@fontsource/jetbrains-mono (JetBrains Mono)
   License: OFL-1.1
-  Copyright 2017 IBM Corp. (Reserved Font Name "Plex")
-  https://github.com/IBM/plex
-  https://fontsource.org/fonts/ibm-plex-mono
+  Copyright 2020 The JetBrains Mono Project Authors
+  https://github.com/JetBrains/JetBrainsMono
+  https://fontsource.org/fonts/jetbrains-mono
 
 linkinator (devDependency; CI link checker, not shipped in static output)
   License: MIT

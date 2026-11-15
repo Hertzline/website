@@ -1,8 +1,18 @@
+<div align="center">
+
 # Hertzline / website
+
+**Measure. Explain. Restore.**
 
 Static product site and documentation for [Hertzline](https://github.com/Hertzline).
 
-Built with Astro + Starlight. Output is static HTML only: no server functions, no database, no runtime secrets.
+Astro + Starlight. Static HTML only: no server functions, no database, no runtime secrets.
+
+Visual DNA matches the [Leo-Galli profile README](https://github.com/Leo-Galli/Leo-Galli): deep navy, teal, amber, JetBrains Mono labels.
+
+</div>
+
+---
 
 ## Versions (verified 2026-11-15)
 
@@ -11,8 +21,8 @@ Built with Astro + Starlight. Output is static HTML only: no server functions, n
 | astro | 7.4.12 | MIT | npm / docs.astro.build (latest 7.4.x) |
 | @astrojs/starlight | 0.43.1 | MIT | npm / starlight.astro.build (peer astro ^7.2.10) |
 | sharp | 0.35.5 | Apache-2.0 | npm |
-| @fontsource/instrument-sans | 5.3.0 | OFL-1.1 | npm / fontsource.org (verified 2026-11-15) |
-| @fontsource/ibm-plex-mono | 5.3.0 | OFL-1.1 | npm / fontsource.org (verified 2026-11-15) |
+| @fontsource/instrument-sans | 5.3.0 | OFL-1.1 | npm / fontsource.org |
+| @fontsource/jetbrains-mono | 5.3.0 | OFL-1.1 | npm / fontsource.org |
 | @astrojs/check | 0.9.12 | MIT | npm |
 | typescript | 5.9.3 | Apache-2.0 | npm |
 | linkinator | 8.1.0 | MIT | npm (HZ-043 link checker) |

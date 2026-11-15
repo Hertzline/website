@@ -16,7 +16,7 @@ const favicon = readFileSync(join(root, 'public/favicon.svg'), 'utf8')
 
 for (const [name, want] of [
 	['@fontsource/instrument-sans', '5.3.0'],
-	['@fontsource/ibm-plex-mono', '5.3.0'],
+	['@fontsource/jetbrains-mono', '5.3.0'],
 ]) {
 	const got = pkg.dependencies?.[name]
 	if (got !== want) fail(`${name} must be pinned to ${want}, got ${got}`)
@@ -26,7 +26,7 @@ if (!existsSync(join(root, 'src/assets/logo.svg'))) fail('src/assets/logo.svg mi
 if (!config.includes('customCss')) fail('astro.config must set customCss')
 if (!config.includes('design-tokens.css')) fail('customCss must include design-tokens.css')
 if (!config.includes('@fontsource/instrument-sans')) fail('customCss must load Instrument Sans')
-if (!config.includes('@fontsource/ibm-plex-mono')) fail('customCss must load IBM Plex Mono')
+if (!config.includes('@fontsource/jetbrains-mono')) fail('customCss must load JetBrains Mono')
 
 if (!tokens.includes('--hz-font-sans')) fail('tokens missing --hz-font-sans')
 if (!tokens.includes('--hz-font-mono')) fail('tokens missing --hz-font-mono')
@@ -34,6 +34,9 @@ if (!tokens.includes("data-theme='light'")) fail('tokens missing light theme')
 if (!tokens.includes('prefers-reduced-motion')) fail('tokens missing prefers-reduced-motion')
 if (!tokens.includes(':focus-visible')) fail('tokens missing :focus-visible')
 if (!tokens.includes('color-scheme')) fail('tokens missing color-scheme')
+if (!tokens.includes('#0a1220') || !tokens.includes('#14b8a6') || !tokens.includes('#e5b567')) {
+	fail('tokens must include Leo README navy/teal/amber anchors')
+}
 
 const bannedInTokens = [
 	[/backdrop-filter:\s*blur/i, 'glassmorphism blur'],
@@ -55,13 +58,13 @@ if (/backdrop-filter:\s*(?!none)\w+/i.test(tokens)) {
 	fail('non-none backdrop-filter in design tokens')
 }
 
-if (!design.includes('Instrument Sans') || !design.includes('IBM Plex Mono')) {
+if (!design.includes('Instrument Sans') || !design.includes('JetBrains Mono')) {
 	fail('DESIGN.md must document type pair')
 }
 if (!design.includes('OFL-1.1')) fail('DESIGN.md must cite OFL-1.1')
 if (!design.includes('WCAG 2.2')) fail('DESIGN.md must cite WCAG 2.2 focus')
 
-if (!notice.includes('Instrument Sans') || !notice.includes('IBM Plex Mono')) {
+if (!notice.includes('Instrument Sans') || !notice.includes('JetBrains Mono')) {
 	fail('NOTICE must attribute fonts')
 }
 if (!notice.includes('OFL-1.1')) fail('NOTICE must cite OFL-1.1 for fonts')
@@ -70,27 +73,24 @@ if (favicon.includes('emoji') || /[\u{1F300}-\u{1FAFF}]/u.test(favicon)) {
 	fail('favicon must not use emoji')
 }
 
-const distCssDir = join(root, 'dist', '_astro')
 if (!existsSync(join(root, 'dist', 'index.html'))) {
 	fail('dist/index.html missing; run npm run build first')
 }
 
 const { readdirSync } = await import('node:fs')
+const distCssDir = join(root, 'dist', '_astro')
 const cssFiles = readdirSync(distCssDir).filter((n) => n.endsWith('.css'))
 const cssBlob = cssFiles
 	.map((n) => readFileSync(join(distCssDir, n), 'utf8'))
 	.join('\n')
 
 if (!cssBlob.includes('Instrument Sans')) fail('built CSS missing Instrument Sans')
-if (!cssBlob.includes('IBM Plex Mono')) fail('built CSS missing IBM Plex Mono')
+if (!cssBlob.includes('JetBrains Mono')) fail('built CSS missing JetBrains Mono')
 if (!cssBlob.includes('--hz-font-sans')) fail('built CSS missing --hz-font-sans')
 if (!cssBlob.includes('prefers-reduced-motion')) {
 	fail('built CSS missing prefers-reduced-motion')
 }
-if (!cssBlob.includes(':focus-visible') && !cssBlob.includes(':focus-visible'.replace(':', ''))) {
-	// minifiers keep :focus-visible
-	if (!cssBlob.includes('focus-visible')) fail('built CSS missing focus-visible')
-}
+if (!cssBlob.includes('focus-visible')) fail('built CSS missing focus-visible')
 
 console.log(
 	'hz041_ok fonts=1 light_dark=1 focus=1 reduced_motion=1 no_glass=1 no_emoji=1 design_doc=1',

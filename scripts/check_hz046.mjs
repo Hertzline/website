@@ -134,8 +134,18 @@ for (const [rel, html] of [
 	if (!/winget install Hertzline\.Hertzline/.test(html)) {
 		fail(`dist/${rel} missing winget install Hertzline.Hertzline`)
 	}
-	if (!/Not released yet|Non ancora rilasciato/i.test(html)) {
-		fail(`dist/${rel} must state not released yet`)
+	if (releases.status === 'not_released') {
+		if (!/Not released yet|Non ancora rilasciato/i.test(html)) {
+			fail(`dist/${rel} must state not released yet`)
+		}
+		if (/https?:\/\/[^\s"'<>]+\/(Hertzline|hertzline)[^"'<>]*\.(msi|msix|exe|dmg|AppImage|deb|rpm)/i.test(html)) {
+			fail(`dist/${rel} has fake installer URL while not_released`)
+		}
+	} else {
+		if (!/1\.0\.0/.test(html)) fail(`dist/${rel} must show version 1.0.0`)
+		if (!/https:\/\/github\.com\/Hertzline\/app\/releases\/download\/v1\.0\.0\//.test(html)) {
+			fail(`dist/${rel} missing live Hertzline/app release download URL`)
+		}
 	}
 	if (!/application\/ld\+json/.test(html)) fail(`dist/${rel} missing JSON-LD`)
 	if (!/SoftwareApplication/.test(html)) fail(`dist/${rel} missing SoftwareApplication`)
@@ -149,10 +159,6 @@ for (const [rel, html] of [
 		fail(`dist/${rel} missing twitter:card`)
 	}
 	if (/\+\s*\d+\s*%?\s*FPS/i.test(html)) fail(`dist/${rel} contains fake FPS claim`)
-	// No fake https download installers while pre-release
-	if (/https?:\/\/[^\s"'<>]+\/(Hertzline|hertzline)[^"'<>]*\.(msi|msix|exe|dmg|AppImage|deb|rpm)/i.test(html)) {
-		fail(`dist/${rel} has fake installer URL while not_released`)
-	}
 }
 
 const sitemap = readFileSync(join(dist, 'sitemap-0.xml'), 'utf8')

@@ -114,14 +114,21 @@ const pages = [
 ]
 
 for (const [rel, html] of pages) {
-	if (!/Not released yet|Non ancora rilasciato/i.test(html)) {
-		fail(`dist/${rel} must state not released yet while status=not_released`)
-	}
 	if (!/winget install Hertzline\.Hertzline/.test(html)) {
 		fail(`dist/${rel} missing winget install Hertzline.Hertzline`)
 	}
-	if (/https?:\/\/[^\s"'<>]+\/(Hertzline|hertzline)[^"'<>]*\.(msi|msix|exe|dmg|AppImage|deb|rpm)/i.test(html)) {
-		fail(`dist/${rel} has fake installer URL while not_released`)
+	if (releases.status === 'not_released') {
+		if (!/Not released yet|Non ancora rilasciato/i.test(html)) {
+			fail(`dist/${rel} must state not released yet while status=not_released`)
+		}
+		if (/https?:\/\/[^\s"'<>]+\/(Hertzline|hertzline)[^"'<>]*\.(msi|msix|exe|dmg|AppImage|deb|rpm)/i.test(html)) {
+			fail(`dist/${rel} has fake installer URL while not_released`)
+		}
+	} else if (releases.status === 'released') {
+		if (!/1\.0\.0/.test(html)) fail(`dist/${rel} must mention 1.0.0`)
+		if (rel.includes('download') && !/https:\/\/github\.com\/Hertzline\/app\/releases\/download\/v1\.0\.0\//.test(html)) {
+			fail(`dist/${rel} missing live release asset URL`)
+		}
 	}
 	if (/BEGIN\s+.*PRIVATE\s+KEY|ghp_|CSC_KEY_PASSWORD/i.test(html)) {
 		fail(`dist/${rel} leaked secret-like text`)

@@ -1,5 +1,5 @@
 {
-	"status": "not_released",
+	"status": "released",
 	"updated": "2026-11-15",
 	"wingetId": "Hertzline.Hertzline",
 	"wingetCommand": "winget install Hertzline.Hertzline",
@@ -8,7 +8,11 @@
 		"name": "Hertzline",
 		"license": "MIT",
 		"applicationCategory": "UtilitiesApplication",
-		"operatingSystems": ["Windows", "Linux", "macOS"],
+		"operatingSystems": [
+			"Windows",
+			"Linux",
+			"macOS"
+		],
 		"description": {
 			"en": "Measure, explain, and reverse game and desktop performance changes. No unverified FPS claims.",
 			"it": "Misura, spiega e annulla le modifiche alle prestazioni di giochi e desktop. Nessun claim di FPS non verificato."
@@ -28,13 +32,57 @@
 			"it": "macOS 13 o successivo. Bozza DMG e cask Homebrew per v1.0.0 preparata; download pubblico notarizzato dopo firma Apple Program del proprietario. Meno regolazioni di Windows/Linux; la superficie di capacita e dichiarata onestamente."
 		}
 	},
-	"latest": null,
+	"latest": {
+		"version": "1.0.0",
+		"published": "2026-11-15",
+		"tag": "v1.0.0",
+		"minOs": {
+			"windows": "Windows 10 (64-bit)",
+			"linux": "x86_64 (Ubuntu 22.04 / Debian 12 baseline)",
+			"macos": "macOS 13.0 (Ventura)"
+		},
+		"downloadPath": "/download/"
+	},
 	"artifacts": {
-		"windows": [],
+		"windows": [
+			{
+				"id": "windows-nsis",
+				"label": "Windows NSIS setup (Hertzline_1.0.0_x64-setup.exe)",
+				"url": "https://github.com/Hertzline/app/releases/download/v1.0.0/Hertzline_1.0.0_x64-setup.exe",
+				"sha256": "7d7e05a22733e9b02bc792b36d37e691f5c6a520b5c26e78b0fb6baf559a7d1e",
+				"filename": "Hertzline_1.0.0_x64-setup.exe",
+				"sizeBytes": 1470890
+			},
+			{
+				"id": "windows-msi",
+				"label": "Windows MSI (Hertzline_1.0.0_x64_en-US.msi)",
+				"url": "https://github.com/Hertzline/app/releases/download/v1.0.0/Hertzline_1.0.0_x64_en-US.msi",
+				"sha256": "01a781e0382bdc36e149ab4685e30aadf5bbc7977b55eeb0642e3b97a74aa0f0",
+				"filename": "Hertzline_1.0.0_x64_en-US.msi",
+				"sizeBytes": 2244608
+			}
+		],
 		"linux": [],
 		"macos": []
 	},
-	"history": [],
+	"history": [
+		{
+			"version": "1.0.0",
+			"published": "2026-11-15",
+			"tag": "v1.0.0",
+			"highlights": {
+				"en": [
+					"First public v1.0.0 candidate with measured, reversible optimizations",
+					"Windows MSI and NSIS checksums published; Authenticode pending owner certificate"
+				],
+				"it": [
+					"Primo candidato pubblico v1.0.0 con ottimizzazioni misurate e reversibili",
+					"Checksum MSI e NSIS Windows pubblicati; Authenticode in attesa del certificato del proprietario"
+				]
+			},
+			"artifactCount": 2
+		}
+	],
 	"ui": {
 		"en": {
 			"statusLabel": "Release status",

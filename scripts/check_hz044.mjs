@@ -153,10 +153,14 @@ if (new Set(builtDescs).size !== builtDescs.length) {
 
 const home = readFileSync(join(dist, 'index.html'), 'utf8')
 if (!/placeholder/i.test(home)) fail('home must label placeholder imagery')
-if (!/Not released yet|not released yet|Downloads are not released/i.test(
-	readFileSync(join(dist, 'changelog/index.html'), 'utf8'),
-)) {
-	fail('changelog must state not released yet')
+const changelogHtml = readFileSync(join(dist, 'changelog/index.html'), 'utf8')
+const releases = JSON.parse(readFileSync(join(root, 'src/data/releases.json'), 'utf8'))
+if (releases.status === 'not_released') {
+	if (!/Not released yet|not released yet|Downloads are not released/i.test(changelogHtml)) {
+		fail('changelog must state not released yet')
+	}
+} else if (!/1\.0\.0/.test(changelogHtml)) {
+	fail('changelog must mention released version 1.0.0')
 }
 
 const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))

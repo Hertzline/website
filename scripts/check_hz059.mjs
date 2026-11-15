@@ -1,4 +1,4 @@
-/** HZ-059: website stays honestly not_released for v1.0.0 RC until signed assets. */
+/** HZ-059: v1.0.0 RC/release feed honesty. */
 
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -17,28 +17,36 @@ if (!existsSync(releasesPath)) fail('missing src/data/releases.json')
 if (!existsSync(ciPath)) fail('missing .github/workflows/ci.yml')
 
 const releases = JSON.parse(readFileSync(releasesPath, 'utf8'))
-if (releases.status !== 'not_released') {
-	fail('HZ-059 keeps status=not_released until signed public artifacts exist')
-}
-if (releases.wingetPublished === true) fail('wingetPublished must stay false')
-if (releases.latest != null) fail('latest must be null while not_released')
-if (!Array.isArray(releases.history) || releases.history.length !== 0) {
-	fail('history must be [] while not_released')
-}
-for (const os of ['windows', 'linux', 'macos']) {
-	const rows = releases.artifacts?.[os]
-	if (!Array.isArray(rows) || rows.length !== 0) {
-		fail(`artifacts.${os} must be [] while not_released`)
-	}
-}
+const status = releases.status
 
-const notReleased = releases.ui?.en?.notReleased || ''
-if (!notReleased.includes('1.0.0')) {
-	fail('ui.en.notReleased must mention RC version 1.0.0')
-}
-const notReleasedIt = releases.ui?.it?.notReleased || ''
-if (!notReleasedIt.includes('1.0.0')) {
-	fail('ui.it.notReleased must mention RC version 1.0.0')
+if (status === 'not_released') {
+	if (releases.wingetPublished === true) fail('wingetPublished must stay false')
+	if (releases.latest != null) fail('latest must be null while not_released')
+	if (!Array.isArray(releases.history) || releases.history.length !== 0) {
+		fail('history must be [] while not_released')
+	}
+	for (const os of ['windows', 'linux', 'macos']) {
+		const rows = releases.artifacts?.[os]
+		if (!Array.isArray(rows) || rows.length !== 0) {
+			fail(`artifacts.${os} must be [] while not_released`)
+		}
+	}
+	const notReleased = releases.ui?.en?.notReleased || ''
+	if (!notReleased.includes('1.0.0')) {
+		fail('ui.en.notReleased must mention RC version 1.0.0')
+	}
+} else if (status === 'released') {
+	if (releases.latest?.version !== '1.0.0') fail('latest.version must be 1.0.0')
+	const win = releases.artifacts?.windows || []
+	if (!Array.isArray(win) || win.length === 0) fail('released needs windows artifacts')
+	for (const row of win) {
+		if (!String(row.url || '').startsWith('https://github.com/Hertzline/app/releases/')) {
+			fail(`bad artifact url: ${row.url}`)
+		}
+		if (!/^[0-9a-f]{64}$/i.test(String(row.sha256 || ''))) fail('bad sha256')
+	}
+} else {
+	fail(`unexpected status ${status}`)
 }
 
 const blob = JSON.stringify(releases)
@@ -57,4 +65,4 @@ if (!ci.includes('check:hz059')) fail('ci.yml missing check:hz059')
 const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'))
 if (!pkg.scripts?.['check:hz059']) fail('package.json missing check:hz059 script')
 
-console.log('hz059_ok status=not_released rc=1.0.0 secrets=0')
+console.log(`hz059_ok status=${status} rc=1.0.0 secrets=0`)

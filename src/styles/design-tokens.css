@@ -1,20 +1,21 @@
 /*
-  Hertzline design system
-  Direction: Leo-Galli README DNA -- deep navy, teal, amber, JetBrains Mono
-  No purple, no glassmorphism, no emoji.
+  Hertzline design system (HZ-041)
+  Direction: precision instrument / signal lab
+  Accent: teal (frequency), not purple. No glassmorphism. No emoji.
 */
 
 :root {
+	/* Brand tokens (usable outside Starlight pages) */
 	--hz-font-sans: 'Instrument Sans', var(--sl-font-system);
-	--hz-font-mono: 'JetBrains Mono', var(--sl-font-system-mono);
+	--hz-font-mono: 'IBM Plex Mono', var(--sl-font-system-mono);
 
-	--hz-space-1: 0.25rem;
-	--hz-space-2: 0.5rem;
-	--hz-space-3: 1rem;
-	--hz-space-4: 1.5rem;
-	--hz-space-5: 2rem;
-	--hz-space-6: 3rem;
-	--hz-space-7: 4rem;
+	--hz-space-1: 0.25rem; /* 4px */
+	--hz-space-2: 0.5rem; /* 8px */
+	--hz-space-3: 1rem; /* 16px */
+	--hz-space-4: 1.5rem; /* 24px */
+	--hz-space-5: 2rem; /* 32px */
+	--hz-space-6: 3rem; /* 48px */
+	--hz-space-7: 4rem; /* 64px */
 
 	--hz-radius: 2px;
 	--hz-focus-width: 2px;
@@ -23,87 +24,86 @@
 	--hz-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 	--hz-ease-in: cubic-bezier(0.4, 0, 1, 1);
 
+	/* Semantic (mapped per theme below) */
+	--hz-signal: hsl(32, 92%, 46%);
+	--hz-success: hsl(152, 55%, 36%);
+	--hz-warning: hsl(38, 90%, 42%);
+	--hz-danger: hsl(4, 72%, 46%);
+	--hz-info: hsl(198, 70%, 38%);
+
 	--sl-font: var(--hz-font-sans);
 	--sl-font-mono: var(--hz-font-mono);
 
-	/* Dark -- README navy stack: #040812 / #0a1220 / #0F1B30 */
-	--sl-color-white: #f8fafc;
-	--sl-color-gray-1: #e2e8f0;
-	--sl-color-gray-2: #cbd5e1;
-	--sl-color-gray-3: #94a3b8;
-	--sl-color-gray-4: #64748b;
-	--sl-color-gray-5: #24406b;
-	--sl-color-gray-6: #0f1b30;
-	--sl-color-black: #0a1220;
+	/* Dark (Starlight default :root) */
+	--sl-color-white: hsl(150, 18%, 96%);
+	--sl-color-gray-1: hsl(150, 10%, 88%);
+	--sl-color-gray-2: hsl(150, 8%, 72%);
+	--sl-color-gray-3: hsl(155, 7%, 52%);
+	--sl-color-gray-4: hsl(160, 9%, 34%);
+	--sl-color-gray-5: hsl(160, 12%, 20%);
+	--sl-color-gray-6: hsl(160, 14%, 13%);
+	--sl-color-black: hsl(160, 16%, 8%);
 
-	/* Teal #14B8A6 family */
-	--sl-color-accent-low: #0f2f2f;
-	--sl-color-accent: #14b8a6;
-	--sl-color-accent-high: #2dd4bf;
+	--sl-color-accent-low: hsl(168, 42%, 14%);
+	--sl-color-accent: hsl(168, 68%, 40%);
+	--sl-color-accent-high: hsl(168, 62%, 70%);
 
 	--sl-color-text-accent: var(--sl-color-accent-high);
-	--sl-color-bg-accent: var(--sl-color-accent);
-	--sl-color-text-invert: #041018;
+	--sl-color-bg-accent: var(--sl-color-accent-high);
+	--sl-color-text-invert: var(--sl-color-accent-low);
 
-	--hz-bg: #0a1220;
-	--hz-bg-deep: #040812;
-	--hz-panel: #0f1b30;
-	--hz-fg: #e2e8f0;
-	--hz-muted: #94a3b8;
-	--hz-border: #24406b;
-	--hz-accent: #14b8a6;
-	--hz-accent-fg: #2dd4bf;
-	--hz-amber: #e5b567;
-	--hz-amber-deep: #8a6a24;
-	--hz-focus: #2dd4bf;
-	--hz-signal: #e5b567;
-	--hz-success: #14b8a6;
-	--hz-warning: #e5b567;
-	--hz-danger: #f87171;
-	--hz-info: #60a5fa;
+	--hz-bg: var(--sl-color-black);
+	--hz-fg: var(--sl-color-gray-1);
+	--hz-muted: var(--sl-color-gray-3);
+	--hz-border: var(--sl-color-gray-5);
+	--hz-accent: var(--sl-color-accent);
+	--hz-accent-fg: var(--sl-color-accent-high);
+	--hz-focus: hsl(168, 80%, 62%);
+	--hz-signal: hsl(32, 90%, 56%);
+	--hz-success: hsl(152, 50%, 48%);
+	--hz-warning: hsl(38, 85%, 55%);
+	--hz-danger: hsl(4, 75%, 58%);
+	--hz-info: hsl(198, 70%, 58%);
 
 	color-scheme: dark;
 }
 
 :root[data-theme='light'] {
-	--sl-color-white: #0a1220;
-	--sl-color-gray-1: #0f1b30;
-	--sl-color-gray-2: #24406b;
-	--sl-color-gray-3: #475569;
-	--sl-color-gray-4: #64748b;
-	--sl-color-gray-5: #cbd5e1;
-	--sl-color-gray-6: #e2e8f0;
-	--sl-color-gray-7: #f1f5f9;
-	--sl-color-black: #f8fafc;
+	--sl-color-white: hsl(160, 18%, 10%);
+	--sl-color-gray-1: hsl(160, 14%, 16%);
+	--sl-color-gray-2: hsl(160, 10%, 24%);
+	--sl-color-gray-3: hsl(160, 8%, 38%);
+	--sl-color-gray-4: hsl(150, 6%, 54%);
+	--sl-color-gray-5: hsl(150, 8%, 78%);
+	--sl-color-gray-6: hsl(150, 12%, 91%);
+	--sl-color-gray-7: hsl(150, 16%, 96%);
+	--sl-color-black: hsl(150, 18%, 98%);
 
-	--sl-color-accent-high: #0f766e;
-	--sl-color-accent: #0d9488;
-	--sl-color-accent-low: #ccfbf1;
+	--sl-color-accent-high: hsl(168, 72%, 22%);
+	--sl-color-accent: hsl(168, 70%, 30%);
+	--sl-color-accent-low: hsl(168, 38%, 90%);
 
-	--sl-color-text-accent: var(--sl-color-accent-high);
+	--sl-color-text-accent: var(--sl-color-accent);
 	--sl-color-bg-accent: var(--sl-color-accent);
-	--sl-color-text-invert: #f8fafc;
+	--sl-color-text-invert: var(--sl-color-black);
 
-	--hz-bg: #f8fafc;
-	--hz-bg-deep: #e2e8f0;
-	--hz-panel: #ffffff;
-	--hz-fg: #0f1b30;
-	--hz-muted: #475569;
-	--hz-border: #cbd5e1;
-	--hz-accent: #0d9488;
-	--hz-accent-fg: #0f766e;
-	--hz-amber: #b45309;
-	--hz-amber-deep: #92400e;
-	--hz-focus: #0f766e;
-	--hz-signal: #b45309;
-	--hz-success: #0f766e;
-	--hz-warning: #b45309;
-	--hz-danger: #b91c1c;
-	--hz-info: #1d4ed8;
+	--hz-bg: var(--sl-color-black);
+	--hz-fg: var(--sl-color-gray-1);
+	--hz-muted: var(--sl-color-gray-3);
+	--hz-border: var(--sl-color-gray-5);
+	--hz-accent: var(--sl-color-accent);
+	--hz-accent-fg: var(--sl-color-accent-high);
+	--hz-focus: hsl(168, 72%, 28%);
+	--hz-signal: hsl(32, 92%, 42%);
+	--hz-success: hsl(152, 55%, 32%);
+	--hz-warning: hsl(38, 90%, 38%);
+	--hz-danger: hsl(4, 72%, 42%);
+	--hz-info: hsl(198, 70%, 34%);
 
 	color-scheme: light;
 }
 
+/* WCAG 2.2 AA focus: visible, high-contrast, not outline:none alone */
 :focus-visible {
 	outline: var(--hz-focus-width) solid var(--hz-focus);
 	outline-offset: 2px;
@@ -120,6 +120,7 @@ select:focus-visible,
 	outline-offset: 2px;
 }
 
+/* Headings: prevent widows; tighten tracking as size grows */
 h1,
 h2,
 .sl-markdown-content h1,
@@ -136,6 +137,7 @@ h4,
 	letter-spacing: -0.01em;
 }
 
+/* Metric / code numbers */
 .hz-mono,
 code,
 kbd,
@@ -144,22 +146,30 @@ pre {
 	font-variant-numeric: tabular-nums;
 }
 
+/* Subtle instrument field: soft radial wash + light grid (no glass blur) */
 body {
 	background-color: var(--sl-color-bg);
 	background-attachment: fixed;
 	background-image:
-		radial-gradient(900px 480px at 12% -8%, color-mix(in srgb, var(--hz-accent) 18%, transparent), transparent 60%),
-		radial-gradient(700px 420px at 92% 0%, color-mix(in srgb, var(--hz-amber) 12%, transparent), transparent 55%),
-		linear-gradient(180deg, var(--hz-bg-deep) 0%, var(--hz-bg) 42%, var(--hz-bg) 100%);
+		radial-gradient(900px 420px at 12% -10%, color-mix(in srgb, var(--sl-color-accent) 16%, transparent), transparent 58%),
+		radial-gradient(700px 380px at 95% 0%, color-mix(in srgb, var(--hz-signal) 8%, transparent), transparent 50%),
+		linear-gradient(hsla(160, 14%, 100%, 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, hsla(160, 14%, 100%, 0.03) 1px, transparent 1px);
+	background-size: auto, auto, 48px 48px, 48px 48px;
+	background-position: 0 0, 0 0, -1px -1px, -1px -1px;
 }
 
 :root[data-theme='light'] body {
 	background-image:
-		radial-gradient(900px 480px at 12% -8%, color-mix(in srgb, var(--hz-accent) 10%, transparent), transparent 60%),
-		radial-gradient(700px 420px at 92% 0%, color-mix(in srgb, var(--hz-amber) 8%, transparent), transparent 55%),
-		linear-gradient(180deg, #eef6f5 0%, var(--hz-bg) 40%, var(--hz-bg) 100%);
+		radial-gradient(900px 420px at 12% -10%, color-mix(in srgb, var(--sl-color-accent) 10%, transparent), transparent 58%),
+		radial-gradient(700px 380px at 95% 0%, color-mix(in srgb, var(--hz-signal) 6%, transparent), transparent 50%),
+		linear-gradient(hsla(160, 20%, 10%, 0.035) 1px, transparent 1px),
+		linear-gradient(90deg, hsla(160, 20%, 10%, 0.035) 1px, transparent 1px);
+	background-size: auto, auto, 48px 48px, 48px 48px;
+	background-position: 0 0, 0 0, -1px -1px, -1px -1px;
 }
 
+/* Solid surfaces over the grid; never frosted glass */
 .main-frame,
 starlight-menu-button,
 nav.sidebar,
@@ -171,15 +181,7 @@ header.header,
 	-webkit-backdrop-filter: none;
 }
 
-header.header {
-	border-bottom: 1px solid color-mix(in srgb, var(--hz-accent) 35%, var(--hz-border));
-	background: color-mix(in srgb, var(--hz-bg-deep) 92%, black);
-}
-
-:root[data-theme='light'] header.header {
-	background: color-mix(in srgb, var(--hz-panel) 94%, white);
-}
-
+/* Interaction states for primary-style controls */
 .sl-link-button,
 .sl-markdown-content a {
 	transition:
@@ -189,21 +191,9 @@ header.header {
 		opacity var(--hz-motion-fast) var(--hz-ease-out);
 }
 
-.sl-link-button.primary {
-	background: var(--hz-accent);
-	border-color: var(--hz-accent);
-	color: #041018;
-	font-family: var(--hz-font-mono);
-	letter-spacing: 0.04em;
-	text-transform: uppercase;
-	font-size: 0.8125rem;
-	font-weight: 700;
-}
-
-.sl-link-button.primary:hover {
-	background: var(--hz-accent-fg);
-	border-color: var(--hz-accent-fg);
-	opacity: 1;
+.sl-link-button:hover,
+.sl-markdown-content a:hover {
+	opacity: 0.92;
 }
 
 .sl-link-button:active {
@@ -229,6 +219,7 @@ header.header {
 	}
 }
 
+/* Touch: avoid double-tap delay on interactive chrome */
 a,
 button,
 summary,

@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
   <title id="title">UI preview placeholder</title>
   <desc id="desc">Labeled placeholder. Real product screenshots will replace this after the first public release.</desc>
-  <rect width="720" height="420" fill="#040812"/>
-  <rect x="1" y="1" width="718" height="418" fill="none" stroke="#24406b" stroke-width="2"/>
-  <rect x="24" y="24" width="160" height="372" fill="#0f1b30" stroke="#24406b"/>
-  <rect x="48" y="56" width="112" height="10" fill="#14b8a6"/>
-  <rect x="48" y="84" width="96" height="8" fill="#24406b"/>
-  <rect x="48" y="108" width="96" height="8" fill="#24406b"/>
-  <rect x="48" y="132" width="96" height="8" fill="#24406b"/>
-  <rect x="208" y="24" width="488" height="48" fill="#0f1b30" stroke="#24406b"/>
-  <rect x="228" y="40" width="140" height="16" fill="#14b8a6"/>
-  <rect x="208" y="92" width="232" height="140" fill="#0f1b30" stroke="#24406b"/>
-  <rect x="228" y="112" width="80" height="8" fill="#e5b567"/>
-  <rect x="228" y="136" width="192" height="6" fill="#24406b"/>
-  <rect x="228" y="156" width="160" height="6" fill="#24406b"/>
-  <rect x="228" y="176" width="176" height="6" fill="#24406b"/>
-  <rect x="464" y="92" width="232" height="140" fill="#0f1b30" stroke="#24406b"/>
-  <rect x="484" y="112" width="80" height="8" fill="#e5b567"/>
-  <rect x="484" y="136" width="192" height="6" fill="#24406b"/>
-  <rect x="484" y="156" width="160" height="6" fill="#24406b"/>
-  <rect x="208" y="252" width="488" height="144" fill="#0f1b30" stroke="#24406b"/>
-  <path fill="none" stroke="#14b8a6" stroke-width="2" d="M236 360 C280 300 320 380 380 320 C440 260 500 360 660 300"/>
-  <text x="360" y="400" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono, monospace" font-size="14">Placeholder -- not a product screenshot</text>
+  <rect width="720" height="420" fill="#121a18"/>
+  <rect x="1" y="1" width="718" height="418" fill="none" stroke="#2a3a36" stroke-width="2"/>
+  <rect x="24" y="24" width="160" height="372" fill="#1a2421" stroke="#2a3a36"/>
+  <rect x="48" y="56" width="112" height="10" fill="#3d5c54"/>
+  <rect x="48" y="84" width="96" height="8" fill="#2a3a36"/>
+  <rect x="48" y="108" width="96" height="8" fill="#2a3a36"/>
+  <rect x="48" y="132" width="96" height="8" fill="#2a3a36"/>
+  <rect x="208" y="24" width="488" height="48" fill="#1a2421" stroke="#2a3a36"/>
+  <rect x="228" y="40" width="140" height="16" fill="#2a9b7a"/>
+  <rect x="208" y="92" width="232" height="140" fill="#1a2421" stroke="#2a3a36"/>
+  <rect x="228" y="112" width="80" height="8" fill="#3d5c54"/>
+  <rect x="228" y="136" width="192" height="6" fill="#2a3a36"/>
+  <rect x="228" y="156" width="160" height="6" fill="#2a3a36"/>
+  <rect x="228" y="176" width="176" height="6" fill="#2a3a36"/>
+  <rect x="464" y="92" width="232" height="140" fill="#1a2421" stroke="#2a3a36"/>
+  <rect x="484" y="112" width="80" height="8" fill="#3d5c54"/>
+  <rect x="484" y="136" width="192" height="6" fill="#2a3a36"/>
+  <rect x="484" y="156" width="160" height="6" fill="#2a3a36"/>
+  <rect x="208" y="252" width="488" height="144" fill="#1a2421" stroke="#2a3a36"/>
+  <path fill="none" stroke="#2a9b7a" stroke-width="2" d="M236 360 C280 300 320 380 380 320 C440 260 500 360 660 300"/>
+  <text x="360" y="400" text-anchor="middle" fill="#8a9a94" font-family="IBM Plex Mono, monospace" font-size="14">Placeholder -- not a product screenshot</text>
 </svg>

@@ -1,70 +1,50 @@
 <div align="center">
 
-# Hertzline / website
+<a href="https://github.com/Hertzline/website"><img src="https://capsule-render.vercel.app/api?type=waving&height=180&color=0:0f1412,55:12352c,100:0f6b4c&text=Hertzline&fontColor=e8eeeb&fontSize=64&fontAlignY=45&animation=twinkling" alt="Hertzline" width="100%" /></a>
 
-**Measure. Explain. Restore.**
+<img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=500&size=16&color=2A9B7A&center=true&vCenter=true&width=520&height=34&duration=2800&pause=1200&lines=Measure.+Explain.+Restore.;Static+Astro+%2B+Starlight+site;English+default+%2F+Italian+%2Fit%2F;No+unverified+FPS+claims" alt="Measure. Explain. Restore." />
 
-Static product site and documentation for [Hertzline](https://github.com/Hertzline).
-
-Astro + Starlight. Static HTML only: no server functions, no database, no runtime secrets.
-
-Visual DNA matches the [Leo-Galli profile README](https://github.com/Leo-Galli/Leo-Galli): deep navy, teal, amber, JetBrains Mono labels.
+<p>
+  <a href="https://github.com/Hertzline"><img src="https://skillicons.dev/icons?i=github&theme=dark" width="44" height="44" alt="GitHub" /></a>&nbsp;
+  <a href="https://github.com/Hertzline/app"><img src="https://skillicons.dev/icons?i=rust&theme=dark" width="44" height="44" alt="App" /></a>&nbsp;
+  <a href="https://astro.build"><img src="https://skillicons.dev/icons?i=astro&theme=dark" width="44" height="44" alt="Astro" /></a>
+</p>
 
 </div>
 
----
+<br/>
 
-## Versions (verified 2026-11-15)
+<img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:0f1412,35:2a9b7a,70:c9a227,100:0f1412" width="100%" alt="" />
 
-| Package | Version | License | Source |
-|---|---|---|---|
-| astro | 7.4.12 | MIT | npm / docs.astro.build (latest 7.4.x) |
-| @astrojs/starlight | 0.43.1 | MIT | npm / starlight.astro.build (peer astro ^7.2.10) |
-| sharp | 0.35.5 | Apache-2.0 | npm |
-| @fontsource/instrument-sans | 5.3.0 | OFL-1.1 | npm / fontsource.org |
-| @fontsource/jetbrains-mono | 5.3.0 | OFL-1.1 | npm / fontsource.org |
-| @astrojs/check | 0.9.12 | MIT | npm |
-| typescript | 5.9.3 | Apache-2.0 | npm |
-| linkinator | 8.1.0 | MIT | npm (HZ-043 link checker) |
-| @lhci/cli | 0.16.1 | Apache-2.0 | npm (HZ-043 Lighthouse CI; bundles lighthouse 13.6.0) |
+<br/>
 
-Node.js `engines.node` is `>=22.23.4` (Astro 7 requirement from official install docs).
+<p align="center"><img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=700&size=18&color=2A9B7A&center=true&vCenter=true&width=420&height=40&duration=1&pause=1000000&letterSpacing=6px&lines=WHAT+THIS+REPO+IS" alt="What this repo is" /></p>
 
-D7 snapshot was Astro 7.4.11 / Starlight 0.42.11; scaffold re-pinned to the versions above.
+Static product site and full docs for [Hertzline](https://github.com/Hertzline). Astro + Starlight. Output is static HTML only: no server functions, no database, no runtime secrets.
 
-## Layout
+Owner deploys on Vercel. Agents never install or run the Vercel CLI.
 
-| Path | Role |
-|---|---|
-| `src/content/docs/` | English (root) Starlight Markdown / MDX docs |
-| `src/content/docs/it/` | Italian docs (`/it/`) |
-| `src/content/i18n/` | Custom UI string dictionaries (`en.json`, `it.json`) |
-| `src/content.config.ts` | Docs + i18n content collections |
-| `src/styles/design-tokens.css` | Light/dark palette, type, focus, reduced motion (HZ-041) |
-| `src/styles/product-pages.css` | Product page layout accents (HZ-044 / HZ-045) |
-| `src/data/actions.json` | Shared actions catalog (AC-4.x / AC-8.1); `/actions/` + `/docs/actions/` |
-| `src/content/docs/docs/` | Technical docs under `/docs/` (HZ-047) |
-| `src/data/releases.json` | Release feed for `/download/` + `/changelog/` (HZ-046 / HZ-052) |
-| `src/components/ActionsCatalog.astro` | Renders `/actions/` from shared data |
-| `src/components/DownloadPanel.astro` | Renders `/download/` from releases data + SoftwareApplication JSON-LD |
-| `src/components/ChangelogFeed.astro` | Renders `/changelog/` from the same releases feed |
-| `public/robots.txt` | Allow all + sitemap pointer |
-| `public/og.svg` | Default Open Graph / Twitter image |
-| `src/assets/logo.svg` | Header mark |
-| `src/assets/ui-preview-placeholder.svg` | Labeled UI preview placeholder (not a screenshot) |
-| `DESIGN.md` | Design system reference |
-| `astro.config.mjs` | Static Astro + Starlight; `site` placeholder URL; locales |
-| `public/` | Static assets |
+<img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:0f1412,35:2a9b7a,70:c9a227,100:0f1412" width="100%" alt="" />
 
-## i18n
+<br/>
 
-- Default language: **English** as Starlight `root` locale (URLs have no `/en/` prefix).
-- Italian: content and routes under `/it/` (`locales.it`, `lang: 'it'`).
-- Custom Hertzline UI keys live in `src/content/i18n/en.json` and `src/content/i18n/it.json`. `npm run check:hz042` fails if any key is missing or empty on either side, and if docs pages lack Italian parity. `npm run check:hz048` is the dedicated missing-key/missing-page gate for the required Italian `/docs/` set (translated titles, no English `/docs/` links, built `/it/docs/`).
-- Starlight built-in Italian UI labels ship with `@astrojs/starlight` (`dist/translations/it.js`).
-- **hreflang:** Starlight emits `<link rel="alternate" hreflang="en|it|x-default">` on multilingual pages when `site` is set (see `@astrojs/starlight` `dist/utils/head.js`). Verified by `check:hz042` on the static build. After the owner replaces the placeholder `site` URL, production canonicals and hreflang targets will use that domain.
+<p align="center"><img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=700&size=18&color=2A9B7A&center=true&vCenter=true&width=420&height=40&duration=1&pause=1000000&letterSpacing=6px&lines=STACK" alt="Stack" /></p>
 
-## Develop
+| Package | Version | License |
+|---|---|---|
+| astro | 7.4.12 | MIT |
+| @astrojs/starlight | 0.43.1 | MIT |
+| sharp | 0.35.5 | Apache-2.0 |
+| @fontsource/instrument-sans | 5.3.0 | OFL-1.1 |
+| @fontsource/ibm-plex-mono | 5.3.0 | OFL-1.1 |
+
+Node `engines.node`: `>=22.23.4`.
+
+<img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:0f1412,35:2a9b7a,70:c9a227,100:0f1412" width="100%" alt="" />
+
+<br/>
+
+<p align="center"><img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=700&size=18&color=2A9B7A&center=true&vCenter=true&width=420&height=40&duration=1&pause=1000000&letterSpacing=6px&lines=DEVELOP" alt="Develop" /></p>
 
 ```bash
 npm ci
@@ -84,69 +64,44 @@ npm run check:hz048
 npm run check:lhci
 ```
 
-| Script | Role |
-|---|---|
-| `check:links` | Recursive linkinator crawl of `dist/` (skips placeholder `hertzline.example`) |
-| `check:a11y` | Structural accessibility gate on built HTML (`lang`, `title`, `h1`, `img` alt) |
-| `check:lhci` | Lighthouse CI mobile; all categories (performance, accessibility, best-practices, seo) must score >= 0.95 |
-| `check:hz043` | Asserts CI wiring, pins, and config for the gates above |
-| `check:hz044` | Product routes en/it, unique titles/descriptions, labeled placeholder, no fake FPS claims |
-| `check:hz045` | Shared actions catalog: AC-4.1--4.22 + AC-4.23 honesty, en/it fields, `/actions/` build |
-| `check:hz046` | Download page: not_released, winget ID, OS slots, checksums, JSON-LD without fake ratings, robots/OG/sitemap |
-| `check:hz047` | Starlight `/docs/` set: install per OS, benchmark, profiles, every action, rollback, FAQ, build, contribute, architecture, security |
-| `check:hz048` | Italian docs parity: missing-key + missing-page gate for required `/it/docs/` locales |
+Design system: [DESIGN.md](DESIGN.md).
 
-Lighthouse CI uses `lighthouserc.cjs` (`staticDistDir: ./dist`, mobile form factor). Requires a local Chrome/Chromium (`CHROME_PATH` or chrome-launcher discovery). GitHub Actions runs LHCI on `ubuntu-latest` with `browser-actions/setup-chrome` pinned to SHA.
+<img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:0f1412,35:2a9b7a,70:c9a227,100:0f1412" width="100%" alt="" />
 
-Design system details: [DESIGN.md](DESIGN.md).
-
-Requires Node.js 22.23.4 or newer (even LTS preferred; odd Node majors are unsupported by Astro).
+<br/>
 
 ## Deploy on Vercel
 
-Owner-operated only. Agents must not install or run the Vercel CLI, log in, link, configure, or deploy.
+Owner-operated only. Agents must not install or run the Vercel CLI.
 
-1. Import `Hertzline/website` in the Vercel dashboard (GitHub).
-2. Use the default **Astro** preset. Framework preset: Astro.
-3. Build command: `npm run build` (Vercel Astro default).
-4. Output directory: `dist` (Vercel Astro default).
-5. Install command: `npm ci` (or Vercel default `npm install`).
-6. Node.js version: 22.x or 24.x LTS that satisfies `>=22.23.4`.
-7. Do **not** add the Vercel Astro adapter. This project is static (`output: 'static'`); no server/edge functions.
-8. No environment variables are required for the static build.
-9. After the first deploy, replace the placeholder `site` URL in `astro.config.mjs` (`https://hertzline.example`) with the real production domain, then redeploy.
+1. Import `Hertzline/website` in the Vercel dashboard.
+2. Default **Astro** preset.
+3. Build: `npm run build` · Output: `dist` · Install: `npm ci`.
+4. Node 22.x or 24.x (`>=22.23.4`).
+5. No Astro adapter. Static only. No env vars required.
+6. Replace placeholder `site` in `astro.config.mjs` after first deploy.
 
-Non-default settings: none required for a default Astro static import. Document any future override here before changing CI or Vercel.
+## i18n
 
-## Product pages (HZ-044)
+- English is the Starlight `root` locale (no `/en/` prefix).
+- Italian content and routes live under `/it/`.
+- Custom UI keys: `src/content/i18n/en.json` and `src/content/i18n/it.json`.
+- Starlight emits `hreflang` alternate links (`en`, `it`, `x-default`) when `site` is set.
 
-| Path | Role |
-|---|---|
-| `/` | Splash product home (en); `/it/` Italian |
-| `/how-it-works/` | Measure / explain / restore workflow |
-| `/anti-cheat/` | No-injection posture and overlay policy |
-| `/privacy/` | Local-first defaults; no telemetry by default |
-| `/changelog/` | Honest pre-release state until signed artifacts exist |
-| `/download/` | Pre-release download page: winget command, OS slots, checksums, requirements (HZ-046) |
+<img src="https://capsule-render.vercel.app/api?type=rect&height=3&color=0:0f1412,35:2a9b7a,70:c9a227,100:0f1412" width="100%" alt="" />
 
-Imagery uses a labeled placeholder SVG until real screenshots exist. No fake stats or testimonials.
+<br/>
 
-## Documentation (HZ-047)
+<p align="center"><img src="https://readme-typing-svg.demolab.com?font=IBM+Plex+Mono&weight=700&size=18&color=2A9B7A&center=true&vCenter=true&width=420&height=40&duration=1&pause=1000000&letterSpacing=6px&lines=RELEASE+FEED" alt="Release feed" /></p>
 
-Technical docs live under `/docs/` (Italian `/it/docs/`): getting started, installation (Windows/Linux/macOS), first benchmark, profiles, every action (shared `actions.json`), rollback, troubleshooting, FAQ, building from source, contributing, architecture, and security. Covers AC-1--AC-8 narrative for the desktop product.
+`src/data/releases.json` drives `/download/` and `/changelog/`. Packaging writes it via `../packaging/scripts/write_release_metadata.py`. Never commit secrets.
 
-## Download / releases (HZ-046 / HZ-052)
+Package ID: `Hertzline.Hertzline` · `winget install Hertzline.Hertzline`
 
-`src/data/releases.json` is the static release feed for `/download/` and `/changelog/`. While `status` is `not_released`, `latest` is null, `history` is `[]`, artifact arrays stay empty, and both pages state that fact. Package ID: `Hertzline.Hertzline` (`winget install Hertzline.Hertzline`). SoftwareApplication JSON-LD is emitted without invented ratings. Starlight emits Open Graph + Twitter card tags; `public/og.svg` supplies `og:image` / `twitter:image`. Astro emits the sitemap from `site`; `public/robots.txt` points at `/sitemap-index.xml`.
-
-Packaging produces the feed via `../packaging/scripts/write_release_metadata.py` (see `../packaging/release/RELEASE_FEED.md`). Commit the updated JSON here with version, HTTPS URLs, and SHA-256 only -- never secrets. Owner deploys on Vercel; do not install or run the Vercel CLI from this repo.
-
-## Site URL
-
-`astro.config.mjs` sets `site: 'https://hertzline.example'` as a placeholder for sitemap/canonical URLs until the owner configures the real domain.
+<p align="center"><sub><i>Clean measurements are like a well-refereed match: when everything works, nobody invents the score.</i></sub></p>
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) · [NOTICE](NOTICE)
 
-Third-party notices: [NOTICE](NOTICE)
+<img src="https://capsule-render.vercel.app/api?type=waving&section=footer&height=110&color=0:0f1412,55:12352c,100:0f6b4c" alt="" width="100%" />

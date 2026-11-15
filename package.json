@@ -17,6 +17,10 @@
     "check:hz040": "node scripts/check_hz040.mjs",
     "check:hz041": "node scripts/check_hz041.mjs",
     "check:hz042": "node scripts/check_hz042.mjs",
+    "check:hz043": "node scripts/check_hz043.mjs",
+    "check:links": "node scripts/check_links.mjs",
+    "check:a11y": "node scripts/check_a11y.mjs",
+    "check:lhci": "lhci autorun",
     "astro": "astro"
   },
   "dependencies": {
@@ -28,7 +32,9 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
+    "@lhci/cli": "0.16.1",
     "@types/node": "22.19.21",
+    "linkinator": "8.1.0",
     "typescript": "5.9.3"
   }
 }

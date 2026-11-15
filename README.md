@@ -15,6 +15,8 @@ Built with Astro + Starlight. Output is static HTML only: no server functions, n
 | @fontsource/ibm-plex-mono | 5.3.0 | OFL-1.1 | npm / fontsource.org (verified 2026-11-15) |
 | @astrojs/check | 0.9.12 | MIT | npm |
 | typescript | 5.9.3 | Apache-2.0 | npm |
+| linkinator | 8.1.0 | MIT | npm (HZ-043 link checker) |
+| @lhci/cli | 0.16.1 | Apache-2.0 | npm (HZ-043 Lighthouse CI; bundles lighthouse 13.6.0) |
 
 Node.js `engines.node` is `>=22.23.4` (Astro 7 requirement from official install docs).
 
@@ -51,7 +53,20 @@ npm run build
 npm run check:hz040
 npm run check:hz041
 npm run check:hz042
+npm run check:links
+npm run check:a11y
+npm run check:hz043
+npm run check:lhci
 ```
+
+| Script | Role |
+|---|---|
+| `check:links` | Recursive linkinator crawl of `dist/` (skips placeholder `hertzline.example`) |
+| `check:a11y` | Structural accessibility gate on built HTML (`lang`, `title`, `h1`, `img` alt) |
+| `check:lhci` | Lighthouse CI mobile; all categories (performance, accessibility, best-practices, seo) must score >= 0.95 |
+| `check:hz043` | Asserts CI wiring, pins, and config for the gates above |
+
+Lighthouse CI uses `lighthouserc.cjs` (`staticDistDir: ./dist`, mobile form factor). Requires a local Chrome/Chromium (`CHROME_PATH` or chrome-launcher discovery). GitHub Actions runs LHCI on `ubuntu-latest` with `browser-actions/setup-chrome` pinned to SHA.
 
 Design system details: [DESIGN.md](DESIGN.md).
 

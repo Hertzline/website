@@ -26,3 +26,12 @@ sharp
   Copyright 2017 IBM Corp. (Reserved Font Name "Plex")
   https://github.com/IBM/plex
   https://fontsource.org/fonts/ibm-plex-mono
+
+linkinator (devDependency; CI link checker, not shipped in static output)
+  License: MIT
+  https://github.com/JustinBeckwith/linkinator
+
+@lhci/cli / Lighthouse CI (devDependency; CI only, not shipped in static output)
+  License: Apache-2.0
+  Bundles lighthouse 13.6.0 (Apache-2.0)
+  https://github.com/GoogleChrome/lighthouse-ci

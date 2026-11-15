@@ -16,6 +16,7 @@
     "check": "astro check",
     "check:hz040": "node scripts/check_hz040.mjs",
     "check:hz041": "node scripts/check_hz041.mjs",
+    "check:hz042": "node scripts/check_hz042.mjs",
     "astro": "astro"
   },
   "dependencies": {

@@ -24,13 +24,23 @@ D7 snapshot was Astro 7.4.11 / Starlight 0.42.11; scaffold re-pinned to the vers
 
 | Path | Role |
 |---|---|
-| `src/content/docs/` | Starlight Markdown / MDX docs |
-| `src/content.config.ts` | Docs content collection |
+| `src/content/docs/` | English (root) Starlight Markdown / MDX docs |
+| `src/content/docs/it/` | Italian docs (`/it/`) |
+| `src/content/i18n/` | Custom UI string dictionaries (`en.json`, `it.json`) |
+| `src/content.config.ts` | Docs + i18n content collections |
 | `src/styles/design-tokens.css` | Light/dark palette, type, focus, reduced motion (HZ-041) |
 | `src/assets/logo.svg` | Header mark |
 | `DESIGN.md` | Design system reference |
-| `astro.config.mjs` | Static Astro + Starlight; `site` placeholder URL |
+| `astro.config.mjs` | Static Astro + Starlight; `site` placeholder URL; locales |
 | `public/` | Static assets |
+
+## i18n
+
+- Default language: **English** as Starlight `root` locale (URLs have no `/en/` prefix).
+- Italian: content and routes under `/it/` (`locales.it`, `lang: 'it'`).
+- Custom Hertzline UI keys live in `src/content/i18n/en.json` and `src/content/i18n/it.json`. `npm run check:hz042` fails if any key is missing or empty on either side, and if docs pages lack Italian parity.
+- Starlight built-in Italian UI labels ship with `@astrojs/starlight` (`dist/translations/it.js`).
+- **hreflang:** Starlight emits `<link rel="alternate" hreflang="en|it|x-default">` on multilingual pages when `site` is set (see `@astrojs/starlight` `dist/utils/head.js`). Verified by `check:hz042` on the static build. After the owner replaces the placeholder `site` URL, production canonicals and hreflang targets will use that domain.
 
 ## Develop
 
@@ -40,6 +50,7 @@ npm run check
 npm run build
 npm run check:hz040
 npm run check:hz041
+npm run check:hz042
 ```
 
 Design system details: [DESIGN.md](DESIGN.md).

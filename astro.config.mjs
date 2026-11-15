@@ -7,6 +7,8 @@ const siteUrl = 'https://hertzline.example'
 
 // https://astro.build/config
 // Static only: no adapter, no server functions, no DB, no secrets.
+// i18n: English is the root locale (no /en/ prefix); Italian under /it/ (HZ-042).
+// Official: https://starlight.astro.build/guides/i18n/
 export default defineConfig({
 	site: siteUrl,
 	output: 'static',
@@ -15,6 +17,17 @@ export default defineConfig({
 			title: 'Hertzline',
 			description:
 				'Measure, explain, and reverse game and desktop performance changes.',
+			defaultLocale: 'root',
+			locales: {
+				root: {
+					label: 'English',
+					lang: 'en',
+				},
+				it: {
+					label: 'Italiano',
+					lang: 'it',
+				},
+			},
 			logo: {
 				src: './src/assets/logo.svg',
 				alt: 'Hertzline',
@@ -40,7 +53,18 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'Start',
-					items: [{ label: 'Overview', slug: 'index' }],
+					translations: {
+						it: 'Inizia',
+					},
+					items: [
+						{
+							label: 'Overview',
+							slug: 'index',
+							translations: {
+								it: 'Panoramica',
+							},
+						},
+					],
 				},
 			],
 		}),

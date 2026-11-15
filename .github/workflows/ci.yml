@@ -42,3 +42,9 @@ jobs:
 
       - name: HZ-040 static scaffold checks
         run: npm run check:hz040
+
+      - name: HZ-041 design system checks
+        run: npm run check:hz041
+
+      - name: HZ-042 i18n missing-key checks
+        run: npm run check:hz042

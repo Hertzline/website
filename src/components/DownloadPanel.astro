@@ -15,9 +15,10 @@ const site = Astro.site?.href?.replace(/\/$/, '') || 'https://hertzline.example'
 const pageUrl = locale === 'it' ? `${site}/it/download/` : `${site}/download/`
 const latest =
 	releases.latest && typeof releases.latest === 'object' && 'version' in releases.latest
-		? (releases.latest as { version: string })
+		? (releases.latest as { version: string; published?: string; minOs?: Record<string, string> })
 		: null
 const isReleased = releases.status === 'released' && latest != null
+const history = Array.isArray(releases.history) ? releases.history : []
 
 type Artifact = {
 	id: string
@@ -69,6 +70,7 @@ const jsonLd = JSON.stringify(softwareApplication)
 			<p>
 				<strong>
 					{ui.versionLabel}: {latest.version}
+					{latest.published ? ` (${latest.published})` : ''}
 				</strong>
 			</p>
 		) : (
@@ -78,6 +80,15 @@ const jsonLd = JSON.stringify(softwareApplication)
 		)
 	}
 	{!isReleased && <p>{ui.notReleased}</p>}
+	{
+		!isReleased && history.length === 0 && (
+			<p class="hz-download-meta">
+				{locale === 'it'
+					? 'Feed history vuoto (packaging -> releases.json, HZ-052).'
+					: 'Empty history feed (packaging -> releases.json, HZ-052).'}
+			</p>
+		)
+	}
 </div>
 
 {

@@ -25,6 +25,9 @@ if (releases.status === 'not_released') {
 		fail('not_released must keep wingetPublished false')
 	}
 	if (releases.latest != null) fail('not_released must keep latest null')
+	if (!Array.isArray(releases.history) || releases.history.length > 0) {
+		fail('not_released must keep history as an empty array')
+	}
 	for (const os of ['windows', 'linux', 'macos']) {
 		if (!Array.isArray(releases.artifacts?.[os]) || releases.artifacts[os].length > 0) {
 			fail(`not_released artifacts.${os} must be an empty array`)

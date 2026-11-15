@@ -3,26 +3,9 @@ title: Changelog
 description: "Hertzline release history. No public app release has been published yet."
 ---
 
-## Status
+import ChangelogFeed from '../../components/ChangelogFeed.astro'
 
-**Not released yet.** There is no public desktop build, installer, or winget package available. Version numbers, download links, and checksums will appear here when the first signed artifacts exist.
-
-Until then:
-
-- Do not expect installers on the [download page](/download/) yet
-- `winget install Hertzline.Hertzline` is reserved as the intended ID; it is not published until an approved manifest lands
-- Site and docs work can ship ahead of the app (this repository)
-
-## Format (when releases begin)
-
-Each entry will list:
-
-1. Version (`vMAJOR.MINOR.PATCH`)
-2. Date
-3. Highlights tied to measured features (no invented FPS gains)
-4. Links to signed artifacts and SHA-256 checksums
-
-Source of truth for product changelog text will live in the `app` repository and be mirrored here during release workflows.
+<ChangelogFeed locale="en" />
 
 ## Website / docs notes
 

@@ -1,0 +1,167 @@
+---
+import releases from '../data/releases.json'
+
+type Locale = 'en' | 'it'
+
+type Props = {
+	locale: Locale
+}
+
+const { locale } = Astro.props
+
+type HistoryEntry = {
+	version: string
+	published?: string
+	tag?: string
+	highlights?: { en?: string[]; it?: string[] }
+	artifactCount?: number
+}
+
+const latest =
+	releases.latest && typeof releases.latest === 'object' && 'version' in releases.latest
+		? (releases.latest as {
+				version: string
+				published?: string
+				tag?: string
+				minOs?: Record<string, string>
+			})
+		: null
+const isReleased = releases.status === 'released' && latest != null
+const historyRaw: unknown[] = Array.isArray(releases.history)
+	? (releases.history as unknown[])
+	: []
+const entries: HistoryEntry[] = historyRaw.flatMap((h) => {
+	if (!h || typeof h !== 'object') return []
+	const row = h as Record<string, unknown>
+	if (typeof row.version !== 'string') return []
+	const highlightsRaw = row.highlights
+	const highlights =
+		highlightsRaw && typeof highlightsRaw === 'object'
+			? (highlightsRaw as { en?: string[]; it?: string[] })
+			: undefined
+	return [
+		{
+			version: row.version,
+			published: typeof row.published === 'string' ? row.published : undefined,
+			tag: typeof row.tag === 'string' ? row.tag : undefined,
+			highlights,
+			artifactCount: typeof row.artifactCount === 'number' ? row.artifactCount : undefined,
+		},
+	]
+})
+
+const downloadHref = locale === 'it' ? '/it/download/' : '/download/'
+---
+
+<section class="hz-download-slot" aria-labelledby="hz-changelog-status">
+	<h2 id="hz-changelog-status">
+		{locale === 'it' ? 'Stato rilascio' : 'Release status'}
+	</h2>
+	<div class="hz-callout" role="status">
+		{
+			isReleased && latest ? (
+				<p>
+					<strong>
+						{locale === 'it' ? 'Versione' : 'Version'}: {latest.version}
+						{latest.published ? ` (${latest.published})` : ''}
+					</strong>
+				</p>
+			) : (
+				<p>
+					<strong>{locale === 'it' ? 'Non ancora rilasciato' : 'Not released yet'}</strong>
+				</p>
+			)
+		}
+		{
+			!isReleased && (
+				<p>
+					{locale === 'it'
+						? 'Nessuna build desktop pubblica, installer o pacchetto winget. Versione, link e checksum SHA-256 arrivano da packaging (releases.json) quando esistono artifact firmati.'
+						: 'No public desktop build, installer, or winget package. Version, links, and SHA-256 checksums arrive from packaging (releases.json) when signed artifacts exist.'}
+				</p>
+			)
+		}
+	</div>
+	<p>
+		{locale === 'it' ? 'Pagina download: ' : 'Download page: '}
+		<a href={downloadHref}>{downloadHref}</a>
+	</p>
+	<p>
+		<code>{releases.wingetCommand}</code>
+		{
+			!releases.wingetPublished && (
+				<>
+					{' -- '}
+					{locale === 'it'
+						? 'ID riservato, non pubblicato.'
+						: 'reserved ID, not published.'}
+				</>
+			)
+		}
+	</p>
+</section>
+
+{
+	isReleased && entries.length > 0 ? (
+		<section class="hz-download-slot" aria-labelledby="hz-changelog-history">
+			<h2 id="hz-changelog-history">{locale === 'it' ? 'Cronologia' : 'History'}</h2>
+			<ul>
+				{entries.map((entry) => {
+					const highlights: string[] = entry.highlights?.[locale] ?? []
+					return (
+						<li>
+							<p>
+								<strong>
+									{entry.tag || `v${entry.version}`}
+									{entry.published ? ` -- ${entry.published}` : ''}
+								</strong>
+								{typeof entry.artifactCount === 'number'
+									? ` (${entry.artifactCount} artifacts)`
+									: ''}
+							</p>
+							{highlights.length > 0 && (
+								<ul>
+									{highlights.map((line: string) => (
+										<li>{line}</li>
+									))}
+								</ul>
+							)}
+							<p>
+								<a href={downloadHref}>
+									{locale === 'it'
+										? 'Checksum e download'
+										: 'Checksums and downloads'}
+								</a>
+							</p>
+						</li>
+					)
+				})}
+			</ul>
+		</section>
+	) : (
+		<section class="hz-download-slot" aria-labelledby="hz-changelog-format">
+			<h2 id="hz-changelog-format">
+				{locale === 'it' ? 'Formato (quando inizieranno le release)' : 'Format (when releases begin)'}
+			</h2>
+			<ol>
+				<li>{locale === 'it' ? 'Versione (`vMAJOR.MINOR.PATCH`)' : 'Version (`vMAJOR.MINOR.PATCH`)'}</li>
+				<li>{locale === 'it' ? 'Data' : 'Date'}</li>
+				<li>
+					{locale === 'it'
+						? 'Evidenze legate a funzionalita misurate (niente guadagni FPS inventati)'
+						: 'Highlights tied to measured features (no invented FPS gains)'}
+				</li>
+				<li>
+					{locale === 'it'
+						? 'Link ad artifact firmati e checksum SHA-256 sulla pagina download'
+						: 'Links to signed artifacts and SHA-256 checksums on the download page'}
+				</li>
+			</ol>
+			<p>
+				{locale === 'it'
+					? 'La fonte di verita del testo di prodotto resta nel repository `app`; packaging scrive versione, URL e checksum in `src/data/releases.json` (HZ-052).'
+					: 'Product changelog prose remains sourced from the `app` repository; packaging writes version, URLs, and checksums into `src/data/releases.json` (HZ-052).'}
+			</p>
+		</section>
+	)
+}

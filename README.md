@@ -34,9 +34,10 @@ D7 snapshot was Astro 7.4.11 / Starlight 0.42.11; scaffold re-pinned to the vers
 | `src/styles/product-pages.css` | Product page layout accents (HZ-044 / HZ-045) |
 | `src/data/actions.json` | Shared actions catalog (AC-4.x / AC-8.1); `/actions/` + `/docs/actions/` |
 | `src/content/docs/docs/` | Technical docs under `/docs/` (HZ-047) |
-| `src/data/releases.json` | Release feed for `/download/` (pre-release honest empty artifacts) |
+| `src/data/releases.json` | Release feed for `/download/` + `/changelog/` (HZ-046 / HZ-052) |
 | `src/components/ActionsCatalog.astro` | Renders `/actions/` from shared data |
 | `src/components/DownloadPanel.astro` | Renders `/download/` from releases data + SoftwareApplication JSON-LD |
+| `src/components/ChangelogFeed.astro` | Renders `/changelog/` from the same releases feed |
 | `public/robots.txt` | Allow all + sitemap pointer |
 | `public/og.svg` | Default Open Graph / Twitter image |
 | `src/assets/logo.svg` | Header mark |
@@ -124,9 +125,11 @@ Imagery uses a labeled placeholder SVG until real screenshots exist. No fake sta
 
 Technical docs live under `/docs/` (Italian `/it/docs/`): getting started, installation (Windows/Linux/macOS), first benchmark, profiles, every action (shared `actions.json`), rollback, troubleshooting, FAQ, building from source, contributing, architecture, and security. Covers AC-1--AC-8 narrative for the desktop product.
 
-## Download / releases (HZ-046)
+## Download / releases (HZ-046 / HZ-052)
 
-`src/data/releases.json` is the static release feed. While `status` is `not_released`, artifact arrays stay empty and the page states that fact. Package ID: `Hertzline.Hertzline` (`winget install Hertzline.Hertzline`). SoftwareApplication JSON-LD is emitted without invented ratings. Starlight emits Open Graph + Twitter card tags; `public/og.svg` supplies `og:image` / `twitter:image`. Astro emits the sitemap from `site`; `public/robots.txt` points at `/sitemap-index.xml`.
+`src/data/releases.json` is the static release feed for `/download/` and `/changelog/`. While `status` is `not_released`, `latest` is null, `history` is `[]`, artifact arrays stay empty, and both pages state that fact. Package ID: `Hertzline.Hertzline` (`winget install Hertzline.Hertzline`). SoftwareApplication JSON-LD is emitted without invented ratings. Starlight emits Open Graph + Twitter card tags; `public/og.svg` supplies `og:image` / `twitter:image`. Astro emits the sitemap from `site`; `public/robots.txt` points at `/sitemap-index.xml`.
+
+Packaging produces the feed via `../packaging/scripts/write_release_metadata.py` (see `../packaging/release/RELEASE_FEED.md`). Commit the updated JSON here with version, HTTPS URLs, and SHA-256 only -- never secrets. Owner deploys on Vercel; do not install or run the Vercel CLI from this repo.
 
 ## Site URL
 

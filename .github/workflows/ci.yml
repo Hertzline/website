@@ -91,6 +91,9 @@ jobs:
       - name: HZ-058 forbidden-claim / anti-cheat freeze
         run: npm run check:hz058
 
+      - name: HZ-059 v1 RC honesty (not_released until signed)
+        run: npm run check:hz059
+
       - name: Setup Chrome (Lighthouse)
         if: runner.os == 'Linux'
         uses: browser-actions/setup-chrome@48ad923757ca74d66703209fe939badbdf80f2f4 # v2.2.0

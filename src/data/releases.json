@@ -16,16 +16,16 @@
 	},
 	"requirements": {
 		"windows": {
-			"en": "Windows 10 or newer (64-bit). Signed MSI/NSIS installers planned. Elevation only when an action needs it.",
-			"it": "Windows 10 o successivo (64-bit). Installer MSI/NSIS firmati previsti. Elevazione solo quando un'azione la richiede."
+			"en": "Windows 10 or newer (64-bit). MSI/NSIS for v1.0.0 RC built in packaging; public signed downloads appear after owner Authenticode publish. Elevation only when an action needs it.",
+			"it": "Windows 10 o successivo (64-bit). MSI/NSIS per il RC v1.0.0 costruiti in packaging; i download firmati pubblici compaiono dopo la pubblicazione Authenticode del proprietario. Elevazione solo quando un'azione la richiede."
 		},
 		"linux": {
-			"en": "x86_64. Flatpak, AppImage, .deb, .rpm, and AUR packages planned. Privileged actions use polkit where required.",
-			"it": "x86_64. Pacchetti Flatpak, AppImage, .deb, .rpm e AUR previsti. Le azioni privilegiate usano polkit dove richiesto."
+			"en": "x86_64. Flatpak, AppImage, .deb, .rpm, and AUR packaging for v1.0.0 is prepared; public signed downloads after owner publish. Privileged actions use polkit where required.",
+			"it": "x86_64. Packaging Flatpak, AppImage, .deb, .rpm e AUR per v1.0.0 e preparato; download firmati pubblici dopo pubblicazione del proprietario. Le azioni privilegiate usano polkit dove richiesto."
 		},
 		"macos": {
-			"en": "macOS 13 or newer. Notarized DMG and Homebrew cask planned. Fewer tunables than Windows/Linux; capability surface is honest.",
-			"it": "macOS 13 o successivo. DMG notarizzato e cask Homebrew previsti. Meno regolazioni di Windows/Linux; la superficie di capacita e dichiarata onestamente."
+			"en": "macOS 13 or newer. DMG + Homebrew cask draft for v1.0.0 prepared; notarized public download after owner Apple Program signing. Fewer tunables than Windows/Linux; capability surface is honest.",
+			"it": "macOS 13 o successivo. Bozza DMG e cask Homebrew per v1.0.0 preparata; download pubblico notarizzato dopo firma Apple Program del proprietario. Meno regolazioni di Windows/Linux; la superficie di capacita e dichiarata onestamente."
 		}
 	},
 	"latest": null,
@@ -38,9 +38,9 @@
 	"ui": {
 		"en": {
 			"statusLabel": "Release status",
-			"notReleased": "Not released yet. There are no public installers, checksums, or store packages until the first signed artifacts exist.",
+			"notReleased": "Not released yet. App packaging for v1.0.0 release candidate is ready in-repo, but there are no public installers, checksums, or store packages until the owner publishes signed artifacts.",
 			"wingetTitle": "Windows (winget)",
-			"wingetNote": "Intended package ID. Not published until an approved winget manifest lands. Do not expect this command to succeed today.",
+			"wingetNote": "Intended package ID Hertzline.Hertzline (manifest draft for 1.0.0 prepared locally). Not published until an approved winget-pkgs PR lands. Do not expect this command to succeed today.",
 			"windowsTitle": "Windows direct download",
 			"linuxTitle": "Linux",
 			"macosTitle": "macOS",
@@ -53,9 +53,9 @@
 		},
 		"it": {
 			"statusLabel": "Stato rilascio",
-			"notReleased": "Non ancora rilasciato. Non ci sono installer pubblici, checksum o pacchetti store finche non esistono i primi artifact firmati.",
+			"notReleased": "Non ancora rilasciato. Il packaging dell'app per il release candidate v1.0.0 e pronto nel repository, ma non ci sono installer pubblici, checksum o pacchetti store finche il proprietario non pubblica artifact firmati.",
 			"wingetTitle": "Windows (winget)",
-			"wingetNote": "ID pacchetto previsto. Non pubblicato finche non arriva un manifest winget approvato. Non aspettarti che questo comando funzioni oggi.",
+			"wingetNote": "ID pacchetto previsto Hertzline.Hertzline (bozza manifest 1.0.0 preparata in locale). Non pubblicato finche non arriva un PR winget-pkgs approvato. Non aspettarti che questo comando funzioni oggi.",
 			"windowsTitle": "Download diretto Windows",
 			"linuxTitle": "Linux",
 			"macosTitle": "macOS",

@@ -14,3 +14,15 @@ Astro
 sharp
   License: Apache-2.0
   https://github.com/lovell/sharp
+
+@fontsource/instrument-sans (Instrument Sans)
+  License: OFL-1.1
+  Copyright 2022 The Instrument Sans Project Authors
+  https://github.com/Instrument/instrument-sans
+  https://fontsource.org/fonts/instrument-sans
+
+@fontsource/ibm-plex-mono (IBM Plex Mono)
+  License: OFL-1.1
+  Copyright 2017 IBM Corp. (Reserved Font Name "Plex")
+  https://github.com/IBM/plex
+  https://fontsource.org/fonts/ibm-plex-mono

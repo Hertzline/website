@@ -1,0 +1,222 @@
+/*
+  Hertzline design system (HZ-041)
+  Direction: precision instrument / signal lab
+  Accent: teal (frequency), not purple. No glassmorphism. No emoji.
+*/
+
+:root {
+	/* Brand tokens (usable outside Starlight pages) */
+	--hz-font-sans: 'Instrument Sans', var(--sl-font-system);
+	--hz-font-mono: 'IBM Plex Mono', var(--sl-font-system-mono);
+
+	--hz-space-1: 0.25rem; /* 4px */
+	--hz-space-2: 0.5rem; /* 8px */
+	--hz-space-3: 1rem; /* 16px */
+	--hz-space-4: 1.5rem; /* 24px */
+	--hz-space-5: 2rem; /* 32px */
+	--hz-space-6: 3rem; /* 48px */
+	--hz-space-7: 4rem; /* 64px */
+
+	--hz-radius: 2px;
+	--hz-focus-width: 2px;
+	--hz-motion-fast: 150ms;
+	--hz-motion-base: 220ms;
+	--hz-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--hz-ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+	/* Semantic (mapped per theme below) */
+	--hz-signal: hsl(32, 92%, 46%);
+	--hz-success: hsl(152, 55%, 36%);
+	--hz-warning: hsl(38, 90%, 42%);
+	--hz-danger: hsl(4, 72%, 46%);
+	--hz-info: hsl(198, 70%, 38%);
+
+	--sl-font: var(--hz-font-sans);
+	--sl-font-mono: var(--hz-font-mono);
+
+	/* Dark (Starlight default :root) */
+	--sl-color-white: hsl(150, 18%, 96%);
+	--sl-color-gray-1: hsl(150, 10%, 88%);
+	--sl-color-gray-2: hsl(150, 8%, 72%);
+	--sl-color-gray-3: hsl(155, 7%, 52%);
+	--sl-color-gray-4: hsl(160, 9%, 34%);
+	--sl-color-gray-5: hsl(160, 12%, 20%);
+	--sl-color-gray-6: hsl(160, 14%, 13%);
+	--sl-color-black: hsl(160, 16%, 8%);
+
+	--sl-color-accent-low: hsl(168, 42%, 14%);
+	--sl-color-accent: hsl(168, 68%, 40%);
+	--sl-color-accent-high: hsl(168, 62%, 70%);
+
+	--sl-color-text-accent: var(--sl-color-accent-high);
+	--sl-color-bg-accent: var(--sl-color-accent-high);
+	--sl-color-text-invert: var(--sl-color-accent-low);
+
+	--hz-bg: var(--sl-color-black);
+	--hz-fg: var(--sl-color-gray-1);
+	--hz-muted: var(--sl-color-gray-3);
+	--hz-border: var(--sl-color-gray-5);
+	--hz-accent: var(--sl-color-accent);
+	--hz-accent-fg: var(--sl-color-accent-high);
+	--hz-focus: hsl(168, 80%, 62%);
+	--hz-signal: hsl(32, 90%, 56%);
+	--hz-success: hsl(152, 50%, 48%);
+	--hz-warning: hsl(38, 85%, 55%);
+	--hz-danger: hsl(4, 75%, 58%);
+	--hz-info: hsl(198, 70%, 58%);
+
+	color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+	--sl-color-white: hsl(160, 18%, 10%);
+	--sl-color-gray-1: hsl(160, 14%, 16%);
+	--sl-color-gray-2: hsl(160, 10%, 24%);
+	--sl-color-gray-3: hsl(160, 8%, 38%);
+	--sl-color-gray-4: hsl(150, 6%, 54%);
+	--sl-color-gray-5: hsl(150, 8%, 78%);
+	--sl-color-gray-6: hsl(150, 12%, 91%);
+	--sl-color-gray-7: hsl(150, 16%, 96%);
+	--sl-color-black: hsl(150, 18%, 98%);
+
+	--sl-color-accent-high: hsl(168, 72%, 22%);
+	--sl-color-accent: hsl(168, 70%, 30%);
+	--sl-color-accent-low: hsl(168, 38%, 90%);
+
+	--sl-color-text-accent: var(--sl-color-accent);
+	--sl-color-bg-accent: var(--sl-color-accent);
+	--sl-color-text-invert: var(--sl-color-black);
+
+	--hz-bg: var(--sl-color-black);
+	--hz-fg: var(--sl-color-gray-1);
+	--hz-muted: var(--sl-color-gray-3);
+	--hz-border: var(--sl-color-gray-5);
+	--hz-accent: var(--sl-color-accent);
+	--hz-accent-fg: var(--sl-color-accent-high);
+	--hz-focus: hsl(168, 72%, 28%);
+	--hz-signal: hsl(32, 92%, 42%);
+	--hz-success: hsl(152, 55%, 32%);
+	--hz-warning: hsl(38, 90%, 38%);
+	--hz-danger: hsl(4, 72%, 42%);
+	--hz-info: hsl(198, 70%, 34%);
+
+	color-scheme: light;
+}
+
+/* WCAG 2.2 AA focus: visible, high-contrast, not outline:none alone */
+:focus-visible {
+	outline: var(--hz-focus-width) solid var(--hz-focus);
+	outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+	outline: var(--hz-focus-width) solid var(--hz-focus);
+	outline-offset: 2px;
+}
+
+/* Headings: prevent widows; tighten tracking as size grows */
+h1,
+h2,
+.sl-markdown-content h1,
+.sl-markdown-content h2 {
+	text-wrap: balance;
+	letter-spacing: -0.02em;
+}
+
+h3,
+h4,
+.sl-markdown-content h3,
+.sl-markdown-content h4 {
+	text-wrap: pretty;
+	letter-spacing: -0.01em;
+}
+
+/* Metric / code numbers */
+.hz-mono,
+code,
+kbd,
+samp,
+pre {
+	font-variant-numeric: tabular-nums;
+}
+
+/* Subtle instrument grid on page background (no glass blur) */
+body {
+	background-color: var(--sl-color-bg);
+	background-position: -1px -1px;
+	background-attachment: fixed;
+	background-size: 48px 48px;
+	background-image:
+		linear-gradient(hsla(160, 14%, 100%, 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, hsla(160, 14%, 100%, 0.03) 1px, transparent 1px);
+}
+
+:root[data-theme='light'] body {
+	background-image:
+		linear-gradient(hsla(160, 20%, 10%, 0.04) 1px, transparent 1px),
+		linear-gradient(90deg, hsla(160, 20%, 10%, 0.04) 1px, transparent 1px);
+}
+
+/* Solid surfaces over the grid; never frosted glass */
+.main-frame,
+starlight-menu-button,
+nav.sidebar,
+header.header,
+.sidebar-pane,
+.right-sidebar,
+.sl-container {
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+}
+
+/* Interaction states for primary-style controls */
+.sl-link-button,
+.sl-markdown-content a {
+	transition:
+		color var(--hz-motion-fast) var(--hz-ease-out),
+		background-color var(--hz-motion-fast) var(--hz-ease-out),
+		border-color var(--hz-motion-fast) var(--hz-ease-out),
+		opacity var(--hz-motion-fast) var(--hz-ease-out);
+}
+
+.sl-link-button:hover,
+.sl-markdown-content a:hover {
+	opacity: 0.92;
+}
+
+.sl-link-button:active {
+	transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	body {
+		background-image: none;
+	}
+
+	.sl-link-button:active {
+		transform: none;
+	}
+}
+
+/* Touch: avoid double-tap delay on interactive chrome */
+a,
+button,
+summary,
+[role='button'] {
+	touch-action: manipulation;
+}

@@ -11,6 +11,8 @@ Built with Astro + Starlight. Output is static HTML only: no server functions, n
 | astro | 7.4.12 | MIT | npm / docs.astro.build (latest 7.4.x) |
 | @astrojs/starlight | 0.43.1 | MIT | npm / starlight.astro.build (peer astro ^7.2.10) |
 | sharp | 0.35.5 | Apache-2.0 | npm |
+| @fontsource/instrument-sans | 5.3.0 | OFL-1.1 | npm / fontsource.org (verified 2026-11-15) |
+| @fontsource/ibm-plex-mono | 5.3.0 | OFL-1.1 | npm / fontsource.org (verified 2026-11-15) |
 | @astrojs/check | 0.9.12 | MIT | npm |
 | typescript | 5.9.3 | Apache-2.0 | npm |
 
@@ -24,6 +26,9 @@ D7 snapshot was Astro 7.4.11 / Starlight 0.42.11; scaffold re-pinned to the vers
 |---|---|
 | `src/content/docs/` | Starlight Markdown / MDX docs |
 | `src/content.config.ts` | Docs content collection |
+| `src/styles/design-tokens.css` | Light/dark palette, type, focus, reduced motion (HZ-041) |
+| `src/assets/logo.svg` | Header mark |
+| `DESIGN.md` | Design system reference |
 | `astro.config.mjs` | Static Astro + Starlight; `site` placeholder URL |
 | `public/` | Static assets |
 
@@ -33,7 +38,11 @@ D7 snapshot was Astro 7.4.11 / Starlight 0.42.11; scaffold re-pinned to the vers
 npm ci
 npm run check
 npm run build
+npm run check:hz040
+npm run check:hz041
 ```
+
+Design system details: [DESIGN.md](DESIGN.md).
 
 Requires Node.js 22.23.4 or newer (even LTS preferred; odd Node majors are unsupported by Astro).
 

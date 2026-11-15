@@ -17,6 +17,8 @@ module.exports = {
 					deviceScaleFactor: 1.75,
 					disabled: false,
 				},
+				// GHA Linux Chrome needs no-sandbox (runner runs as root-like).
+				chromeFlags: '--no-sandbox --disable-dev-shm-usage',
 			},
 		},
 		assert: {

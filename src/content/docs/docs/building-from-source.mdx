@@ -1,0 +1,29 @@
+---
+title: "Building from source"
+description: "Build Hertzline from the public GitHub repositories: core, helper, app, packaging, and website."
+---
+
+Hertzline is split into repositories under [github.com/Hertzline](https://github.com/Hertzline). There is no monorepo at the workspace root.
+
+## Repositories
+
+| Repo | Role |
+|---|---|
+| `core` | Measurement, benchmark, actions, snapshots, profiles, export |
+| `helper` | Privileged allow-listed helper per OS |
+| `app` | Tauri 2 desktop UI |
+| `packaging` | Installers and manifests |
+| `website` | This Astro + Starlight site |
+
+## Typical local loop
+
+1. Clone `core`, run `cargo test` / lint gates documented in that repo.
+2. Clone `helper` if you need privileged paths.
+3. Clone `app` and follow its README for Tauri build (`npx tauri build` or `--no-bundle` for smoke).
+4. For the site: `npm ci`, `npm run check`, `npm run build` in `website`.
+
+Pin versions from official registries at build time. Do not invent crate or npm versions.
+
+## License
+
+MIT on every Hertzline repository. Keep third-party licenses SPDX-compatible for distributed binaries.

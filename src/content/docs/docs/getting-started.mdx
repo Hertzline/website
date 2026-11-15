@@ -1,0 +1,33 @@
+---
+title: "Getting started"
+description: "Install Hertzline, run your first measurement session, and learn the measure-change-verify-restore loop."
+---
+
+## What Hertzline does
+
+1. **Measure** a session: frame times when a supported probe is available, plus hardware, disk, and network collectors the OS exposes.
+2. **Change** only actions you choose. Each action shows what it does, expected effect, risk, and how to undo (AC-8.1).
+3. **Verify** with a before/after benchmark that reports median and spread, and marks a change helpful only if the gain exceeds run-to-run noise (AC-2.x).
+4. **Restore** any outstanding change with one-click Restore all, including crash and uninstall paths (AC-7.x).
+
+## Before you install
+
+- Hertzline never invents missing sensors. Unavailable metrics are labeled unavailable or not possible.
+- The whole app does not run elevated. Elevation is requested per action only.
+- Overlay stays off by default when anti-cheat markers are detected (AC-6.2).
+- There is no "+X FPS" marketing claim. Gains come only from your local measurements (AC-8.2).
+
+## Everyday mode (AC-5.1--AC-5.6)
+
+Outside of games, Everyday mode covers startup impact review, resource-hog reports without silent kills, power presets, cleanup with preview, thermal warnings, and a weekly health summary.
+
+## Optional overlay (AC-6.1--AC-6.3)
+
+A minimal FPS / frame-time overlay uses supported methods only, defaults off with anti-cheat markers, and has one global disable control.
+
+## Next steps
+
+1. [Install per OS](/docs/installation/)
+2. [Run a first benchmark](/docs/first-benchmark/)
+3. Browse the [actions catalog](/docs/actions/)
+4. Read [rollback and safety](/docs/rollback/)

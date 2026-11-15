@@ -1,0 +1,28 @@
+---
+title: "Primo benchmark"
+description: "Esegui un benchmark before/after a durata fissa con warm-up, almeno tre pass, mediana e spread, e verdetto sulla banda di rumore."
+---
+
+I benchmark rispondono a una domanda: questa modifica ha aiutato **su questa macchina** per questo carico?
+
+## Come funziona un run (AC-2.1, AC-2.2)
+
+1. Scegli un processo o una sessione di cattura e una sorgente frame supportata (PresentMon/ETW su Windows dopo probe; MangoHud opt-in su Linux; solo API pubbliche su macOS).
+2. Warm-up per il periodo configurato.
+3. Misura per una durata fissa.
+4. Ripeti per almeno tre pass.
+5. Riporta mediana e spread (IQR o min--max delle mediane dei pass) per FPS medio, 1% low, 0.1% low e frame time.
+
+## Verdetto (AC-2.3, AC-2.4)
+
+Una modifica e **utile** solo se il guadagno misurato supera la banda di rumore tra run. Altrimenti Hertzline riporta **no measurable effect** e offre il revert. Sito e app non inventano mai un numero "+X FPS" senza il tuo risultato locale.
+
+## Export (AC-1.8)
+
+A sessione completata, esporta CSV e JSON con gli stessi campi e unita. Le metriche non disponibili mantengono l'unita e restano etichettate unavailable.
+
+## Consigli
+
+- Chiudi carichi non correlati cosi il rumore e onesto.
+- Mantieni la stessa scena o carico per before e after.
+- Se un probe fallisce, la UI mostra unavailable -- non trattare dati mancanti come zero.

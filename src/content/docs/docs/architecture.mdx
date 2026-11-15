@@ -1,0 +1,47 @@
+---
+title: "Architecture"
+description: "Hertzline components: unprivileged app, core library, allow-listed helper, packaging, and static website."
+---
+
+## Components
+
+| Component | Repo | Role |
+|---|---|---|
+| Desktop UI | `app` | Unprivileged shell: measure, benchmark, actions, profiles, everyday mode, overlay settings, change log, restore-all |
+| Core | `core` | Measurement, benchmark engine, action trait (apply/restore/verify), snapshots, profiles, game detection, export |
+| Helper | `helper` | Minimal per-OS broker for elevation; named operations only |
+| Packaging | `packaging` | Installers, manifests, checksums, signing orchestration |
+| Website | `website` | Static Astro + Starlight site consuming release metadata |
+
+## Privilege boundary
+
+```
+[Desktop UI / app] --IPC--> [core]
+                              |
+                              | named elevate request
+                              v
+                       [helper / broker]
+                              |
+                              v
+                       OS APIs
+```
+
+Rules:
+
+1. The desktop app never runs fully elevated.
+2. Elevation is requested per action with a human-readable reason.
+3. Helper accepts only a fixed allow-list; no arbitrary shell.
+4. Snapshots are written before mutating apply.
+5. Uninstall and crash paths invoke restore-all without the UI.
+
+## Helper shape (D2)
+
+| OS | Mechanism |
+|---|---|
+| Windows | Short-lived elevated helper via `ShellExecuteEx` `runas` |
+| Linux | polkit named actions + `pkexec` |
+| macOS | `SMAppService` LaunchDaemon (macOS 13+) |
+
+## Data stays local
+
+Samples do not leave the machine unless you export a file. The website is static; it does not receive live telemetry.

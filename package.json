@@ -21,6 +21,7 @@
     "check:hz044": "node scripts/check_hz044.mjs",
     "check:hz045": "node scripts/check_hz045.mjs",
     "check:hz046": "node scripts/check_hz046.mjs",
+    "check:hz047": "node scripts/check_hz047.mjs",
     "check:links": "node scripts/check_links.mjs",
     "check:a11y": "node scripts/check_a11y.mjs",
     "check:lhci": "lhci autorun",

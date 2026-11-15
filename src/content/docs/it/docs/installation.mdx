@@ -1,0 +1,35 @@
+---
+title: "Installazione"
+description: "Installa Hertzline su Windows, Linux e macOS. Pre-release: nessun artefatto firmato ancora; ID winget Hertzline.Hertzline previsto."
+---
+
+Gli installer firmati **non sono ancora disponibili**. La [pagina download](/it/download/) mostra lo stato pre-release onesto. Quando esistono gli artefatti, checksum e link compariranno li.
+
+## Windows
+
+Canali previsti (dopo la prima release):
+
+- Installer MSI / NSIS da GitHub Releases (firmati; non saltare mai la firma)
+- winget: `winget install Hertzline.Hertzline`
+
+Fino alla release, compila dal sorgente (vedi [Compilare dal sorgente](/it/docs/building-from-source/)).
+
+Requisiti (previsti): desktop Windows supportato con permesso di installare software utente. Alcune azioni richiedono elevazione tramite helper allow-list (prompt UAC per azione).
+
+## Linux
+
+Pacchetti previsti: Flatpak, AppImage, deb, rpm e AUR. Limiti sandbox e comportamento helper polkit saranno documentati con il packaging.
+
+Fino alla release, compila dal sorgente. GameMode Feral, MangoHud e profili energetici richiedono gli strumenti host corrispondenti se usi quelle funzioni.
+
+## macOS
+
+Previsto: DMG notarizzato e bozza cask Homebrew (pubblicazione solo con approvazione owner).
+
+macOS espone meno parametri di Windows o Linux. Hertzline etichetta metriche e azioni non supportate come not possible. Non ci sono toggle finti (AC-4.23).
+
+## Dopo l'installazione
+
+1. Apri Hertzline senza privilegi elevati.
+2. Esegui una misura o il [primo benchmark](/it/docs/first-benchmark/).
+3. Leggi [sicurezza](/it/docs/security/) prima di abilitare azioni privilegiate.

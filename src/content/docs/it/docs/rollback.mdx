@@ -1,0 +1,30 @@
+---
+title: "Rollback e sicurezza"
+description: "Snapshot prima dell'apply, Restore all, restore su crash e disinstallazione, offerta System Restore su Windows e change log."
+---
+
+## Snapshot prima di mutare (AC-7.1)
+
+Ogni modifica di impostazione ha uno snapshot prima dell'apply. Senza snapshot, Hertzline non muta.
+
+## Restore all (AC-7.2)
+
+**Restore all** in un clic ripristina ogni modifica Hertzline in sospeso. Usalo se una sessione e andata male o vuoi ripartire pulito.
+
+## Crash e disinstallazione (AC-7.3)
+
+Il restore gira sul crash-recovery e sulla disinstallazione senza richiedere la UI. L'helper privilegiato puo eseguire un restore headless per operazioni allow-list.
+
+## System Restore su Windows (AC-7.4)
+
+Prima della prima modifica a livello sistema su Windows, Hertzline offre un punto di ripristino. Se rifiuti, il rifiuto e registrato; le modifiche di sistema successive richiedono comunque consenso esplicito.
+
+## Change log (AC-7.5)
+
+Il change log visibile elenca ora, azione, before/after e stato del restore.
+
+## Note di sicurezza quotidiane
+
+- Le pulizie distruttive mostrano anteprima dimensioni e chiedono conferma; l'eliminazione e irreversibile.
+- Le app in background sono in pausa o chiuse solo se scegli tu il PID.
+- I tweak placebo vietati (pack registry "FPS boost", disabilitare Defender, "optimizer" TCP non misurati e simili) sono fuori scope.

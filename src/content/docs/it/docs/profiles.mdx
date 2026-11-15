@@ -1,0 +1,29 @@
+---
+title: "Profili"
+description: "Rileva i giochi da percorsi launcher documentati, applica i profili all'avvio e ripristina all'uscita o al crash."
+---
+
+## Rilevamento (AC-3.1, AC-3.2)
+
+Hertzline rileva i giochi installati solo da **file e percorsi documentati**:
+
+- Steam (`libraryfolders.vdf`, `appmanifest_*.acf`)
+- Epic (manifest `*.item`)
+- GOG (`goggame-*.info`)
+- Xbox (`XboxGames`, `MicrosoftGame.config`, `.GamingRoot`)
+- Battle.net (estrazione stringhe UTF-8 da `product.db`)
+- Lutris (`games/*.yml`)
+- Heroic / legendary (`installed.json` e library JSON)
+- Percorsi manuali che aggiungi tu
+
+Scraping non documentato, lettura memoria e inject di processo non sono mai usati per il rilevamento.
+
+## Apply e restore (AC-3.3, AC-3.4)
+
+Quando un profilo e impostato per applicare all'avvio del gioco, Hertzline ripristina ogni impostazione modificata all'uscita normale. Se il gioco o Hertzline crashano con un profilo attivo, il restore gira comunque tramite il percorso di crash-recovery condiviso con Restore all (vedi [Rollback](/it/docs/rollback/)).
+
+## Consigli
+
+- Preferisci il rilevamento documentato, poi aggiungi un percorso manuale se manca un titolo.
+- Tieni i set di azioni del profilo piccoli cosi il restore resta prevedibile.
+- Controlla il change log dopo una sessione.

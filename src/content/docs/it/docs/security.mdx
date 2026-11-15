@@ -1,0 +1,27 @@
+---
+title: "Sicurezza"
+description: "Modello di sicurezza Hertzline: helper allow-list, niente inject, nessuna telemetria di default e come segnalare vulnerabilita."
+---
+
+## Confini di prodotto
+
+- Niente inject di processo, lettura memoria di gioco o riscrittura file di gioco.
+- Nessun driver kernel scritto da Hertzline in v1.
+- Nessuna telemetria di default; niente ads, mining o vendita dati.
+- Il lavoro privilegiato passa solo da un helper allow-list piccolo.
+
+## Overlay e anti-cheat (AC-6.x)
+
+L'overlay usa solo metodi documentati. Resta spento di default se rileva marker anti-cheat e si puo disabilitare globalmente con un controllo.
+
+## Segnalare una vulnerabilita
+
+**Non** aprire una issue pubblica per report di sicurezza.
+
+Preferisci il reporting privato GitHub sul repository interessato quando abilitato. Includi repository, versione o commit, impatto e passi di riproduzione.
+
+Policy org: [SECURITY.md](https://github.com/Hertzline/.github/blob/main/SECURITY.md).
+
+## Superficie prodotto vietata
+
+Pack registry "FPS boost", disabilitare Defender/aggiornamenti/mitigazioni, "optimizer" TCP non misurati, hack universali del timer, modifiche BCDEdit e RAM cleaner standby-list sono fuori scope salvo eccezione advanced, off di default e reversibile giustificata da misura riproducibile citata.

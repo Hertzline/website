@@ -1,0 +1,28 @@
+---
+title: "Contribuire"
+description: "Come contribuire ai repository Hertzline: principi, test, commit e pull request."
+---
+
+Grazie per aver considerato un contributo. La guida completa dell'org e in [`Hertzline/.github` CONTRIBUTING](https://github.com/Hertzline/.github/blob/main/CONTRIBUTING.md).
+
+## Principi
+
+1. Misura prima; ogni modifica deve essere spiegata e reversibile.
+2. Non inventare misure o claim "+X FPS" senza un risultato locale.
+3. Preferisci API OS documentate. Niente inject, lettura memoria o modifica file di gioco.
+4. Inglese per codice, commenti, docs e messaggi di commit. Niente emoji nei commit.
+
+## Test
+
+Test unitari per ogni percorso azione: apply, restore e verify. Etichetta chiaramente i mock. La CI gira su Windows, Linux e macOS dove rilevante.
+
+## Pull request
+
+1. Parti da `main` nel repo di destinazione.
+2. Tieni il cambio focalizzato.
+3. Assicurati che la CI sia verde.
+4. Non committare secret, `CLAUDE.md` o `AGENTS.md`.
+
+## Codice di condotta
+
+Segui il [Code of Conduct](https://github.com/Hertzline/.github/blob/main/CODE_OF_CONDUCT.md) dell'org.

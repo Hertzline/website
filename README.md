@@ -32,7 +32,8 @@ D7 snapshot was Astro 7.4.11 / Starlight 0.42.11; scaffold re-pinned to the vers
 | `src/content.config.ts` | Docs + i18n content collections |
 | `src/styles/design-tokens.css` | Light/dark palette, type, focus, reduced motion (HZ-041) |
 | `src/styles/product-pages.css` | Product page layout accents (HZ-044 / HZ-045) |
-| `src/data/actions.json` | Shared actions catalog (AC-4.x / AC-8.1); `/actions/` + future docs |
+| `src/data/actions.json` | Shared actions catalog (AC-4.x / AC-8.1); `/actions/` + `/docs/actions/` |
+| `src/content/docs/docs/` | Technical docs under `/docs/` (HZ-047) |
 | `src/data/releases.json` | Release feed for `/download/` (pre-release honest empty artifacts) |
 | `src/components/ActionsCatalog.astro` | Renders `/actions/` from shared data |
 | `src/components/DownloadPanel.astro` | Renders `/download/` from releases data + SoftwareApplication JSON-LD |
@@ -67,6 +68,7 @@ npm run check:hz043
 npm run check:hz044
 npm run check:hz045
 npm run check:hz046
+npm run check:hz047
 npm run check:lhci
 ```
 
@@ -79,6 +81,7 @@ npm run check:lhci
 | `check:hz044` | Product routes en/it, unique titles/descriptions, labeled placeholder, no fake FPS claims |
 | `check:hz045` | Shared actions catalog: AC-4.1--4.22 + AC-4.23 honesty, en/it fields, `/actions/` build |
 | `check:hz046` | Download page: not_released, winget ID, OS slots, checksums, JSON-LD without fake ratings, robots/OG/sitemap |
+| `check:hz047` | Starlight `/docs/` set: install per OS, benchmark, profiles, every action, rollback, FAQ, build, contribute, architecture, security |
 
 Lighthouse CI uses `lighthouserc.cjs` (`staticDistDir: ./dist`, mobile form factor). Requires a local Chrome/Chromium (`CHROME_PATH` or chrome-launcher discovery). GitHub Actions runs LHCI on `ubuntu-latest` with `browser-actions/setup-chrome` pinned to SHA.
 
@@ -114,6 +117,10 @@ Non-default settings: none required for a default Astro static import. Document 
 | `/download/` | Pre-release download page: winget command, OS slots, checksums, requirements (HZ-046) |
 
 Imagery uses a labeled placeholder SVG until real screenshots exist. No fake stats or testimonials.
+
+## Documentation (HZ-047)
+
+Technical docs live under `/docs/` (Italian `/it/docs/`): getting started, installation (Windows/Linux/macOS), first benchmark, profiles, every action (shared `actions.json`), rollback, troubleshooting, FAQ, building from source, contributing, architecture, and security. Covers AC-1--AC-8 narrative for the desktop product.
 
 ## Download / releases (HZ-046)
 

@@ -126,6 +126,105 @@ export default defineConfig({
 						},
 					],
 				},
+				{
+					label: 'Documentation',
+					translations: {
+						it: 'Documentazione',
+					},
+					items: [
+						{
+							label: 'Overview',
+							slug: 'docs',
+							translations: {
+								it: 'Panoramica',
+							},
+						},
+						{
+							label: 'Getting started',
+							slug: 'docs/getting-started',
+							translations: {
+								it: 'Per iniziare',
+							},
+						},
+						{
+							label: 'Installation',
+							slug: 'docs/installation',
+							translations: {
+								it: 'Installazione',
+							},
+						},
+						{
+							label: 'First benchmark',
+							slug: 'docs/first-benchmark',
+							translations: {
+								it: 'Primo benchmark',
+							},
+						},
+						{
+							label: 'Profiles',
+							slug: 'docs/profiles',
+							translations: {
+								it: 'Profili',
+							},
+						},
+						{
+							label: 'Actions reference',
+							slug: 'docs/actions',
+							translations: {
+								it: 'Riferimento azioni',
+							},
+						},
+						{
+							label: 'Rollback and safety',
+							slug: 'docs/rollback',
+							translations: {
+								it: 'Rollback e sicurezza',
+							},
+						},
+						{
+							label: 'Troubleshooting',
+							slug: 'docs/troubleshooting',
+							translations: {
+								it: 'Risoluzione problemi',
+							},
+						},
+						{
+							label: 'FAQ',
+							slug: 'docs/faq',
+							translations: {
+								it: 'FAQ',
+							},
+						},
+						{
+							label: 'Building from source',
+							slug: 'docs/building-from-source',
+							translations: {
+								it: 'Compilare dal sorgente',
+							},
+						},
+						{
+							label: 'Contributing',
+							slug: 'docs/contributing',
+							translations: {
+								it: 'Contribuire',
+							},
+						},
+						{
+							label: 'Architecture',
+							slug: 'docs/architecture',
+							translations: {
+								it: 'Architettura',
+							},
+						},
+						{
+							label: 'Security',
+							slug: 'docs/security',
+							translations: {
+								it: 'Sicurezza',
+							},
+						},
+					],
+				},
 			],
 		}),
 	],

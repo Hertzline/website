@@ -1,0 +1,29 @@
+---
+title: "Profiles"
+description: "Detect games from documented launcher paths, apply profiles on start, and restore on exit or crash."
+---
+
+## Detection (AC-3.1, AC-3.2)
+
+Hertzline detects installed games from **documented files and paths only**:
+
+- Steam (`libraryfolders.vdf`, `appmanifest_*.acf`)
+- Epic (`*.item` manifests)
+- GOG (`goggame-*.info`)
+- Xbox (`XboxGames`, `MicrosoftGame.config`, `.GamingRoot`)
+- Battle.net (`product.db` UTF-8 string extract)
+- Lutris (`games/*.yml`)
+- Heroic / legendary (`installed.json` and library JSON)
+- Manual paths you add
+
+Undocumented scraping, memory reading, and process injection are never used for detection.
+
+## Apply and restore (AC-3.3, AC-3.4)
+
+When a profile is set to apply on game start, Hertzline restores every changed setting when the game exits normally. If the game or Hertzline crashes while a profile is active, restore still runs through the crash-recovery path shared with Restore all (see [Rollback](/docs/rollback/)).
+
+## Tips
+
+- Prefer documented detection, then add a manual path if a title is missing.
+- Keep profile action sets small so restore stays predictable.
+- Review the change log after a session.

@@ -1,0 +1,29 @@
+---
+title: "Compilare dal sorgente"
+description: "Compila Hertzline dai repository pubblici GitHub: core, helper, app, packaging e website."
+---
+
+Hertzline e suddiviso in repository sotto [github.com/Hertzline](https://github.com/Hertzline). Non c'e un monorepo alla root del workspace.
+
+## Repository
+
+| Repo | Ruolo |
+|---|---|
+| `core` | Misura, benchmark, azioni, snapshot, profili, export |
+| `helper` | Helper privilegiato allow-list per OS |
+| `app` | UI desktop Tauri 2 |
+| `packaging` | Installer e manifest |
+| `website` | Questo sito Astro + Starlight |
+
+## Loop locale tipico
+
+1. Clona `core`, esegui `cargo test` / lint documentati in quel repo.
+2. Clona `helper` se ti servono percorsi privilegiati.
+3. Clona `app` e segui il README per la build Tauri (`npx tauri build` o `--no-bundle` per smoke).
+4. Per il sito: `npm ci`, `npm run check`, `npm run build` in `website`.
+
+Fissa le versioni dai registry ufficiali al momento della build. Non inventare versioni crate o npm.
+
+## Licenza
+
+MIT su ogni repository Hertzline. Mantieni le licenze di terze parti compatibili SPDX per i binari distribuiti.

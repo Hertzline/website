@@ -1,0 +1,47 @@
+---
+title: "Architettura"
+description: "Componenti Hertzline: app senza privilegi, libreria core, helper allow-list, packaging e sito statico."
+---
+
+## Componenti
+
+| Componente | Repo | Ruolo |
+|---|---|---|
+| UI desktop | `app` | Shell senza privilegi: misura, benchmark, azioni, profili, everyday, overlay, change log, restore-all |
+| Core | `core` | Misura, motore benchmark, trait azione (apply/restore/verify), snapshot, profili, rilevamento giochi, export |
+| Helper | `helper` | Broker minimo per elevazione per OS; solo operazioni nominate |
+| Packaging | `packaging` | Installer, manifest, checksum, orchestrazione firma |
+| Website | `website` | Sito statico Astro + Starlight che consuma metadati di release |
+
+## Confine dei privilegi
+
+```
+[Desktop UI / app] --IPC--> [core]
+                              |
+                              | richiesta elevate nominata
+                              v
+                       [helper / broker]
+                              |
+                              v
+                       API OS
+```
+
+Regole:
+
+1. L'app desktop non gira mai completamente elevata.
+2. L'elevazione e richiesta per azione con motivo leggibile.
+3. L'helper accetta solo una allow-list fissa; niente shell arbitraria.
+4. Gli snapshot sono scritti prima di un apply che muta.
+5. Disinstallazione e crash invocano restore-all senza la UI.
+
+## Forma dell'helper (D2)
+
+| OS | Meccanismo |
+|---|---|
+| Windows | Helper elevato a vita breve via `ShellExecuteEx` `runas` |
+| Linux | azioni polkit nominate + `pkexec` |
+| macOS | `SMAppService` LaunchDaemon (macOS 13+) |
+
+## I dati restano locali
+
+I campioni non lasciano la macchina finche non esporti un file. Il sito e statico; non riceve telemetria live.

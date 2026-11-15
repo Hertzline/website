@@ -1,0 +1,30 @@
+---
+title: "Risoluzione problemi"
+description: "Problemi comuni Hertzline: probe non disponibili, prompt di elevazione, overlay anti-cheat e sensor mancanti."
+---
+
+## Le metriche frame risultano unavailable
+
+- **Windows:** PresentMon / ETW richiede un probe riuscito. ETW in tempo reale puo richiedere admin o Performance Log Users. Senza cio, Hertzline riporta unavailable invece di inventare FPS.
+- **Linux:** MangoHud richiede wrap opt-in o `MANGOHUD=1`. Hertzline non fa inject in un processo in esecuzione.
+- **macOS:** FPS di processi esterni via API pubbliche non e possibile. Refresh display e altre metriche supportate compaiono quando disponibili.
+
+## Un'azione dice not possible
+
+E onesta intenzionale. Desktop non supportati, daemon mancanti (es. gamemoded) o API macOS senza toggle pubblico risultano not possible -- mai come controllo finto.
+
+## Continua a comparire il prompt di elevazione
+
+L'elevazione e per azione. La shell desktop resta senza privilegi. Se annulli UAC/polkit, l'azione fallisce in modo pulito e non applica a meta senza percorso di snapshot.
+
+## L'overlay e spento per un gioco multiplayer
+
+Quando rileva marker anti-cheat sul filesystem, l'overlay resta spento di default (AC-6.2). Puoi lasciarlo spento o usare il disable globale (AC-6.3).
+
+## Restore all non ha fatto nulla di visibile
+
+O non c'erano modifiche Hertzline in sospeso, oppure il restore e gia passato su crash/disinstallazione. Controlla il change log per lo stato restore.
+
+## Ancora bloccato
+
+Apri una issue sul repo rilevante sotto [github.com/Hertzline](https://github.com/Hertzline). Non incollare secret. Per report di sicurezza, segui [Sicurezza](/it/docs/security/).

@@ -1,0 +1,28 @@
+---
+title: "First benchmark"
+description: "Run a fixed-duration before/after benchmark with warm-up, at least three passes, median and spread, and noise-band verdict."
+---
+
+Benchmarks answer one question: did this change help **on this machine** for this workload?
+
+## How a run works (AC-2.1, AC-2.2)
+
+1. Choose a process or capture session and a supported frame source (PresentMon/ETW on Windows after probe; MangoHud opt-in on Linux; macOS public APIs only).
+2. Warm-up for the configured warm-up period.
+3. Measure for a fixed duration.
+4. Repeat for at least three passes.
+5. Report median and spread (IQR or min--max of pass medians) for average FPS, 1% low, 0.1% low, and frame time.
+
+## Verdict (AC-2.3, AC-2.4)
+
+A change is marked **helpful** only if the measured gain exceeds the measured run-to-run noise band. If not, Hertzline reports **no measurable effect** and offers revert. The site and app never invent a "+X FPS" number without your local result.
+
+## Export (AC-1.8)
+
+When a session completes, export CSV and JSON with the same fields and units. Unavailable metrics keep their unit and stay labeled unavailable.
+
+## Tips
+
+- Close unrelated load so noise is honest.
+- Keep the same scene or workload for before and after.
+- If a probe fails, the UI shows unavailable -- do not treat missing data as zero.

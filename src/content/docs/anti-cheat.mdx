@@ -1,0 +1,35 @@
+---
+title: Anti-cheat posture
+description: "Hertzline never injects into games, never reads game memory, and keeps overlays off by default when anti-cheat markers are present."
+---
+
+Anti-cheat systems (Easy Anti-Cheat, BattlEye, Vanguard, Ricochet, and others) treat process injection, memory reading, and unauthorized file changes as hostile. Hertzline is designed so those paths do not exist in the product.
+
+## Hard rules
+
+1. **No injection.** Hertzline does not inject DLLs, hooks, or overlays into game processes.
+2. **No memory reading.** Game memory is never scanned for detection or metrics.
+3. **No game file modification.** Detection uses documented launcher paths and manifests only. Game installs are not rewritten.
+4. **Capture stays external.** Frame timing uses OS-supported external methods (for example PresentMon ETW on Windows, user-opted MangoHud wrap on Linux). Unsupported paths are labeled unavailable or not possible.
+
+## Overlay policy
+
+The optional overlay:
+
+- Uses only documented, supported methods for that OS
+- Is **off by default** when filesystem anti-cheat markers are detected, unless the capture method is documented as allowed for that context
+- Can be disabled globally with one control
+
+If a method cannot be confirmed as safe for a given anti-cheat context, Hertzline keeps it off rather than guessing.
+
+## Elevation boundary
+
+The desktop UI runs unprivileged. Privileged work goes through a minimal helper that accepts only a fixed allow-list of named operations. There is no generic "run this command" surface.
+
+## Honest capability surface
+
+macOS and some Linux desktop environments expose fewer tunables. Hertzline shows not possible instead of fake toggles. That honesty applies to anti-cheat as well: if a metric or overlay path is unavailable, the UI says so.
+
+## Reporting concerns
+
+Security disclosures belong in the org [SECURITY](https://github.com/Hertzline/.github/blob/main/SECURITY.md) process. Do not treat this page as a substitute for a vulnerability report.

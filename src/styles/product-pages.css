@@ -1,0 +1,89 @@
+/*
+  Product page accents (HZ-044). Tokens remain in design-tokens.css.
+*/
+
+.hero > img,
+.hero img {
+	max-width: min(100%, 36rem);
+	border: 1px solid var(--hz-border);
+	border-radius: var(--hz-radius);
+}
+
+.hz-rail {
+	display: grid;
+	gap: var(--hz-space-4);
+	margin-block: var(--hz-space-5);
+}
+
+@media (min-width: 50rem) {
+	.hz-rail {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: var(--hz-space-5);
+	}
+}
+
+.hz-rail__item {
+	border-top: 2px solid var(--hz-accent);
+	padding-top: var(--hz-space-3);
+}
+
+.hz-rail__item h2,
+.hz-rail__item h3 {
+	margin-top: 0;
+	font-size: 1.125rem;
+}
+
+.hz-rail__item p {
+	color: var(--hz-muted);
+	margin-bottom: 0;
+}
+
+.hz-callout {
+	border-left: 3px solid var(--hz-signal);
+	padding: var(--hz-space-3) var(--hz-space-4);
+	margin-block: var(--hz-space-4);
+	background: color-mix(in srgb, var(--hz-bg) 92%, var(--hz-signal));
+}
+
+.hz-callout p:last-child {
+	margin-bottom: 0;
+}
+
+.hz-mono-label {
+	font-family: var(--hz-font-mono);
+	font-size: 0.8125rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--hz-muted);
+}
+
+@keyframes hz-rise {
+	from {
+		opacity: 0;
+		transform: translateY(0.5rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.hero,
+.hz-rail__item {
+	animation: hz-rise var(--hz-motion-base) var(--hz-ease-out) both;
+}
+
+.hz-rail__item:nth-child(2) {
+	animation-delay: 60ms;
+}
+
+.hz-rail__item:nth-child(3) {
+	animation-delay: 120ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero,
+	.hz-rail__item {
+		animation: none;
+	}
+}

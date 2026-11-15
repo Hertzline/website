@@ -1,0 +1,51 @@
+---
+title: How it works
+description: "Hertzline workflow: measure a session, apply explained reversible actions, verify with before/after benchmarks, restore when needed."
+---
+
+Hertzline is a local desktop tool. It does not push cloud profiles or invent cross-machine averages. The loop is the same on Windows, Linux, and macOS: measure, change with an explanation, verify, restore.
+
+## 1. Measure a session
+
+Pick a process or capture session. Hertzline records frame-time metrics when a supported source is available:
+
+- Windows: PresentMon / ETW after a documented probe
+- Linux: MangoHud or an equivalent documented opt-in method
+- macOS: supported public APIs only; unsupported metrics stay not possible
+
+Hardware, disk, and network collectors fill in what the OS exposes. Anything missing is labeled unavailable, never invented. Export the same fields as CSV and JSON when you finish.
+
+## 2. Run a before/after benchmark
+
+Benchmarks use a fixed duration, a warm-up period, and at least three measurement passes. Results report median and spread. A change is marked helpful only if the gain exceeds the measured run-to-run noise band on that machine. Below noise, the UI reports "no measurable effect" and offers revert.
+
+## 3. Apply actions with explanations
+
+Each optimization is individually switchable and implements apply, restore, and verify. Before apply, the UI shows:
+
+1. What the action does
+2. Expected effect
+3. Risk
+4. How to undo
+
+If you have already benchmarked that action on this machine, the explanation includes that evidence. Otherwise it states that no local measurement exists yet.
+
+Elevation is requested per action only. The whole app does not run elevated.
+
+## 4. Profiles and everyday mode
+
+Documented launcher paths can detect installed games (Steam, Epic, GOG, Xbox, Battle.net, Lutris, Heroic, and manual paths). Profiles can apply on game start and restore on normal exit. Crash and uninstall paths still restore. Everyday mode covers startup impact, resource reports, power presets, cleanup with preview, thermal warnings, and a weekly health summary.
+
+## 5. Optional overlay
+
+A minimal FPS and frame-time overlay uses only supported methods per OS. It stays off by default when anti-cheat markers are present unless the method is documented as allowed. One control disables the overlay globally.
+
+## What Hertzline will not do
+
+- Registry "FPS boost" packs, Defender or mitigation disables, unmeasured TCP "optimizers", BCDEdit tricks, or standby-list RAM cleaners
+- Overclocking, undervolting, fan or power-limit changes in v1 (link to vendor tools instead)
+- Injection, memory reading, or game file modification
+- Telemetry by default, ads, or bundled software
+- Any "+X FPS" marketing claim without your own measured result
+
+Next: [anti-cheat posture](/anti-cheat/) and [privacy](/privacy/).

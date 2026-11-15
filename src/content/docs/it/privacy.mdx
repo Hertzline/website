@@ -1,0 +1,44 @@
+---
+title: Privacy
+description: "Hertzline tiene le misure sulla tua macchina di default. Niente telemetria, pubblicita o vendita di dati in v1."
+---
+
+Hertzline e costruito come strumento locale. I campioni di prestazioni restano sul tuo computer a meno che non esporti un file tu stesso.
+
+## Default
+
+| Argomento | Comportamento |
+|---|---|
+| Telemetria | Disattivata di default. Nessun upload automatico di benchmark, profili o inventari hardware. |
+| Pubblicita / bundle | Nessuna. Niente downloader di driver affiliati, mining o software di terze parti in bundle. |
+| Vendita di dati | Mai. |
+| Sync cloud | Fuori scope per v1. Profili e benchmark sono locali. |
+
+## Cosa viene salvato in locale
+
+- Sessioni di misura che avvii
+- Snapshot presi prima che un'azione venga applicata
+- Voci del change log (ora, azione, before/after, stato di ripristino)
+- Profili e preferenze che salvi
+
+I percorsi esatti su disco dipendono dal sistema operativo e saranno documentati nel set completo di docs. La disinstallazione deve invocare restore-all per le modifiche ancora attive.
+
+## Esportazioni
+
+Le esportazioni CSV e JSON sono avviate dall'utente. Hertzline non invia quei file da nessuna parte. Tratta le esportazioni come qualsiasi altro documento locale se le condividi.
+
+## Uso della rete
+
+Durante una sessione di misura, i controlli di latenza contattano un host **scelto da te**. E traffico di misura, non telemetria di prodotto. Il sito e i download da GitHub sono separati dall'app desktop e non ricevono i dati della sessione.
+
+## Helper privilegiato
+
+Quando un'azione richiede elevazione, un helper a vita breve esegue un'operazione nominate nell'allow-list. L'helper non contatta server remoti.
+
+## Questo sito
+
+Il sito statico non ha funzioni server, database o segreti a runtime. Analytics non fanno parte della build v1 del sito. Dopo il deploy del proprietario su Vercel, eventuali analytics future richiederebbero una decisione di prodotto esplicita e un aggiornamento di questa pagina.
+
+## Contatti
+
+Le domande sulla privacy possono passare dall'organizzazione GitHub Hertzline. Le questioni di sicurezza formali usano [SECURITY.md](https://github.com/Hertzline/.github/blob/main/SECURITY.md).

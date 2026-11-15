@@ -1,8 +1,52 @@
 ---
-title: Documentazione Hertzline
-description: Scaffold della documentazione Hertzline. Pagine prodotto e documentazione completa arriveranno in task successivi.
+title: Hertzline
+description: "Misura, spiega e annulla le modifiche alle prestazioni di giochi e desktop. Nessuna affermazione FPS non verificata."
+template: splash
+hero:
+  title: Hertzline
+  tagline: Prima misura. Cambia solo cio che puoi spiegare e annullare. Non inventare guadagni.
+  image:
+    file: ../../../assets/ui-preview-placeholder.svg
+    alt: Segnaposto etichettato dell'anteprima UI. Non e uno screenshot del prodotto. Le catture reali arriveranno dopo la prima release pubblica.
+  actions:
+    - text: Come funziona
+      link: /it/how-it-works/
+      icon: right-arrow
+      variant: primary
+    - text: Postura anti-cheat
+      link: /it/anti-cheat/
+      icon: document
+      variant: minimal
 ---
 
-Hertzline rende giochi e desktop più fluidi solo con modifiche misurate, spiegate e reversibili.
+import { LinkButton } from '@astrojs/starlight/components'
 
-Questo repository ospita il sito statico del prodotto e la documentazione Starlight. Guide complete, pagine prodotto e altra documentazione arriveranno in task successivi della roadmap. I download non sono ancora disponibili.
+<p class="hz-mono-label">Principio del prodotto</p>
+
+Hertzline rende giochi e desktop piu fluidi solo con modifiche misurate, spiegate e reversibili. Non afferma mai un guadagno che non ha misurato sulla tua macchina.
+
+<div class="hz-rail">
+  <div class="hz-rail__item">
+    <h2>Misura</h2>
+    <p>Tempi di frame, hardware, disco e rete quando il sistema operativo li espone. I sensori mancanti restano etichettati come non disponibili.</p>
+  </div>
+  <div class="hz-rail__item">
+    <h2>Spiega</h2>
+    <p>Ogni azione mostra cosa fa, l'effetto atteso, il rischio e come annullarla prima di applicarla.</p>
+  </div>
+  <div class="hz-rail__item">
+    <h2>Ripristina</h2>
+    <p>Ripristino completo con un clic, recupero da crash e hook di disinstallazione. Gli snapshot sono scritti prima di ogni modifica.</p>
+  </div>
+</div>
+
+<div class="hz-callout">
+  <p><strong>Nessuna affermazione FPS non verificata.</strong> App, documentazione e questo sito non pubblicizzano numeri "+X FPS" inventati. Sono utili solo le modifiche che superano la banda di rumore misurata sulla tua macchina.</p>
+</div>
+
+## Stato
+
+I download pubblici non sono ancora disponibili. Packaging, firma e submission agli store sono riservati al proprietario. Vedi il [changelog](/it/changelog/) per la cronologia quando esisteranno le build.
+
+<LinkButton href="/it/privacy/" variant="secondary">Privacy</LinkButton>
+<LinkButton href="https://github.com/Hertzline" variant="minimal" icon="external">GitHub</LinkButton>

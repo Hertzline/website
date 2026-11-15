@@ -31,7 +31,9 @@ D7 snapshot was Astro 7.4.11 / Starlight 0.42.11; scaffold re-pinned to the vers
 | `src/content/i18n/` | Custom UI string dictionaries (`en.json`, `it.json`) |
 | `src/content.config.ts` | Docs + i18n content collections |
 | `src/styles/design-tokens.css` | Light/dark palette, type, focus, reduced motion (HZ-041) |
+| `src/styles/product-pages.css` | Product page layout accents (HZ-044) |
 | `src/assets/logo.svg` | Header mark |
+| `src/assets/ui-preview-placeholder.svg` | Labeled UI preview placeholder (not a screenshot) |
 | `DESIGN.md` | Design system reference |
 | `astro.config.mjs` | Static Astro + Starlight; `site` placeholder URL; locales |
 | `public/` | Static assets |
@@ -56,6 +58,7 @@ npm run check:hz042
 npm run check:links
 npm run check:a11y
 npm run check:hz043
+npm run check:hz044
 npm run check:lhci
 ```
 
@@ -65,6 +68,7 @@ npm run check:lhci
 | `check:a11y` | Structural accessibility gate on built HTML (`lang`, `title`, `h1`, `img` alt) |
 | `check:lhci` | Lighthouse CI mobile; all categories (performance, accessibility, best-practices, seo) must score >= 0.95 |
 | `check:hz043` | Asserts CI wiring, pins, and config for the gates above |
+| `check:hz044` | Product routes en/it, unique titles/descriptions, labeled placeholder, no fake FPS claims |
 
 Lighthouse CI uses `lighthouserc.cjs` (`staticDistDir: ./dist`, mobile form factor). Requires a local Chrome/Chromium (`CHROME_PATH` or chrome-launcher discovery). GitHub Actions runs LHCI on `ubuntu-latest` with `browser-actions/setup-chrome` pinned to SHA.
 
@@ -87,6 +91,18 @@ Owner-operated only. Agents must not install or run the Vercel CLI, log in, link
 9. After the first deploy, replace the placeholder `site` URL in `astro.config.mjs` (`https://hertzline.example`) with the real production domain, then redeploy.
 
 Non-default settings: none required for a default Astro static import. Document any future override here before changing CI or Vercel.
+
+## Product pages (HZ-044)
+
+| Path | Role |
+|---|---|
+| `/` | Splash product home (en); `/it/` Italian |
+| `/how-it-works/` | Measure / explain / restore workflow |
+| `/anti-cheat/` | No-injection posture and overlay policy |
+| `/privacy/` | Local-first defaults; no telemetry by default |
+| `/changelog/` | Honest pre-release state until signed artifacts exist |
+
+Imagery uses a labeled placeholder SVG until real screenshots exist. No fake stats or testimonials.
 
 ## Site URL
 

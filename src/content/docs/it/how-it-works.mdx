@@ -1,0 +1,51 @@
+---
+title: Come funziona
+description: "Flusso Hertzline: misura una sessione, applica azioni spiegate e reversibili, verifica con benchmark before/after, ripristina se serve."
+---
+
+Hertzline e uno strumento desktop locale. Non sincronizza profili nel cloud e non inventa medie tra macchine. Il ciclo e lo stesso su Windows, Linux e macOS: misura, modifica con una spiegazione, verifica, ripristina.
+
+## 1. Misura una sessione
+
+Scegli un processo o una sessione di cattura. Hertzline registra metriche di frame-time quando una sorgente supportata e disponibile:
+
+- Windows: PresentMon / ETW dopo un probe documentato
+- Linux: MangoHud o un metodo documentato equivalente con opt-in
+- macOS: solo API pubbliche supportate; le metriche non supportate restano non possibili
+
+I collector di hardware, disco e rete completano cio che il sistema operativo espone. Cio che manca e etichettato non disponibile, mai inventato. Al termine puoi esportare gli stessi campi in CSV e JSON.
+
+## 2. Esegui un benchmark before/after
+
+I benchmark usano una durata fissa, un warm-up e almeno tre passaggi di misura. I risultati riportano mediana e dispersione. Una modifica e considerata utile solo se il guadagno supera la banda di rumore misurata su quella macchina. Sotto il rumore, l'UI riporta "nessun effetto misurabile" e offre il ripristino.
+
+## 3. Applica azioni con spiegazioni
+
+Ogni ottimizzazione e attivabile singolarmente e implementa apply, restore e verify. Prima dell'applicazione, l'UI mostra:
+
+1. Cosa fa l'azione
+2. Effetto atteso
+3. Rischio
+4. Come annullarla
+
+Se hai gia misurato quell'azione su questa macchina, la spiegazione include quella evidenza. Altrimenti indica che non esiste ancora una misura locale.
+
+L'elevazione e richiesta solo per azione. L'app intera non gira con privilegi elevati.
+
+## 4. Profili e modalita Everyday
+
+I percorsi documentati dei launcher possono rilevare i giochi installati (Steam, Epic, GOG, Xbox, Battle.net, Lutris, Heroic e percorsi manuali). I profili possono applicarsi all'avvio del gioco e ripristinarsi all'uscita normale. Crash e disinstallazione ripristinano comunque. Everyday copre impatto all'avvio, report risorse, preset energetici, pulizia con anteprima, avvisi termici e un riepilogo settimanale.
+
+## 5. Overlay opzionale
+
+Un overlay minimo di FPS e frame-time usa solo metodi supportati per OS. Resta disattivato di default quando sono presenti marker anti-cheat, salvo metodi documentati come consentiti. Un solo controllo lo disattiva globalmente.
+
+## Cosa Hertzline non fa
+
+- Pack di registro "FPS boost", disattivazione di Defender o mitigazioni, "optimizer" TCP non misurati, trucchi BCDEdit o pulizia RAM della standby list
+- Overclock, undervolt, limiti ventola o potenza in v1 (link agli strumenti ufficiali dei vendor)
+- Injection, lettura memoria o modifica dei file di gioco
+- Telemetria di default, pubblicita o software in bundle
+- Qualsiasi affermazione di marketing "+X FPS" senza il tuo risultato misurato
+
+Continua con la [postura anti-cheat](/it/anti-cheat/) e la [privacy](/it/privacy/).

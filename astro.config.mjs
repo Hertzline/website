@@ -49,19 +49,48 @@ export default defineConfig({
 				'@fontsource/ibm-plex-mono/600.css',
 				'@fontsource/ibm-plex-mono/700.css',
 				'./src/styles/design-tokens.css',
+				'./src/styles/product-pages.css',
 			],
 			sidebar: [
 				{
-					label: 'Start',
+					label: 'Product',
 					translations: {
-						it: 'Inizia',
+						it: 'Prodotto',
 					},
 					items: [
 						{
-							label: 'Overview',
+							label: 'Home',
 							slug: 'index',
 							translations: {
-								it: 'Panoramica',
+								it: 'Home',
+							},
+						},
+						{
+							label: 'How it works',
+							slug: 'how-it-works',
+							translations: {
+								it: 'Come funziona',
+							},
+						},
+						{
+							label: 'Anti-cheat',
+							slug: 'anti-cheat',
+							translations: {
+								it: 'Anti-cheat',
+							},
+						},
+						{
+							label: 'Privacy',
+							slug: 'privacy',
+							translations: {
+								it: 'Privacy',
+							},
+						},
+						{
+							label: 'Changelog',
+							slug: 'changelog',
+							translations: {
+								it: 'Changelog',
 							},
 						},
 					],

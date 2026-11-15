@@ -1,0 +1,35 @@
+---
+title: Postura anti-cheat
+description: "Hertzline non inietta nei giochi, non legge la memoria di gioco e tiene gli overlay disattivati di default quando sono presenti marker anti-cheat."
+---
+
+I sistemi anti-cheat (Easy Anti-Cheat, BattlEye, Vanguard, Ricochet e altri) trattano injection, lettura di memoria e modifiche non autorizzate ai file come ostili. Hertzline e progettato perche quei percorsi non esistano nel prodotto.
+
+## Regole rigide
+
+1. **Nessuna injection.** Hertzline non inietta DLL, hook o overlay nei processi di gioco.
+2. **Nessuna lettura di memoria.** La memoria di gioco non viene mai scansionata per detection o metriche.
+3. **Nessuna modifica ai file di gioco.** La detection usa solo percorsi e manifest documentati dei launcher. Le installazioni di gioco non vengono riscritte.
+4. **Cattura esterna.** I tempi di frame usano metodi esterni supportati dal sistema operativo (ad esempio PresentMon ETW su Windows, wrap MangoHud con opt-in su Linux). I percorsi non supportati restano non disponibili o non possibili.
+
+## Policy dell'overlay
+
+L'overlay opzionale:
+
+- Usa solo metodi documentati e supportati per quel sistema operativo
+- E **disattivato di default** quando vengono rilevati marker anti-cheat sul filesystem, salvo metodi documentati come consentiti in quel contesto
+- Puo essere disattivato globalmente con un solo controllo
+
+Se un metodo non puo essere confermato come sicuro per un dato anti-cheat, Hertzline lo lascia spento invece di indovinare.
+
+## Confine di elevazione
+
+L'UI desktop gira senza privilegi elevati. Il lavoro privilegiato passa da un helper minimo che accetta solo un allow-list fisso di operazioni nominate. Non esiste una superficie generica "esegui questo comando".
+
+## Superficie di capacita onesta
+
+macOS e alcuni ambienti desktop Linux espongono meno regolazioni. Hertzline mostra non possibile al posto di toggle finti. Quella onesta vale anche per l'anti-cheat: se una metrica o un percorso overlay non e disponibile, l'UI lo dice.
+
+## Segnalazioni
+
+Le disclosure di sicurezza seguono il processo [SECURITY](https://github.com/Hertzline/.github/blob/main/SECURITY.md) dell'organizzazione. Questa pagina non sostituisce una segnalazione di vulnerabilita.

@@ -1,8 +1,52 @@
 ---
-title: Hertzline docs
-description: Documentation scaffold for Hertzline. Product pages and full docs land in later tasks.
+title: Hertzline
+description: "Measure, explain, and reverse game and desktop performance changes. No unverified FPS claims."
+template: splash
+hero:
+  title: Hertzline
+  tagline: Measure first. Change only what you can explain and undo. Never invent a gain.
+  image:
+    file: ../../assets/ui-preview-placeholder.svg
+    alt: Labeled UI preview placeholder. Not a product screenshot. Real captures land after the first public release.
+  actions:
+    - text: How it works
+      link: /how-it-works/
+      icon: right-arrow
+      variant: primary
+    - text: Anti-cheat posture
+      link: /anti-cheat/
+      icon: document
+      variant: minimal
 ---
 
-Hertzline makes games and the desktop smoother only through changes that are measured, explained, and reversible.
+import { LinkButton } from '@astrojs/starlight/components'
 
-This repository hosts the static product site and Starlight docs. Full guides, product pages, and more documentation land in later roadmap tasks. Downloads are not released yet.
+<p class="hz-mono-label">Product principle</p>
+
+Hertzline makes games and the desktop smoother only through changes that are measured, explained, and reversible. It never claims a gain it has not measured on your machine.
+
+<div class="hz-rail">
+  <div class="hz-rail__item">
+    <h2>Measure</h2>
+    <p>Frame times, hardware stats, disk, and network when the OS exposes them. Missing sensors stay labeled unavailable.</p>
+  </div>
+  <div class="hz-rail__item">
+    <h2>Explain</h2>
+    <p>Every action shows what it does, the expected effect, the risk, and how to undo it before you apply it.</p>
+  </div>
+  <div class="hz-rail__item">
+    <h2>Restore</h2>
+    <p>One-click restore all, crash recovery, and uninstall hooks. Snapshots are written before each change.</p>
+  </div>
+</div>
+
+<div class="hz-callout">
+  <p><strong>No unverified FPS claims.</strong> The app, docs, and this site do not advertise invented "+X FPS" numbers. Helpful changes are those that beat your own measured noise band.</p>
+</div>
+
+## Status
+
+Public downloads are not released yet. Packaging, signing, and store submissions are owner-gated. See the [changelog](/changelog/) for release history once builds exist.
+
+<LinkButton href="/privacy/" variant="secondary">Privacy</LinkButton>
+<LinkButton href="https://github.com/Hertzline" variant="minimal" icon="external">GitHub</LinkButton>

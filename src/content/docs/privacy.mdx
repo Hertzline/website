@@ -1,0 +1,44 @@
+---
+title: Privacy
+description: "Hertzline keeps measurements on your machine by default. No telemetry, ads, or data selling in v1."
+---
+
+Hertzline is built as a local tool. Performance samples stay on your computer unless you export a file yourself.
+
+## Defaults
+
+| Topic | Behavior |
+|---|---|
+| Telemetry | Off by default. No automatic upload of benchmarks, profiles, or hardware inventories. |
+| Ads / bundling | None. No affiliate driver downloaders, mining, or bundled third-party software. |
+| Data selling | Never. |
+| Cloud sync | Out of scope for v1. Profiles and benchmarks are local. |
+
+## What is stored locally
+
+- Measurement sessions you start
+- Snapshots taken before an action applies
+- Change log entries (time, action, before/after, restore status)
+- Profiles and preferences you save
+
+Exact on-disk paths depend on the OS and will be documented in the full docs set. Uninstall is required to invoke restore-all for outstanding changes.
+
+## Exports
+
+CSV and JSON exports are user-initiated. Hertzline does not send those files anywhere. Treat exports like any other local document if you share them.
+
+## Network use
+
+During a measurement session, network latency checks contact a host **you** choose. That is measurement traffic, not product telemetry. The website and GitHub downloads are separate from the desktop app and do not receive your session data.
+
+## Privileged helper
+
+When an action needs elevation, a short-lived helper runs a named allow-listed operation. The helper does not phone home.
+
+## This website
+
+The static site has no server functions, no database, and no runtime secrets. Analytics are not part of the v1 site build. After the owner deploys on Vercel, any future analytics would require an explicit product decision and disclosure update here.
+
+## Contact
+
+Privacy questions can go through the Hertzline GitHub organization. Formal security issues use [SECURITY.md](https://github.com/Hertzline/.github/blob/main/SECURITY.md).

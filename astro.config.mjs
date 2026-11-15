@@ -73,6 +73,13 @@ export default defineConfig({
 							},
 						},
 						{
+							label: 'Actions',
+							slug: 'actions',
+							translations: {
+								it: 'Azioni',
+							},
+						},
+						{
 							label: 'Anti-cheat',
 							slug: 'anti-cheat',
 							translations: {

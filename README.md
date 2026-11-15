@@ -31,7 +31,9 @@ D7 snapshot was Astro 7.4.11 / Starlight 0.42.11; scaffold re-pinned to the vers
 | `src/content/i18n/` | Custom UI string dictionaries (`en.json`, `it.json`) |
 | `src/content.config.ts` | Docs + i18n content collections |
 | `src/styles/design-tokens.css` | Light/dark palette, type, focus, reduced motion (HZ-041) |
-| `src/styles/product-pages.css` | Product page layout accents (HZ-044) |
+| `src/styles/product-pages.css` | Product page layout accents (HZ-044 / HZ-045) |
+| `src/data/actions.json` | Shared actions catalog (AC-4.x / AC-8.1); `/actions/` + future docs |
+| `src/components/ActionsCatalog.astro` | Renders `/actions/` from shared data |
 | `src/assets/logo.svg` | Header mark |
 | `src/assets/ui-preview-placeholder.svg` | Labeled UI preview placeholder (not a screenshot) |
 | `DESIGN.md` | Design system reference |
@@ -59,6 +61,7 @@ npm run check:links
 npm run check:a11y
 npm run check:hz043
 npm run check:hz044
+npm run check:hz045
 npm run check:lhci
 ```
 
@@ -69,6 +72,7 @@ npm run check:lhci
 | `check:lhci` | Lighthouse CI mobile; all categories (performance, accessibility, best-practices, seo) must score >= 0.95 |
 | `check:hz043` | Asserts CI wiring, pins, and config for the gates above |
 | `check:hz044` | Product routes en/it, unique titles/descriptions, labeled placeholder, no fake FPS claims |
+| `check:hz045` | Shared actions catalog: AC-4.1--4.22 + AC-4.23 honesty, en/it fields, `/actions/` build |
 
 Lighthouse CI uses `lighthouserc.cjs` (`staticDistDir: ./dist`, mobile form factor). Requires a local Chrome/Chromium (`CHROME_PATH` or chrome-launcher discovery). GitHub Actions runs LHCI on `ubuntu-latest` with `browser-actions/setup-chrome` pinned to SHA.
 

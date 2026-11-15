@@ -1,0 +1,523 @@
+{
+	"schemaVersion": 1,
+	"sharedWithDocs": true,
+	"localMeasurementNote": {
+		"en": "No local measurement exists yet. Run a before/after benchmark in the Hertzline app on your machine. This site never invents FPS gains.",
+		"it": "Non esiste ancora una misura locale. Esegui un benchmark before/after nell'app Hertzline sulla tua macchina. Questo sito non inventa guadagni di FPS."
+	},
+	"macosHonestyBanner": {
+		"en": "macOS exposes far fewer tunables than Windows or Linux. Hertzline only lists supported public APIs; unsupported metrics and actions are labeled not possible. There are no placeholder fake options.",
+		"it": "macOS espone molti meno parametri regolabili di Windows o Linux. Hertzline elenca solo API pubbliche supportate; metriche e azioni non supportate sono etichettate come non possibili. Non ci sono opzioni false di riempimento."
+	},
+	"ui": {
+		"en": {
+			"what": "What it does",
+			"expectedEffect": "Expected effect",
+			"risk": "Risk",
+			"howToUndo": "How to undo",
+			"reversibility": "Reversibility",
+			"evidence": "Evidence",
+			"osWindows": "Windows",
+			"osLinux": "Linux",
+			"osMacos": "macOS",
+			"acLabel": "Acceptance criteria"
+		},
+		"it": {
+			"what": "Cosa fa",
+			"expectedEffect": "Effetto atteso",
+			"risk": "Rischio",
+			"howToUndo": "Come annullare",
+			"reversibility": "Reversibilita",
+			"evidence": "Evidenza",
+			"osWindows": "Windows",
+			"osLinux": "Linux",
+			"osMacos": "macOS",
+			"acLabel": "Criteri di accettazione"
+		}
+	},
+	"actions": [
+		{
+			"id": "windows.power_plan",
+			"os": "windows",
+			"ac": ["AC-4.1"],
+			"reversibility": "reversible",
+			"kind": "toggle",
+			"en": {
+				"title": "Power plan",
+				"what": "Switch the active Windows power plan (power scheme) for the current user.",
+				"expectedEffect": "Uses a higher-performance plan when available so the CPU/GPU stay less constrained while gaming. Effect varies by machine; measure locally.",
+				"risk": "Higher power use and heat on laptops; battery drains faster. Group Policy can block scheme changes.",
+				"howToUndo": "Restore the previous power plan GUID recorded before apply, or use Windows Settings > System > Power."
+			},
+			"it": {
+				"title": "Piano di alimentazione",
+				"what": "Cambia il piano di alimentazione Windows attivo (schema di alimentazione) per l'utente corrente.",
+				"expectedEffect": "Usa un piano ad alte prestazioni quando disponibile cosi CPU/GPU restano meno vincolate in gioco. L'effetto dipende dalla macchina; misura in locale.",
+				"risk": "Maggiore consumo e calore sui laptop; la batteria si scarica prima. Criteri di gruppo possono bloccare il cambio.",
+				"howToUndo": "Ripristina il GUID del piano precedente registrato prima dell'apply, oppure Impostazioni Windows > Sistema > Alimentazione."
+			}
+		},
+		{
+			"id": "windows.game_mode",
+			"os": "windows",
+			"ac": ["AC-4.2"],
+			"reversibility": "reversible",
+			"kind": "toggle",
+			"en": {
+				"title": "Game Mode",
+				"what": "Toggle Windows Game Mode (Settings > Gaming > Game Mode) via AutoGameModeEnabled.",
+				"expectedEffect": "When on, Windows prioritizes the foreground game and can defer some background work. Effect is machine-specific; measure locally.",
+				"risk": "Low: user-scoped setting. Some titles behave differently with Game Mode on or off.",
+				"howToUndo": "Restore the previous AutoGameModeEnabled value, or use Settings > Gaming > Game Mode."
+			},
+			"it": {
+				"title": "Game Mode",
+				"what": "Attiva o disattiva Windows Game Mode (Impostazioni > Giochi > Modalita gioco) tramite AutoGameModeEnabled.",
+				"expectedEffect": "Quando e attivo, Windows da priorita al gioco in primo piano e puo deferire lavoro in background. Effetto specifico della macchina; misura in locale.",
+				"risk": "Basso: impostazione per utente. Alcuni titoli si comportano diversamente con Game Mode attivo o disattivo.",
+				"howToUndo": "Ripristina il valore precedente di AutoGameModeEnabled, oppure Impostazioni > Giochi > Modalita gioco."
+			}
+		},
+		{
+			"id": "windows.hags",
+			"os": "windows",
+			"ac": ["AC-4.2"],
+			"reversibility": "reversible",
+			"kind": "toggle",
+			"en": {
+				"title": "HAGS",
+				"what": "Toggle Hardware-accelerated GPU scheduling (HAGS) via HwSchMode when Windows exposes it.",
+				"expectedEffect": "May reduce scheduling latency on supported GPUs/drivers. A reboot is required before the new mode takes effect. Measure locally; no fixed FPS claim.",
+				"risk": "Machine-wide change needs elevation. Unsupported GPUs/drivers show no toggle -- Hertzline will not force-enable. Wrong mode can cause instability on some systems; reboot to apply.",
+				"howToUndo": "Restore the previous HwSchMode value (1=Off, 2=On), then reboot. Or use Settings > System > Display > Graphics > Change default graphics settings."
+			},
+			"it": {
+				"title": "HAGS",
+				"what": "Attiva o disattiva la pianificazione GPU con accelerazione hardware (HAGS) tramite HwSchMode quando Windows la espone.",
+				"expectedEffect": "Puo ridurre la latenza di scheduling su GPU/driver supportati. Serve un riavvio prima che la nuova modalita abbia effetto. Misura in locale; nessun claim fisso di FPS.",
+				"risk": "Modifica a livello macchina che richiede elevazione. GPU/driver non supportati non mostrano il toggle -- Hertzline non forza l'abilitazione. Una modalita sbagliata puo causare instabilita; riavvia per applicare.",
+				"howToUndo": "Ripristina il valore precedente di HwSchMode (1=Off, 2=On), poi riavvia. Oppure Impostazioni > Sistema > Schermo > Grafica > Cambia impostazioni grafiche predefinite."
+			}
+		},
+		{
+			"id": "windows.process_priority",
+			"os": "windows",
+			"ac": ["AC-4.3"],
+			"reversibility": "reversible",
+			"kind": "needs_input",
+			"en": {
+				"title": "Process priority / affinity",
+				"what": "Set the user-chosen game process priority class and optionally its CPU affinity mask.",
+				"expectedEffect": "Higher priority can reduce scheduling latency for that process; affinity can pin it to selected CPUs. Effect is machine-specific; measure locally.",
+				"risk": "Medium: HIGH can starve other work if the game is CPU-bound. Wrong affinity can hurt performance on hybrid CPUs. Never uses REALTIME.",
+				"howToUndo": "Restore the snapshotted priority and affinity via SetPriorityClass / SetProcessAffinityMask, or end the process and relaunch."
+			},
+			"it": {
+				"title": "Priorita / affinita processo",
+				"what": "Imposta la classe di priorita del processo di gioco scelto dall'utente e, opzionalmente, la maschera di affinita CPU.",
+				"expectedEffect": "Una priorita piu alta puo ridurre la latenza di scheduling; l'affinita puo vincolare il processo a CPU selezionate. Effetto specifico della macchina; misura in locale.",
+				"risk": "Medio: HIGH puo soffocare altro lavoro se il gioco e CPU-bound. Affinita sbagliata puo peggiorare su CPU ibride. Non usa mai REALTIME.",
+				"howToUndo": "Ripristina priorita e affinita dallo snapshot tramite SetPriorityClass / SetProcessAffinityMask, oppure termina e rilancia il processo."
+			}
+		},
+		{
+			"id": "windows.background_apps",
+			"os": "windows",
+			"ac": ["AC-4.4"],
+			"reversibility": "reversible",
+			"kind": "needs_input",
+			"en": {
+				"title": "Background apps (user-chosen)",
+				"what": "Pause or close only a background app the user explicitly chose (by PID).",
+				"expectedEffect": "Freeing CPU/RAM/disk from that process may help a foreground game. Effect is machine-specific; measure locally.",
+				"risk": "Medium: closing loses unsaved work in that app. Pausing can leave the app unresponsive until resume. Never targets processes the user did not select.",
+				"howToUndo": "Restore resumes a paused process, or restarts a closed one only if the user opted in and an image path was snapshotted."
+			},
+			"it": {
+				"title": "App in background (scelte dall'utente)",
+				"what": "Mette in pausa o chiude solo un'app in background scelta esplicitamente dall'utente (per PID).",
+				"expectedEffect": "Liberare CPU/RAM/disco da quel processo puo aiutare un gioco in primo piano. Effetto specifico della macchina; misura in locale.",
+				"risk": "Medio: chiudere perde lavoro non salvato. Mettere in pausa puo lasciare l'app non responsiva fino al resume. Non mira mai a processi non selezionati.",
+				"howToUndo": "Il restore riprende un processo in pausa, oppure riavvia uno chiuso solo se l'utente ha optato e lo snapshot ha un percorso immagine."
+			}
+		},
+		{
+			"id": "windows.startup_apps",
+			"os": "windows",
+			"ac": ["AC-4.5"],
+			"reversibility": "reversible",
+			"kind": "needs_input",
+			"en": {
+				"title": "Startup apps",
+				"what": "Enable or disable a current-user startup app the user explicitly chose (HKCU Run + StartupApproved).",
+				"expectedEffect": "Disabling reduces logon work from that entry. Effect on game sessions is indirect; measure locally if relevant.",
+				"risk": "Low: user-scoped. Disabling may delay tray apps until launched manually. Does not delete the Run command.",
+				"howToUndo": "Restore the previous StartupApproved enabled/disabled state for that named entry."
+			},
+			"it": {
+				"title": "App di avvio",
+				"what": "Abilita o disabilita un'app di avvio dell'utente corrente scelta esplicitamente (HKCU Run + StartupApproved).",
+				"expectedEffect": "Disabilitare riduce il lavoro al logon da quella voce. Effetto sulle sessioni di gioco e indiretto; misura in locale se rilevante.",
+				"risk": "Basso: ambito utente. Disabilitare puo ritardare app in tray fino all'avvio manuale. Non elimina il comando Run.",
+				"howToUndo": "Ripristina lo stato abilitato/disabilitato precedente di StartupApproved per quella voce."
+			}
+		},
+		{
+			"id": "windows.game_bar_capture",
+			"os": "windows",
+			"ac": ["AC-4.6"],
+			"reversibility": "reversible",
+			"kind": "toggle",
+			"en": {
+				"title": "Xbox Game Bar capture",
+				"what": "Toggle Xbox Game Bar capture recording (Settings > Gaming > Captures) via VKMToggleRecording.",
+				"expectedEffect": "When off, background/game capture recording shortcuts are disabled. Effect on FPS is machine-specific; measure locally.",
+				"risk": "Low: user-scoped setting. Disabling capture removes Game Bar recording shortcuts until restored.",
+				"howToUndo": "Restore the previous VKMToggleRecording value, or use Settings > Gaming > Captures."
+			},
+			"it": {
+				"title": "Cattura Xbox Game Bar",
+				"what": "Attiva o disattiva la registrazione di cattura Xbox Game Bar (Impostazioni > Giochi > Acquisizioni) tramite VKMToggleRecording.",
+				"expectedEffect": "Quando e disattiva, le scorciatoie di registrazione in background/gioco sono disabilitate. Effetto sugli FPS specifico della macchina; misura in locale.",
+				"risk": "Basso: impostazione per utente. Disabilitare la cattura rimuove le scorciatoie di registrazione Game Bar fino al ripristino.",
+				"howToUndo": "Ripristina il valore precedente di VKMToggleRecording, oppure Impostazioni > Giochi > Acquisizioni."
+			}
+		},
+		{
+			"id": "windows.temp_shader_cleanup",
+			"os": "windows",
+			"ac": ["AC-4.7"],
+			"reversibility": "irreversible",
+			"kind": "destructive",
+			"en": {
+				"title": "Temp / shader cleanup",
+				"what": "Preview and optionally delete user temp files and known shader caches under the profile.",
+				"expectedEffect": "Can free disk space and force shaders to recompile on next launch. No FPS claim without a local measurement.",
+				"risk": "Medium: deleted files cannot be restored. Games may hitch while caches rebuild. Paths are user-scoped only.",
+				"howToUndo": "Deletion is irreversible. Restore is not possible; reinstall or re-run the game to rebuild caches."
+			},
+			"it": {
+				"title": "Pulizia temp / shader",
+				"what": "Anteprima ed eventuale eliminazione di file temp utente e cache shader note sotto il profilo.",
+				"expectedEffect": "Puo liberare spazio disco e forzare la ricompilazione degli shader al prossimo avvio. Nessun claim di FPS senza misura locale.",
+				"risk": "Medio: i file eliminati non si possono ripristinare. I giochi possono stutterare mentre le cache si ricostruiscono. Solo percorsi utente.",
+				"howToUndo": "L'eliminazione e irreversibile. Il restore non e possibile; reinstalla o rilancia il gioco per ricostruire le cache."
+			}
+		},
+		{
+			"id": "windows.storage_health",
+			"os": "windows",
+			"ac": ["AC-4.8"],
+			"reversibility": "not_applicable",
+			"kind": "report",
+			"en": {
+				"title": "Storage health",
+				"what": "Report free space per volume and warn when free space is low. Does not modify disks.",
+				"expectedEffect": "Helps spot full drives before caches or installs fail. Not a performance claim.",
+				"risk": "None for this check: no destructive changes. SMART / drive health is unavailable via GetDiskFreeSpaceEx.",
+				"howToUndo": "Nothing to undo; this action only reports."
+			},
+			"it": {
+				"title": "Salute archiviazione",
+				"what": "Riporta lo spazio libero per volume e avvisa quando e basso. Non modifica i dischi.",
+				"expectedEffect": "Aiuta a individuare dischi pieni prima che cache o installazioni falliscano. Non e un claim sulle prestazioni.",
+				"risk": "Nessuno per questo controllo: nessuna modifica distruttiva. SMART / salute disco non disponibile via GetDiskFreeSpaceEx.",
+				"howToUndo": "Niente da annullare; questa azione solo riporta."
+			}
+		},
+		{
+			"id": "windows.driver_check",
+			"os": "windows",
+			"ac": ["AC-4.9"],
+			"reversibility": "not_applicable",
+			"kind": "report",
+			"en": {
+				"title": "Driver check (official links)",
+				"what": "List installed display adapter driver versions and link only to official NVIDIA, AMD, or Intel download pages.",
+				"expectedEffect": "Lets you compare your driver version with the vendor site. Hertzline never installs drivers or third-party packs.",
+				"risk": "None for this check: read-only. Opening vendor sites is the user's choice.",
+				"howToUndo": "Nothing to undo; this action only reports."
+			},
+			"it": {
+				"title": "Controllo driver (link ufficiali)",
+				"what": "Elenca le versioni dei driver della scheda video installati e collega solo alle pagine ufficiali NVIDIA, AMD o Intel.",
+				"expectedEffect": "Permette di confrontare la versione driver con il sito del vendor. Hertzline non installa mai driver o pack di terze parti.",
+				"risk": "Nessuno per questo controllo: sola lettura. Aprire i siti vendor e scelta dell'utente.",
+				"howToUndo": "Niente da annullare; questa azione solo riporta."
+			}
+		},
+		{
+			"id": "windows.display_refresh",
+			"os": "windows",
+			"ac": ["AC-4.10"],
+			"reversibility": "reversible",
+			"kind": "needs_input",
+			"en": {
+				"title": "Display refresh / VRR",
+				"what": "Report the active display refresh rate. Optionally set a supported refresh rate. VRR status is unavailable via public Win32 APIs.",
+				"expectedEffect": "Matching refresh rate to the panel can reduce tearing for some setups. Effect is machine-specific; measure locally. VRR cannot be toggled here.",
+				"risk": "Low--medium: a bad mode can blank the display briefly; Windows usually reverts. VRR vendor toggles are not modified.",
+				"howToUndo": "Restore the previous refresh rate via this action, or Settings > System > Display > Advanced display."
+			},
+			"it": {
+				"title": "Refresh display / VRR",
+				"what": "Riporta la frequenza di aggiornamento attiva. Opzionalmente imposta un refresh supportato. Lo stato VRR non e disponibile via API Win32 pubbliche.",
+				"expectedEffect": "Allineare il refresh al pannello puo ridurre il tearing in alcuni setup. Effetto specifico della macchina; misura in locale. Il VRR non si attiva da qui.",
+				"risk": "Basso--medio: una modalita sbagliata puo spegnere brevemente lo schermo; Windows di solito ripristina. I toggle VRR del vendor non vengono modificati.",
+				"howToUndo": "Ripristina il refresh precedente tramite questa azione, oppure Impostazioni > Sistema > Schermo > Schermo avanzato."
+			}
+		},
+		{
+			"id": "linux.feral_gamemode",
+			"os": "linux",
+			"ac": ["AC-4.11"],
+			"reversibility": "reversible",
+			"kind": "needs_input",
+			"en": {
+				"title": "Feral GameMode",
+				"what": "Request Feral GameMode for a user-chosen game process via the documented D-Bus API (RegisterGame).",
+				"expectedEffect": "GameMode can raise CPU governor / platform profile and related host tweaks while the PID is registered. Effect is machine-specific; measure locally.",
+				"risk": "Low--medium: depends on gamemoded config (governor, renice, ioprio). Requires gamemoded installed and reachable on the session bus.",
+				"howToUndo": "UnregisterGame for the same PID, or wait until the process exits (daemon reaps clients)."
+			},
+			"it": {
+				"title": "Feral GameMode",
+				"what": "Richiede Feral GameMode per un processo di gioco scelto dall'utente tramite l'API D-Bus documentata (RegisterGame).",
+				"expectedEffect": "GameMode puo alzare governor CPU / profilo piattaforma e tweak correlati mentre il PID e registrato. Effetto specifico della macchina; misura in locale.",
+				"risk": "Basso--medio: dipende dalla config di gamemoded (governor, renice, ioprio). Richiede gamemoded installato e raggiungibile sul bus di sessione.",
+				"howToUndo": "UnregisterGame per lo stesso PID, oppure attendi l'uscita del processo (il daemon ripulisce i client)."
+			}
+		},
+		{
+			"id": "linux.energy_profile",
+			"os": "linux",
+			"ac": ["AC-4.12"],
+			"reversibility": "reversible",
+			"kind": "toggle",
+			"en": {
+				"title": "Energy profile",
+				"what": "Switch the system energy / performance profile via power-profiles-daemon (ActiveProfile) or tuned-adm when ppd is absent.",
+				"expectedEffect": "A performance-oriented profile can keep the CPU less power-constrained while gaming. Effect varies by machine and firmware; measure locally.",
+				"risk": "Higher power use and heat on laptops; battery drains faster. Some systems lack a performance profile.",
+				"howToUndo": "Restore the previous backend+profile snapshot, or use the desktop power settings / powerprofilesctl / tuned-adm."
+			},
+			"it": {
+				"title": "Profilo energetico",
+				"what": "Cambia il profilo energetico / prestazioni di sistema via power-profiles-daemon (ActiveProfile) o tuned-adm se ppd e assente.",
+				"expectedEffect": "Un profilo orientato alle prestazioni puo tenere la CPU meno vincolata in gioco. L'effetto dipende da macchina e firmware; misura in locale.",
+				"risk": "Maggiore consumo e calore sui laptop; la batteria si scarica prima. Alcuni sistemi non hanno un profilo performance.",
+				"howToUndo": "Ripristina lo snapshot backend+profilo precedente, oppure usa le impostazioni di alimentazione / powerprofilesctl / tuned-adm."
+			}
+		},
+		{
+			"id": "linux.nice_ionice",
+			"os": "linux",
+			"ac": ["AC-4.13"],
+			"reversibility": "reversible",
+			"kind": "needs_input",
+			"en": {
+				"title": "nice / ionice",
+				"what": "Set CPU nice (setpriority) and I/O priority (ionice) for a user-chosen game process.",
+				"expectedEffect": "A lower nice value and best-effort I/O priority 0 can reduce scheduling latency for that process. Effect is machine-specific; measure locally.",
+				"risk": "Medium: too-low nice can starve other work. Realtime I/O class is rejected. Lowering nice usually needs elevation (CAP_SYS_NICE / polkit).",
+				"howToUndo": "Restore the snapshotted nice and ionice values, or end the process and relaunch."
+			},
+			"it": {
+				"title": "nice / ionice",
+				"what": "Imposta nice CPU (setpriority) e priorita I/O (ionice) per un processo di gioco scelto dall'utente.",
+				"expectedEffect": "Un nice piu basso e priorita I/O best-effort 0 possono ridurre la latenza di scheduling. Effetto specifico della macchina; misura in locale.",
+				"risk": "Medio: nice troppo basso puo soffocare altro lavoro. La classe I/O realtime e rifiutata. Abbassare nice di solito richiede elevazione (CAP_SYS_NICE / polkit).",
+				"howToUndo": "Ripristina i valori nice e ionice dallo snapshot, oppure termina e rilancia il processo."
+			}
+		},
+		{
+			"id": "linux.compositor_hint",
+			"os": "linux",
+			"ac": ["AC-4.14"],
+			"reversibility": "reversible",
+			"kind": "toggle",
+			"en": {
+				"title": "Compositor hints",
+				"what": "Enable the documented compositor bypass hint for the current session (KWin WindowsBlockCompositing, or gamescope GAMESCOPE_WSI_FORCE_BYPASS). Unsupported desktops are reported as not possible.",
+				"expectedEffect": "May reduce compositor overhead for fullscreen games when the session honors the hint. Effect is machine-specific; measure locally. No FPS claim without a local measurement.",
+				"risk": "Low--medium: KWin setting affects which apps may block compositing; gamescope env only applies when launch wrappers export it. Wrong DE reports not possible.",
+				"howToUndo": "Restore the previous hint value (kwinrc or Hertzline gamescope preference)."
+			},
+			"it": {
+				"title": "Hint del compositor",
+				"what": "Abilita l'hint documentato di bypass del compositor per la sessione corrente (KWin WindowsBlockCompositing, o gamescope GAMESCOPE_WSI_FORCE_BYPASS). Desktop non supportati risultano non possibili.",
+				"expectedEffect": "Puo ridurre l'overhead del compositor per giochi fullscreen quando la sessione rispetta l'hint. Effetto specifico della macchina; misura in locale. Nessun claim di FPS senza misura locale.",
+				"risk": "Basso--medio: l'impostazione KWin influisce su quali app possono bloccare il compositing; l'env gamescope vale solo se i wrapper di launch lo esportano. DE sbagliato -> non possibile.",
+				"howToUndo": "Ripristina il valore precedente dell'hint (kwinrc o preferenza gamescope Hertzline)."
+			}
+		},
+		{
+			"id": "linux.mangohud",
+			"os": "linux",
+			"ac": ["AC-4.15"],
+			"reversibility": "reversible",
+			"kind": "toggle",
+			"en": {
+				"title": "MangoHud",
+				"what": "Opt in to MangoHud for game launches via the documented MANGOHUD=1 env or mangohud wrap (never silent inject into a running process).",
+				"expectedEffect": "Shows an overlay and can log frametimes when the user launches with MangoHud. Useful for local measurement; no FPS claim without that measurement.",
+				"risk": "Low: overlay overhead; some anti-cheat contexts should keep overlays off (see anti-cheat page). Requires mangohud installed.",
+				"howToUndo": "Disable the preference (restore previous enabled flag). Remove MANGOHUD from launch options if you set them manually."
+			},
+			"it": {
+				"title": "MangoHud",
+				"what": "Opt-in a MangoHud per gli avvii di gioco tramite env documentato MANGOHUD=1 o wrap mangohud (mai inject silenzioso in un processo in esecuzione).",
+				"expectedEffect": "Mostra un overlay e puo registrare frametime quando l'utente avvia con MangoHud. Utile per misure locali; nessun claim di FPS senza quella misura.",
+				"risk": "Basso: overhead dell'overlay; in alcuni contesti anti-cheat gli overlay restano spenti (vedi pagina anti-cheat). Richiede mangohud installato.",
+				"howToUndo": "Disabilita la preferenza (ripristina il flag precedente). Rimuovi MANGOHUD dalle opzioni di launch se le hai impostate a mano."
+			}
+		},
+		{
+			"id": "linux.proton_wine_info",
+			"os": "linux",
+			"ac": ["AC-4.16"],
+			"reversibility": "not_applicable",
+			"kind": "report",
+			"en": {
+				"title": "Proton / Wine info",
+				"what": "List Proton compatibility tools and Wine version from documented Steam paths and PATH. Never replaces or rewrites game prefixes.",
+				"expectedEffect": "Lets you see which Proton/Wine builds are installed before changing Steam Play settings yourself. No silent replacement.",
+				"risk": "None for this check: read-only. Choosing a tool in Steam is the user's action.",
+				"howToUndo": "Nothing to undo; this action only reports."
+			},
+			"it": {
+				"title": "Info Proton / Wine",
+				"what": "Elenca gli strumenti di compatibilita Proton e la versione Wine da percorsi Steam documentati e PATH. Non sostituisce ne riscrive mai i prefissi di gioco.",
+				"expectedEffect": "Permette di vedere quali build Proton/Wine sono installate prima di cambiare Steam Play da soli. Nessuna sostituzione silenziosa.",
+				"risk": "Nessuno per questo controllo: sola lettura. Scegliere uno strumento in Steam e azione dell'utente.",
+				"howToUndo": "Niente da annullare; questa azione solo riporta."
+			}
+		},
+		{
+			"id": "linux.shader_cache_cleanup",
+			"os": "linux",
+			"ac": ["AC-4.17"],
+			"reversibility": "irreversible",
+			"kind": "destructive",
+			"en": {
+				"title": "Shader cache cleanup",
+				"what": "Preview and optionally delete Steam shadercache and Mesa shader cache directories. Never deletes Proton compatdata.",
+				"expectedEffect": "Can free disk space; games may hitch while shaders recompile. No FPS claim without a local measurement.",
+				"risk": "Medium: deleted caches cannot be restored. First launches after cleanup may stutter.",
+				"howToUndo": "Deletion is irreversible. Restore is not possible; re-launch games to rebuild caches."
+			},
+			"it": {
+				"title": "Pulizia cache shader",
+				"what": "Anteprima ed eventuale eliminazione di directory Steam shadercache e cache shader Mesa. Non elimina mai Proton compatdata.",
+				"expectedEffect": "Puo liberare spazio disco; i giochi possono stutterare mentre gli shader si ricompilano. Nessun claim di FPS senza misura locale.",
+				"risk": "Medio: le cache eliminate non si possono ripristinare. I primi avvii dopo la pulizia possono stutterare.",
+				"howToUndo": "L'eliminazione e irreversibile. Il restore non e possibile; rilancia i giochi per ricostruire le cache."
+			}
+		},
+		{
+			"id": "macos.monitor",
+			"os": "macos",
+			"ac": ["AC-4.18", "AC-1.7"],
+			"reversibility": "not_applicable",
+			"kind": "report",
+			"en": {
+				"title": "macOS monitoring",
+				"what": "Report macOS metrics that public APIs expose (CPU, RAM, GPU usage when available, network). Unsupported metrics such as external game FPS and dedicated VRAM are labeled not possible.",
+				"expectedEffect": "Shows what Hertzline can actually measure on this Mac. No performance claim without a local session.",
+				"risk": "None for this check: read-only. Does not change system settings.",
+				"howToUndo": "Nothing to undo; this action only reports."
+			},
+			"it": {
+				"title": "Monitoraggio macOS",
+				"what": "Riporta le metriche macOS esposte da API pubbliche (CPU, RAM, uso GPU se disponibile, rete). Metriche non supportate come FPS esterni del gioco e VRAM dedicata sono etichettate non possibili.",
+				"expectedEffect": "Mostra cosa Hertzline puo davvero misurare su questo Mac. Nessun claim sulle prestazioni senza una sessione locale.",
+				"risk": "Nessuno per questo controllo: sola lettura. Non modifica le impostazioni di sistema.",
+				"howToUndo": "Niente da annullare; questa azione solo riporta."
+			}
+		},
+		{
+			"id": "macos.game_mode_status",
+			"os": "macos",
+			"ac": ["AC-4.19"],
+			"reversibility": "not_applicable",
+			"kind": "report",
+			"en": {
+				"title": "Game Mode status",
+				"what": "Report whether macOS Game Mode status is readable. Apple enables Game Mode automatically for eligible full-screen games (LSSupportsGameMode). There is no public API to query or force that system status.",
+				"expectedEffect": "Status is informational only. Hertzline does not claim FPS gains from Game Mode without a local measurement.",
+				"risk": "None: this action is read-only and never changes system settings.",
+				"howToUndo": "Nothing to undo; no toggle is offered when the OS does not expose one."
+			},
+			"it": {
+				"title": "Stato Game Mode",
+				"what": "Riporta se lo stato di Game Mode macOS e leggibile. Apple abilita Game Mode automaticamente per giochi fullscreen idonei (LSSupportsGameMode). Non esiste un'API pubblica per interrogare o forzare quello stato di sistema.",
+				"expectedEffect": "Lo stato e solo informativo. Hertzline non rivendica guadagni di FPS da Game Mode senza una misura locale.",
+				"risk": "Nessuno: questa azione e sola lettura e non modifica mai le impostazioni di sistema.",
+				"howToUndo": "Niente da annullare; nessun toggle e offerto quando il sistema operativo non ne espone uno."
+			}
+		},
+		{
+			"id": "macos.background_apps",
+			"os": "macos",
+			"ac": ["AC-4.20"],
+			"reversibility": "reversible",
+			"kind": "needs_input",
+			"en": {
+				"title": "Background apps (user-chosen)",
+				"what": "Pause (SIGSTOP) or close (SIGTERM) only a background app the user explicitly chose by PID. Uses documented POSIX signals; no injection.",
+				"expectedEffect": "Freeing CPU/RAM from that process may help a foreground game. Effect is machine-specific; measure locally.",
+				"risk": "Medium: closing loses unsaved work. Pausing leaves the app frozen until resume. Never targets processes the user did not select.",
+				"howToUndo": "Restore sends SIGCONT for pause, or relaunches a closed app only if the user opted in and an image path was snapshotted."
+			},
+			"it": {
+				"title": "App in background (scelte dall'utente)",
+				"what": "Mette in pausa (SIGSTOP) o chiude (SIGTERM) solo un'app in background scelta esplicitamente per PID. Usa segnali POSIX documentati; nessun inject.",
+				"expectedEffect": "Liberare CPU/RAM da quel processo puo aiutare un gioco in primo piano. Effetto specifico della macchina; misura in locale.",
+				"risk": "Medio: chiudere perde lavoro non salvato. Mettere in pausa lascia l'app congelata fino al resume. Non mira mai a processi non selezionati.",
+				"howToUndo": "Il restore invia SIGCONT per la pausa, oppure rilancia un'app chiusa solo se l'utente ha optato e lo snapshot ha un percorso immagine."
+			}
+		},
+		{
+			"id": "macos.low_power_mode",
+			"os": "macos",
+			"ac": ["AC-4.21"],
+			"reversibility": "not_applicable",
+			"kind": "report",
+			"en": {
+				"title": "Low Power Mode warning",
+				"what": "Report whether macOS Low Power Mode is active (NSProcessInfo.isLowPowerModeEnabled / pmset). Warn when it is on and performance-sensitive work is requested.",
+				"expectedEffect": "Low Power Mode can reduce CPU/GPU performance. Hertzline warns; it does not disable LPM for you.",
+				"risk": "None for this check: read-only. Changing LPM remains a user Battery setting.",
+				"howToUndo": "Nothing to undo; this action only reports and warns."
+			},
+			"it": {
+				"title": "Avviso Low Power Mode",
+				"what": "Riporta se Low Power Mode macOS e attivo (NSProcessInfo.isLowPowerModeEnabled / pmset). Avvisa quando e attivo e si richiede lavoro sensibile alle prestazioni.",
+				"expectedEffect": "Low Power Mode puo ridurre le prestazioni CPU/GPU. Hertzline avvisa; non disattiva LPM al posto tuo.",
+				"risk": "Nessuno per questo controllo: sola lettura. Cambiare LPM resta un'impostazione Batteria dell'utente.",
+				"howToUndo": "Niente da annullare; questa azione solo riporta e avvisa."
+			}
+		},
+		{
+			"id": "macos.refresh_rate",
+			"os": "macos",
+			"ac": ["AC-4.22"],
+			"reversibility": "reversible",
+			"kind": "needs_input",
+			"en": {
+				"title": "Refresh rate",
+				"what": "Report the main display refresh rate via CGDisplayModeGetRefreshRate. Optionally switch to another supported mode with the same resolution. VRR/ProMotion enablement is unavailable via public APIs in v1.",
+				"expectedEffect": "Matching refresh rate to the panel can reduce tearing for some setups. Effect is machine-specific; measure locally.",
+				"risk": "Low--medium: a mode switch can blank the display briefly. VRR vendor toggles are not modified.",
+				"howToUndo": "Restore the previous refresh rate via this action, or System Settings > Displays."
+			},
+			"it": {
+				"title": "Frequenza di aggiornamento",
+				"what": "Riporta il refresh del display principale via CGDisplayModeGetRefreshRate. Opzionalmente passa a un'altra modalita supportata con la stessa risoluzione. Abilitazione VRR/ProMotion non disponibile via API pubbliche in v1.",
+				"expectedEffect": "Allineare il refresh al pannello puo ridurre il tearing in alcuni setup. Effetto specifico della macchina; misura in locale.",
+				"risk": "Basso--medio: un cambio modalita puo spegnere brevemente lo schermo. I toggle VRR del vendor non vengono modificati.",
+				"howToUndo": "Ripristina il refresh precedente tramite questa azione, oppure Impostazioni di Sistema > Display."
+			}
+		}
+	]
+}

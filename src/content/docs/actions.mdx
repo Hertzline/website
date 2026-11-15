@@ -1,0 +1,12 @@
+---
+title: Actions catalog
+description: "Per-OS Hertzline optimization actions with what, risk, reversibility, and evidence fields from shared catalog data."
+---
+
+import ActionsCatalog from '../../components/ActionsCatalog.astro'
+
+Every optimization is individually switchable and implements apply, restore, and verify in the desktop app. This page is generated from a single shared data file (`src/data/actions.json`) that docs will reuse. No invented FPS numbers.
+
+Elevation is requested per action only. The whole app does not run elevated.
+
+<ActionsCatalog locale="en" />

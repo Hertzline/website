@@ -1,0 +1,101 @@
+---
+import catalog from '../data/actions.json'
+
+type Locale = 'en' | 'it'
+
+type Props = {
+	locale: Locale
+}
+
+const { locale } = Astro.props
+
+const ui = catalog.ui[locale]
+const note = catalog.localMeasurementNote[locale]
+const honesty = catalog.macosHonestyBanner[locale]
+
+const reversibilityLabel = (value: string): string => {
+	if (locale === 'it') {
+		if (value === 'reversible') return 'Reversibile'
+		if (value === 'irreversible') return 'Irreversibile'
+		return 'Non applicabile (solo report)'
+	}
+	if (value === 'reversible') return 'Reversible'
+	if (value === 'irreversible') return 'Irreversible'
+	return 'Not applicable (report only)'
+}
+
+const osOrder = ['windows', 'linux', 'macos'] as const
+const osTitle = {
+	windows: ui.osWindows,
+	linux: ui.osLinux,
+	macos: ui.osMacos,
+}
+
+const byOs = osOrder.map((os) => ({
+	os,
+	title: osTitle[os],
+	actions: catalog.actions.filter((a) => a.os === os),
+}))
+---
+
+<p class="hz-mono-label">{ui.acLabel} AC-4.x / AC-8.1</p>
+
+<div class="hz-callout">
+	<p>{note}</p>
+</div>
+
+{
+	byOs.map((group) => (
+		<section class="hz-actions-os" aria-labelledby={`hz-os-${group.os}`}>
+			<h2 id={`hz-os-${group.os}`}>{group.title}</h2>
+			{group.os === 'macos' && (
+				<div class="hz-callout" role="note">
+					<p>
+						<strong>AC-4.23.</strong> {honesty}
+					</p>
+				</div>
+			)}
+			{group.actions.map((action) => {
+				const copy = action[locale]
+				return (
+					<article class="hz-action" id={action.id}>
+						<h3>{copy.title}</h3>
+						<p class="hz-action__meta">
+							<code>{action.id}</code>
+							{' · '}
+							{action.ac.join(', ')}
+							{' · '}
+							{reversibilityLabel(action.reversibility)}
+						</p>
+						<dl class="hz-action__fields">
+							<div>
+								<dt>{ui.what}</dt>
+								<dd>{copy.what}</dd>
+							</div>
+							<div>
+								<dt>{ui.expectedEffect}</dt>
+								<dd>{copy.expectedEffect}</dd>
+							</div>
+							<div>
+								<dt>{ui.risk}</dt>
+								<dd>{copy.risk}</dd>
+							</div>
+							<div>
+								<dt>{ui.howToUndo}</dt>
+								<dd>{copy.howToUndo}</dd>
+							</div>
+							<div>
+								<dt>{ui.reversibility}</dt>
+								<dd>{reversibilityLabel(action.reversibility)}</dd>
+							</div>
+							<div>
+								<dt>{ui.evidence}</dt>
+								<dd>{note}</dd>
+							</div>
+						</dl>
+					</article>
+				)
+			})}
+		</section>
+	))
+}

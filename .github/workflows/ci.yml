@@ -1,4 +1,5 @@
-# Website CI (HZ-040--HZ-043). Actions pinned to commit SHAs (REPOS.md / RULES.md).
+# Website CI (HZ-040--HZ-043 + HZ-056). Actions pinned to commit SHAs (REPOS.md / RULES.md).
+# Hertzline/.github pin: f4f947f31a5da82d0ca4828917490d2a1d1217b0 (HZ-003 / HZ-056).
 name: ci
 
 on:
@@ -11,8 +12,17 @@ permissions:
   contents: read
 
 jobs:
+  shared:
+    uses: Hertzline/.github/.github/workflows/reusable-ci.yml@f4f947f31a5da82d0ca4828917490d2a1d1217b0
+    with:
+      meta-ref: f4f947f31a5da82d0ca4828917490d2a1d1217b0
+      pin-check: true
+      license-audit: true
+      has-secrets: false
+
   build:
     name: build (${{ matrix.os }})
+    needs: [shared]
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -32,6 +42,9 @@ jobs:
 
       - name: Install
         run: npm ci
+
+      - name: HZ-056 hardening gate
+        run: npm run check:hz056
 
       - name: Typecheck
         run: npm run check

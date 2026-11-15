@@ -1,0 +1,16 @@
+Hertzline website
+Copyright (c) 2026 Hertzline
+
+This product includes software developed by third parties.
+
+Astro
+  License: MIT
+  https://github.com/withastro/astro
+
+@astrojs/starlight
+  License: MIT
+  https://github.com/withastro/starlight
+
+sharp
+  License: Apache-2.0
+  https://github.com/lovell/sharp

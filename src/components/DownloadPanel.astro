@@ -1,0 +1,206 @@
+---
+import releases from '../data/releases.json'
+
+type Locale = 'en' | 'it'
+
+type Props = {
+	locale: Locale
+}
+
+const { locale } = Astro.props
+
+const ui = releases.ui[locale]
+const product = releases.product
+const site = Astro.site?.href?.replace(/\/$/, '') || 'https://hertzline.example'
+const pageUrl = locale === 'it' ? `${site}/it/download/` : `${site}/download/`
+const latest =
+	releases.latest && typeof releases.latest === 'object' && 'version' in releases.latest
+		? (releases.latest as { version: string })
+		: null
+const isReleased = releases.status === 'released' && latest != null
+
+type Artifact = {
+	id: string
+	label: string
+	url: string
+	sha256: string
+	sizeBytes?: number
+}
+
+const artifacts = releases.artifacts as Record<string, Artifact[]>
+const windowsArtifacts = artifacts.windows ?? []
+const linuxArtifacts = artifacts.linux ?? []
+const macosArtifacts = artifacts.macos ?? []
+
+const allChecksums = [...windowsArtifacts, ...linuxArtifacts, ...macosArtifacts].filter(
+	(a) => a.sha256 && a.sha256.length > 0,
+)
+
+const softwareApplication = {
+	'@context': 'https://schema.org',
+	'@type': 'SoftwareApplication',
+	name: product.name,
+	description: product.description[locale],
+	applicationCategory: product.applicationCategory,
+	operatingSystem: product.operatingSystems.join(', '),
+	license: 'https://opensource.org/licenses/MIT',
+	url: pageUrl,
+	isAccessibleForFree: true,
+	offers: {
+		'@type': 'Offer',
+		price: '0',
+		priceCurrency: 'USD',
+		availability: isReleased
+			? 'https://schema.org/InStock'
+			: 'https://schema.org/PreOrder',
+	},
+}
+
+const jsonLd = JSON.stringify(softwareApplication)
+---
+
+<script type="application/ld+json" set:html={jsonLd} />
+
+<p class="hz-mono-label">{ui.statusLabel}</p>
+
+<div class="hz-callout" role="status">
+	{
+		isReleased && latest ? (
+			<p>
+				<strong>
+					{ui.versionLabel}: {latest.version}
+				</strong>
+			</p>
+		) : (
+			<p>
+				<strong>{locale === 'it' ? 'Non ancora rilasciato' : 'Not released yet'}</strong>
+			</p>
+		)
+	}
+	{!isReleased && <p>{ui.notReleased}</p>}
+</div>
+
+{
+	!isReleased && (
+		<p>
+			{locale === 'it'
+				? 'I link di download restano disabilitati finche packaging e firma non producono artifact. Vedi anche il '
+				: 'Download links stay disabled until packaging and signing produce artifacts. See also the '}
+			<a href={locale === 'it' ? '/it/changelog/' : '/changelog/'}>
+				{locale === 'it' ? 'changelog' : 'changelog'}
+			</a>
+			.
+		</p>
+	)
+}
+
+<section class="hz-download-slot" aria-labelledby="hz-winget">
+	<h2 id="hz-winget">{ui.wingetTitle}</h2>
+	<p>{ui.wingetNote}</p>
+	<p class="hz-mono-label">Package ID</p>
+	<p><code>{releases.wingetId}</code></p>
+	<pre class="hz-download-cmd" tabindex="0"><code>{releases.wingetCommand}</code></pre>
+	{
+		!releases.wingetPublished && (
+			<p class="hz-download-meta">
+				{locale === 'it'
+					? 'Stato: non pubblicato (nessun PR winget-pkgs senza approvazione del proprietario).'
+					: 'Status: not published (no winget-pkgs PR without owner approval).'}
+			</p>
+		)
+	}
+</section>
+
+<section class="hz-download-slot" aria-labelledby="hz-windows">
+	<h2 id="hz-windows">{ui.windowsTitle}</h2>
+	<p>{releases.requirements.windows[locale]}</p>
+	{
+		windowsArtifacts.length === 0 ? (
+			<p class="hz-download-meta">{ui.slotEmpty}</p>
+		) : (
+			<ul>
+				{windowsArtifacts.map((a) => (
+					<li>
+						<a href={a.url}>{a.label}</a>
+						{' -- '}
+						<code>SHA-256 {a.sha256}</code>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</section>
+
+<section class="hz-download-slot" aria-labelledby="hz-linux">
+	<h2 id="hz-linux">{ui.linuxTitle}</h2>
+	<p>{releases.requirements.linux[locale]}</p>
+	{
+		linuxArtifacts.length === 0 ? (
+			<p class="hz-download-meta">{ui.slotEmpty}</p>
+		) : (
+			<ul>
+				{linuxArtifacts.map((a) => (
+					<li>
+						<a href={a.url}>{a.label}</a>
+						{' -- '}
+						<code>SHA-256 {a.sha256}</code>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</section>
+
+<section class="hz-download-slot" aria-labelledby="hz-macos">
+	<h2 id="hz-macos">{ui.macosTitle}</h2>
+	<p>{releases.requirements.macos[locale]}</p>
+	{
+		macosArtifacts.length === 0 ? (
+			<p class="hz-download-meta">{ui.slotEmpty}</p>
+		) : (
+			<ul>
+				{macosArtifacts.map((a) => (
+					<li>
+						<a href={a.url}>{a.label}</a>
+						{' -- '}
+						<code>SHA-256 {a.sha256}</code>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</section>
+
+<section class="hz-download-slot" aria-labelledby="hz-checksums">
+	<h2 id="hz-checksums">{ui.checksumsTitle}</h2>
+	{
+		allChecksums.length === 0 ? (
+			<p>{ui.checksumsEmpty}</p>
+		) : (
+			<ul>
+				{allChecksums.map((a) => (
+					<li>
+						<code>
+							{a.id}: {a.sha256}
+						</code>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</section>
+
+<section class="hz-download-slot" aria-labelledby="hz-requirements">
+	<h2 id="hz-requirements">{ui.requirementsTitle}</h2>
+	<ul>
+		<li>
+			<strong>Windows.</strong> {releases.requirements.windows[locale]}
+		</li>
+		<li>
+			<strong>Linux.</strong> {releases.requirements.linux[locale]}
+		</li>
+		<li>
+			<strong>macOS.</strong> {releases.requirements.macos[locale]}
+		</li>
+	</ul>
+</section>

@@ -1,0 +1,5 @@
+# Hertzline website (static). Sitemap uses the configured Astro `site` URL.
+User-agent: *
+Allow: /
+
+Sitemap: https://hertzline.example/sitemap-index.xml

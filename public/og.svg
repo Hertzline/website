@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Hertzline">
+  <rect width="1200" height="630" fill="#0f1412"/>
+  <path fill="none" stroke="#2a9d8f" stroke-width="8" stroke-linecap="round" d="M180 315 C300 180 420 450 540 315 C660 180 780 450 1020 315"/>
+  <path fill="none" stroke="#5eead4" stroke-width="3" opacity="0.35" d="M180 420h840"/>
+  <text x="180" y="520" fill="#e8eeeb" font-family="Georgia, serif" font-size="72" font-weight="700">Hertzline</text>
+  <text x="180" y="570" fill="#9aada4" font-family="ui-monospace, monospace" font-size="28">Measure. Explain. Restore.</text>
+</svg>

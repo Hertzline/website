@@ -1,0 +1,69 @@
+{
+	"status": "not_released",
+	"updated": "2026-11-15",
+	"wingetId": "Hertzline.Hertzline",
+	"wingetCommand": "winget install Hertzline.Hertzline",
+	"wingetPublished": false,
+	"product": {
+		"name": "Hertzline",
+		"license": "MIT",
+		"applicationCategory": "UtilitiesApplication",
+		"operatingSystems": ["Windows", "Linux", "macOS"],
+		"description": {
+			"en": "Measure, explain, and reverse game and desktop performance changes. No unverified FPS claims.",
+			"it": "Misura, spiega e annulla le modifiche alle prestazioni di giochi e desktop. Nessun claim di FPS non verificato."
+		}
+	},
+	"requirements": {
+		"windows": {
+			"en": "Windows 10 or newer (64-bit). Signed MSI/NSIS installers planned. Elevation only when an action needs it.",
+			"it": "Windows 10 o successivo (64-bit). Installer MSI/NSIS firmati previsti. Elevazione solo quando un'azione la richiede."
+		},
+		"linux": {
+			"en": "x86_64. Flatpak, AppImage, .deb, .rpm, and AUR packages planned. Privileged actions use polkit where required.",
+			"it": "x86_64. Pacchetti Flatpak, AppImage, .deb, .rpm e AUR previsti. Le azioni privilegiate usano polkit dove richiesto."
+		},
+		"macos": {
+			"en": "macOS 13 or newer. Notarized DMG and Homebrew cask planned. Fewer tunables than Windows/Linux; capability surface is honest.",
+			"it": "macOS 13 o successivo. DMG notarizzato e cask Homebrew previsti. Meno regolazioni di Windows/Linux; la superficie di capacita e dichiarata onestamente."
+		}
+	},
+	"latest": null,
+	"artifacts": {
+		"windows": [],
+		"linux": [],
+		"macos": []
+	},
+	"ui": {
+		"en": {
+			"statusLabel": "Release status",
+			"notReleased": "Not released yet. There are no public installers, checksums, or store packages until the first signed artifacts exist.",
+			"wingetTitle": "Windows (winget)",
+			"wingetNote": "Intended package ID. Not published until an approved winget manifest lands. Do not expect this command to succeed today.",
+			"windowsTitle": "Windows direct download",
+			"linuxTitle": "Linux",
+			"macosTitle": "macOS",
+			"slotEmpty": "No artifact yet.",
+			"checksumsTitle": "Checksums",
+			"checksumsEmpty": "SHA-256 checksums will appear here with the first signed release. None are published yet.",
+			"requirementsTitle": "Requirements",
+			"versionLabel": "Version",
+			"none": "none"
+		},
+		"it": {
+			"statusLabel": "Stato rilascio",
+			"notReleased": "Non ancora rilasciato. Non ci sono installer pubblici, checksum o pacchetti store finche non esistono i primi artifact firmati.",
+			"wingetTitle": "Windows (winget)",
+			"wingetNote": "ID pacchetto previsto. Non pubblicato finche non arriva un manifest winget approvato. Non aspettarti che questo comando funzioni oggi.",
+			"windowsTitle": "Download diretto Windows",
+			"linuxTitle": "Linux",
+			"macosTitle": "macOS",
+			"slotEmpty": "Nessun artifact ancora.",
+			"checksumsTitle": "Checksum",
+			"checksumsEmpty": "I checksum SHA-256 compariranno qui con il primo rilascio firmato. Nessuno e pubblicato ancora.",
+			"requirementsTitle": "Requisiti",
+			"versionLabel": "Versione",
+			"none": "nessuna"
+		}
+	}
+}

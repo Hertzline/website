@@ -39,6 +39,23 @@ export default defineConfig({
 					href: 'https://github.com/Hertzline',
 				},
 			],
+			// Site-wide social image (HZ-046). Starlight already emits og:* + twitter:card.
+			head: [
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'og:image',
+						content: `${siteUrl}/og.svg`,
+					},
+				},
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:image',
+						content: `${siteUrl}/og.svg`,
+					},
+				},
+			],
 			customCss: [
 				'@fontsource/instrument-sans/400.css',
 				'@fontsource/instrument-sans/500.css',
@@ -98,6 +115,13 @@ export default defineConfig({
 							slug: 'changelog',
 							translations: {
 								it: 'Changelog',
+							},
+						},
+						{
+							label: 'Download',
+							slug: 'download',
+							translations: {
+								it: 'Download',
 							},
 						},
 					],

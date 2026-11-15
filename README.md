@@ -49,7 +49,7 @@ D7 snapshot was Astro 7.4.11 / Starlight 0.42.11; scaffold re-pinned to the vers
 
 - Default language: **English** as Starlight `root` locale (URLs have no `/en/` prefix).
 - Italian: content and routes under `/it/` (`locales.it`, `lang: 'it'`).
-- Custom Hertzline UI keys live in `src/content/i18n/en.json` and `src/content/i18n/it.json`. `npm run check:hz042` fails if any key is missing or empty on either side, and if docs pages lack Italian parity.
+- Custom Hertzline UI keys live in `src/content/i18n/en.json` and `src/content/i18n/it.json`. `npm run check:hz042` fails if any key is missing or empty on either side, and if docs pages lack Italian parity. `npm run check:hz048` is the dedicated missing-key/missing-page gate for the required Italian `/docs/` set (translated titles, no English `/docs/` links, built `/it/docs/`).
 - Starlight built-in Italian UI labels ship with `@astrojs/starlight` (`dist/translations/it.js`).
 - **hreflang:** Starlight emits `<link rel="alternate" hreflang="en|it|x-default">` on multilingual pages when `site` is set (see `@astrojs/starlight` `dist/utils/head.js`). Verified by `check:hz042` on the static build. After the owner replaces the placeholder `site` URL, production canonicals and hreflang targets will use that domain.
 
@@ -69,6 +69,7 @@ npm run check:hz044
 npm run check:hz045
 npm run check:hz046
 npm run check:hz047
+npm run check:hz048
 npm run check:lhci
 ```
 
@@ -82,6 +83,7 @@ npm run check:lhci
 | `check:hz045` | Shared actions catalog: AC-4.1--4.22 + AC-4.23 honesty, en/it fields, `/actions/` build |
 | `check:hz046` | Download page: not_released, winget ID, OS slots, checksums, JSON-LD without fake ratings, robots/OG/sitemap |
 | `check:hz047` | Starlight `/docs/` set: install per OS, benchmark, profiles, every action, rollback, FAQ, build, contribute, architecture, security |
+| `check:hz048` | Italian docs parity: missing-key + missing-page gate for required `/it/docs/` locales |
 
 Lighthouse CI uses `lighthouserc.cjs` (`staticDistDir: ./dist`, mobile form factor). Requires a local Chrome/Chromium (`CHROME_PATH` or chrome-launcher discovery). GitHub Actions runs LHCI on `ubuntu-latest` with `browser-actions/setup-chrome` pinned to SHA.
 

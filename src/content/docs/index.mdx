@@ -4,10 +4,7 @@ description: "Measure, explain, and reverse game and desktop performance changes
 template: splash
 hero:
   title: Hertzline
-  tagline: See your system score, apply reversible optimizations, then verify the real gain on your machine.
-  image:
-    file: ../../assets/ui-preview-placeholder.svg
-    alt: Hertzline Home preview with health score percent and stats tiles. Illustrated UI, not a live capture.
+  tagline: Measure first. Optimize only what you can reverse. Verify the real gain on your machine.
   actions:
     - text: Download Windows
       link: /download/
@@ -21,22 +18,34 @@ hero:
 
 import { LinkButton } from '@astrojs/starlight/components'
 
-<p class="hz-mono-label">How to use it</p>
+<p class="hz-mono-label">Product</p>
+
+<div class="hz-hero-band" aria-hidden="true">
+  <svg class="hz-wave" viewBox="0 0 1200 180" preserveAspectRatio="none" role="presentation">
+    <path d="M0 90 C120 20 240 160 360 90 C480 20 600 160 720 90 C840 20 960 160 1080 90 C1140 55 1170 70 1200 90" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M0 110 C120 50 240 150 360 110 C480 50 600 150 720 110 C840 50 960 150 1080 110 C1140 80 1170 90 1200 110" fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.45"/>
+  </svg>
+</div>
+
+<p class="hz-lead">Hertzline is a local performance instrument for games and desktop. No product screenshot on this page -- download the app and measure on your hardware.</p>
 
 ## Three steps
 
 <div class="hz-rail">
   <div class="hz-rail__item">
-    <h2>1. Measure</h2>
-    <p>Capture local FPS, CPU, GPU, temps, disk, and network when the OS exposes them. Missing sensors stay labeled unavailable.</p>
+    <p class="hz-step-num">01</p>
+    <h2>Measure</h2>
+    <p>Frame times, CPU, GPU, temps, disk, and network when the OS exposes them. Missing sensors stay unavailable.</p>
   </div>
   <div class="hz-rail__item">
-    <h2>2. Optimize</h2>
-    <p>Actions are ranked by priority. Each one shows expected effect, risk, and how to undo before you apply it.</p>
+    <p class="hz-step-num">02</p>
+    <h2>Optimize</h2>
+    <p>Prioritized reversible actions. Each one shows expected effect, risk, and how to undo before you apply it.</p>
   </div>
   <div class="hz-rail__item">
-    <h2>3. Verify</h2>
-    <p>Before/after benchmark with a median FPS gain percent from your own runs. Helpful only if it beats the noise band.</p>
+    <p class="hz-step-num">03</p>
+    <h2>Verify</h2>
+    <p>Before/after with a median FPS gain percent from your own runs. Helpful only if it beats the noise band.</p>
   </div>
 </div>
 
@@ -44,10 +53,12 @@ import { LinkButton } from '@astrojs/starlight/components'
   <p><strong>No unverified FPS claims.</strong> Health score and gain percent come from sensors and your measurements -- never invented marketing numbers.</p>
 </div>
 
-## Status
+## Get it
 
-Windows v1.0.3 installers are on [Download](/download/) with SHA-256 checksums. Authenticode signing is still pending the owner certificate. winget PR is open for `Hertzline.Hertzline`.
+Windows installers with SHA-256 are on Download. Authenticode signing is still pending the owner certificate. winget package id: `Hertzline.Hertzline`.
 
-<LinkButton href="/download/" variant="primary">Download</LinkButton>
-<LinkButton href="/docs/" variant="minimal">Docs</LinkButton>
-<LinkButton href="https://github.com/Hertzline" variant="minimal" icon="external">GitHub</LinkButton>
+<div class="hz-cta-row">
+  <LinkButton href="/download/" variant="primary">Download</LinkButton>
+  <LinkButton href="/docs/" variant="minimal">Docs</LinkButton>
+  <LinkButton href="https://github.com/Hertzline" variant="minimal" icon="external">GitHub</LinkButton>
+</div>

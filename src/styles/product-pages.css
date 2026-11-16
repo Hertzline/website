@@ -1,78 +1,113 @@
 /*
-  Product page accents (HZ-044). Tokens remain in design-tokens.css.
+  Product page accents (HZ-044). Brand-first splash, no fake UI screenshots.
 */
 
-.hero {
-	gap: var(--hz-space-5);
+[data-has-hero] .hero {
+	display: grid;
+	gap: var(--hz-space-4);
+	padding-block: var(--hz-space-6) var(--hz-space-5);
+	max-width: 48rem;
 }
 
-.hero > img,
-.hero img {
-	max-width: min(100%, 40rem);
-	width: 100%;
-	border: 1px solid var(--hz-border);
-	border-radius: var(--hz-radius);
-	box-shadow:
-		0 0 0 1px color-mix(in srgb, var(--hz-accent) 18%, transparent),
-		0 28px 60px color-mix(in srgb, var(--hz-bg) 55%, transparent);
+[data-has-hero] .hero .hero-html {
+	display: none;
+}
+
+[data-has-hero] .page {
+	overflow: hidden;
 }
 
 [data-has-hero] .hero h1.title {
-	font-size: clamp(2.8rem, 7vw, 4.4rem);
-	letter-spacing: -0.045em;
-	line-height: 0.98;
+	font-size: clamp(3.2rem, 9vw, 5.5rem);
+	letter-spacing: -0.055em;
+	line-height: 0.92;
 	font-weight: 700;
+	margin: 0;
 }
 
 .hero .tagline {
-	max-width: 34rem;
-	font-size: 1.125rem;
-	line-height: 1.45;
+	max-width: 36rem;
+	font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+	line-height: 1.4;
 	color: var(--hz-muted);
+	margin: 0;
+}
+
+.hero .actions {
+	margin-top: var(--hz-space-3);
+	gap: var(--hz-space-3);
 }
 
 .sl-container > .hero + * {
-	margin-top: var(--hz-space-6);
+	margin-top: var(--hz-space-5);
+}
+
+.hz-hero-band {
+	margin: calc(var(--hz-space-4) * -1) 0 var(--hz-space-5);
+	color: var(--hz-accent);
+	opacity: 0.9;
+}
+
+.hz-wave {
+	display: block;
+	width: 100%;
+	height: clamp(4.5rem, 12vw, 7.5rem);
+}
+
+.hz-lead {
+	max-width: 40rem;
+	font-size: 1.125rem;
+	line-height: 1.55;
+	color: var(--hz-muted);
+	margin: 0 0 var(--hz-space-5);
 }
 
 .hz-rail {
 	display: grid;
 	gap: var(--hz-space-4);
-	margin-block: var(--hz-space-5);
+	margin-block: var(--hz-space-4) var(--hz-space-5);
 }
 
 @media (min-width: 50rem) {
 	.hz-rail {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: var(--hz-space-5);
+		gap: var(--hz-space-4);
 	}
 }
 
 .hz-rail__item {
 	position: relative;
-	border: 1px solid var(--hz-border);
+	padding: var(--hz-space-4) 0 0;
 	border-top: 2px solid var(--hz-accent);
-	padding: var(--hz-space-4);
-	background: color-mix(in srgb, var(--hz-bg) 70%, var(--hz-fg));
+}
+
+.hz-step-num {
+	margin: 0 0 var(--hz-space-2);
+	font-family: var(--hz-font-mono);
+	font-size: 0.75rem;
+	letter-spacing: 0.16em;
+	color: var(--hz-signal);
 }
 
 .hz-rail__item h2,
 .hz-rail__item h3 {
 	margin-top: 0;
-	font-size: 1.05rem;
-	letter-spacing: -0.02em;
+	margin-bottom: var(--hz-space-2);
+	font-size: 1.2rem;
+	letter-spacing: -0.025em;
 }
 
 .hz-rail__item p {
 	color: var(--hz-muted);
 	margin-bottom: 0;
+	line-height: 1.5;
 }
 
 .hz-callout {
 	border-left: 3px solid var(--hz-signal);
 	padding: var(--hz-space-3) var(--hz-space-4);
 	margin-block: var(--hz-space-4);
-	background: color-mix(in srgb, var(--hz-bg) 88%, var(--hz-signal));
+	background: color-mix(in srgb, var(--hz-bg) 86%, var(--hz-signal));
 }
 
 .hz-callout p:last-child {
@@ -82,9 +117,17 @@
 .hz-mono-label {
 	font-family: var(--hz-font-mono);
 	font-size: 0.75rem;
-	letter-spacing: 0.14em;
+	letter-spacing: 0.16em;
 	text-transform: uppercase;
 	color: var(--hz-signal);
+	margin: 0 0 var(--hz-space-3);
+}
+
+.hz-cta-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--hz-space-3);
+	margin-top: var(--hz-space-4);
 }
 
 @keyframes hz-rise {
@@ -98,9 +141,24 @@
 	}
 }
 
+@keyframes hz-draw {
+	from {
+		stroke-dashoffset: 420;
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
 .hero,
-.hz-rail__item {
+.hz-rail__item,
+.hz-hero-band {
 	animation: hz-rise var(--hz-motion-base) var(--hz-ease-out) both;
+}
+
+.hz-wave path {
+	stroke-dasharray: 420;
+	animation: hz-draw 1.2s var(--hz-ease-out) both;
 }
 
 .hz-rail__item:nth-child(2) {
@@ -216,7 +274,7 @@
 	align-items: center;
 	justify-content: center;
 	min-height: 3rem;
-	padding: 0.7rem 1.2rem;
+	padding: 0.75rem 1.25rem;
 	border: 1px solid var(--hz-accent);
 	border-radius: var(--hz-radius);
 	background: var(--hz-accent);
@@ -239,7 +297,9 @@
 	.hero,
 	.hz-rail__item,
 	.hz-action,
-	.hz-download-slot {
+	.hz-download-slot,
+	.hz-hero-band,
+	.hz-wave path {
 		animation: none;
 	}
 }

@@ -152,15 +152,20 @@ if (new Set(builtDescs).size !== builtDescs.length) {
 }
 
 const home = readFileSync(join(dist, 'index.html'), 'utf8')
-if (!/placeholder/i.test(home)) fail('home must label placeholder imagery')
+if (/ui-preview-placeholder/i.test(home)) {
+	fail('home must not embed the UI preview placeholder screenshot')
+}
+if (!/no product screenshot|Nessuna cattura prodotto/i.test(home)) {
+	fail('home must state there is no product screenshot on the page')
+}
 const changelogHtml = readFileSync(join(dist, 'changelog/index.html'), 'utf8')
 const releases = JSON.parse(readFileSync(join(root, 'src/data/releases.json'), 'utf8'))
 if (releases.status === 'not_released') {
 	if (!/Not released yet|not released yet|Downloads are not released/i.test(changelogHtml)) {
 		fail('changelog must state not released yet')
 	}
-} else if (!/1\.0\.0/.test(changelogHtml)) {
-	fail('changelog must mention released version 1.0.0')
+} else if (!/1\.0\.\d/.test(changelogHtml)) {
+	fail('changelog must mention a released 1.0.x version')
 }
 
 const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))

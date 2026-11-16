@@ -2,24 +2,37 @@
   Product page accents (HZ-044). Tokens remain in design-tokens.css.
 */
 
+.hero {
+	gap: var(--hz-space-5);
+}
+
 .hero > img,
 .hero img {
-	max-width: min(100%, 36rem);
+	max-width: min(100%, 40rem);
+	width: 100%;
 	border: 1px solid var(--hz-border);
 	border-radius: var(--hz-radius);
-	box-shadow: 0 18px 40px color-mix(in srgb, var(--hz-bg) 70%, transparent);
+	box-shadow:
+		0 0 0 1px color-mix(in srgb, var(--hz-accent) 18%, transparent),
+		0 28px 60px color-mix(in srgb, var(--hz-bg) 55%, transparent);
 }
 
 [data-has-hero] .hero h1.title {
-	font-size: clamp(2.4rem, 6vw, 3.6rem);
-	letter-spacing: -0.035em;
-	line-height: 1.05;
+	font-size: clamp(2.8rem, 7vw, 4.4rem);
+	letter-spacing: -0.045em;
+	line-height: 0.98;
+	font-weight: 700;
 }
 
 .hero .tagline {
 	max-width: 34rem;
-	font-size: 1.05rem;
+	font-size: 1.125rem;
+	line-height: 1.45;
 	color: var(--hz-muted);
+}
+
+.sl-container > .hero + * {
+	margin-top: var(--hz-space-6);
 }
 
 .hz-rail {
@@ -36,15 +49,17 @@
 }
 
 .hz-rail__item {
+	position: relative;
+	border: 1px solid var(--hz-border);
 	border-top: 2px solid var(--hz-accent);
-	padding-top: var(--hz-space-3);
-	padding-inline: 0 var(--hz-space-2);
+	padding: var(--hz-space-4);
+	background: color-mix(in srgb, var(--hz-bg) 70%, var(--hz-fg));
 }
 
 .hz-rail__item h2,
 .hz-rail__item h3 {
 	margin-top: 0;
-	font-size: 1.125rem;
+	font-size: 1.05rem;
 	letter-spacing: -0.02em;
 }
 
@@ -57,7 +72,7 @@
 	border-left: 3px solid var(--hz-signal);
 	padding: var(--hz-space-3) var(--hz-space-4);
 	margin-block: var(--hz-space-4);
-	background: color-mix(in srgb, var(--hz-bg) 92%, var(--hz-signal));
+	background: color-mix(in srgb, var(--hz-bg) 88%, var(--hz-signal));
 }
 
 .hz-callout p:last-child {
@@ -66,16 +81,16 @@
 
 .hz-mono-label {
 	font-family: var(--hz-font-mono);
-	font-size: 0.8125rem;
-	letter-spacing: 0.04em;
+	font-size: 0.75rem;
+	letter-spacing: 0.14em;
 	text-transform: uppercase;
-	color: var(--hz-muted);
+	color: var(--hz-signal);
 }
 
 @keyframes hz-rise {
 	from {
 		opacity: 0;
-		transform: translateY(0.5rem);
+		transform: translateY(0.55rem);
 	}
 	to {
 		opacity: 1;
@@ -89,11 +104,11 @@
 }
 
 .hz-rail__item:nth-child(2) {
-	animation-delay: 60ms;
+	animation-delay: 70ms;
 }
 
 .hz-rail__item:nth-child(3) {
-	animation-delay: 120ms;
+	animation-delay: 140ms;
 }
 
 .hz-actions-os {
@@ -145,14 +160,16 @@
 }
 
 .hz-download-slot {
-	border-top: 1px solid var(--hz-border);
-	padding-block: var(--hz-space-4);
-	margin-block: var(--hz-space-3);
+	border: 1px solid var(--hz-border);
+	padding: var(--hz-space-4);
+	margin-block: var(--hz-space-4);
+	background: color-mix(in srgb, var(--hz-bg) 78%, var(--hz-fg));
 	animation: hz-rise var(--hz-motion-base) var(--hz-ease-out) both;
 }
 
 .hz-download-slot > h2 {
 	margin-top: 0;
+	letter-spacing: -0.02em;
 }
 
 .hz-download-cmd {
@@ -185,7 +202,7 @@
 }
 
 .hz-download-card {
-	padding: var(--hz-space-3) 0;
+	padding: var(--hz-space-3) 0 0;
 	border-top: 1px solid var(--hz-border);
 }
 
@@ -198,13 +215,14 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 2.75rem;
-	padding: 0.65rem 1.1rem;
+	min-height: 3rem;
+	padding: 0.7rem 1.2rem;
 	border: 1px solid var(--hz-accent);
 	border-radius: var(--hz-radius);
 	background: var(--hz-accent);
 	color: var(--sl-color-text-invert);
-	font-weight: 600;
+	font-weight: 700;
+	letter-spacing: -0.01em;
 	text-decoration: none;
 }
 

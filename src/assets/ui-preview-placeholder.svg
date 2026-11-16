@@ -1,50 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
   <title id="title">Hertzline Home preview</title>
-  <desc id="desc">Product preview of the Home dashboard with health score and stats. Illustrated UI, not a live capture.</desc>
+  <desc id="desc">Dark instrument Home with health score and stats. Illustrated UI preview.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f5f8f6"/>
-      <stop offset="100%" stop-color="#eef2f0"/>
+      <stop offset="0%" stop-color="#0e1512"/>
+      <stop offset="100%" stop-color="#0c1210"/>
     </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1">
+      <stop offset="0%" stop-color="#1fb88a" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#1fb88a" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="720" height="420" fill="url(#bg)"/>
-  <rect x="0" y="0" width="720" height="64" fill="#f7faf8" stroke="#c5d2cb"/>
-  <text x="28" y="40" fill="#14201a" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="22" font-weight="700">Hertzline</text>
-  <text x="150" y="40" fill="#3d5248" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Misura, ottimizza, verifica</text>
-  <rect x="430" y="22" width="78" height="22" rx="3" fill="#e8f1ec" stroke="#0f6b4c"/>
-  <text x="469" y="37" text-anchor="middle" fill="#0f6b4c" font-family="IBM Plex Mono, monospace" font-size="11">1 Misura</text>
-  <rect x="516" y="22" width="86" height="22" rx="3" fill="#fff" stroke="#c5d2cb"/>
-  <text x="559" y="37" text-anchor="middle" fill="#3d5248" font-family="IBM Plex Mono, monospace" font-size="11">2 Ottimizza</text>
-  <rect x="610" y="22" width="82" height="22" rx="3" fill="#fff" stroke="#c5d2cb"/>
-  <text x="651" y="37" text-anchor="middle" fill="#3d5248" font-family="IBM Plex Mono, monospace" font-size="11">3 Verifica</text>
-  <rect x="0" y="64" width="160" height="356" fill="#f7faf8" stroke="#c5d2cb"/>
-  <rect x="16" y="88" width="128" height="32" rx="4" fill="#0f6b4c"/>
-  <text x="80" y="109" text-anchor="middle" fill="#f4fbf7" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13" font-weight="600">Inizio</text>
-  <text x="28" y="148" fill="#14201a" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Misura</text>
-  <text x="28" y="176" fill="#14201a" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Verifica</text>
-  <text x="28" y="204" fill="#14201a" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Ottimizza</text>
-  <text x="28" y="232" fill="#3d5248" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Profili</text>
-  <rect x="184" y="88" width="512" height="300" rx="4" fill="#f7faf8" stroke="#c5d2cb"/>
-  <circle cx="280" cy="210" r="70" fill="none" stroke="#c5d2cb" stroke-width="14"/>
-  <circle cx="280" cy="210" r="70" fill="none" stroke="#0f6b4c" stroke-width="14" stroke-dasharray="330" stroke-dashoffset="70" transform="rotate(-90 280 210)"/>
-  <text x="280" y="205" text-anchor="middle" fill="#14201a" font-family="IBM Plex Mono, monospace" font-size="28" font-weight="700">78%</text>
-  <text x="280" y="228" text-anchor="middle" fill="#3d5248" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="11" letter-spacing="1">SALUTE</text>
-  <text x="390" y="130" fill="#14201a" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="16" font-weight="700">Prossimo passo</text>
-  <text x="390" y="156" fill="#3d5248" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Score da indicatori reali. Nessun FPS inventato.</text>
-  <rect x="390" y="176" width="120" height="34" rx="4" fill="#0f6b4c"/>
-  <text x="450" y="198" text-anchor="middle" fill="#f4fbf7" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13" font-weight="600">1. Misura ora</text>
-  <rect x="520" y="176" width="110" height="34" rx="4" fill="#fff" stroke="#c5d2cb"/>
-  <text x="575" y="198" text-anchor="middle" fill="#14201a" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">2. Ottimizza</text>
-  <rect x="390" y="236" width="130" height="64" rx="4" fill="#fff" stroke="#c5d2cb"/>
-  <text x="404" y="258" fill="#3d5248" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="11">CPU top</text>
-  <text x="404" y="282" fill="#14201a" font-family="IBM Plex Mono, monospace" font-size="18" font-weight="600">12%</text>
-  <rect x="530" y="236" width="130" height="64" rx="4" fill="#fff" stroke="#c5d2cb"/>
-  <text x="544" y="258" fill="#3d5248" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="11">Temp CPU</text>
-  <text x="544" y="282" fill="#14201a" font-family="IBM Plex Mono, monospace" font-size="18" font-weight="600">61 C</text>
-  <rect x="390" y="310" width="130" height="52" rx="4" fill="#fff" stroke="#c5d2cb"/>
-  <text x="404" y="332" fill="#3d5248" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="11">Pulizia</text>
-  <text x="404" y="352" fill="#14201a" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="600">1.2 GiB</text>
-  <rect x="530" y="310" width="130" height="52" rx="4" fill="#fff" stroke="#c5d2cb"/>
-  <text x="544" y="332" fill="#3d5248" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="11">Avvio</text>
-  <text x="544" y="352" fill="#14201a" font-family="IBM Plex Mono, monospace" font-size="16" font-weight="600">4 attivi</text>
+  <circle cx="80" cy="40" r="180" fill="url(#glow)"/>
+  <rect x="0" y="0" width="168" height="420" fill="#121a17" stroke="#2a3a33"/>
+  <text x="24" y="42" fill="#e8f2ec" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="22" font-weight="700">Hertzline</text>
+  <text x="140" y="40" fill="#1fb88a" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">HZ</text>
+  <rect x="16" y="72" width="136" height="34" fill="#1fb88a"/>
+  <text x="84" y="94" text-anchor="middle" fill="#04140e" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13" font-weight="700">Inizio</text>
+  <text x="28" y="132" fill="#8aa398" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Misura</text>
+  <text x="28" y="160" fill="#8aa398" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Verifica</text>
+  <text x="28" y="188" fill="#8aa398" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Ottimizza</text>
+  <text x="28" y="216" fill="#8aa398" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="13">Profili</text>
+  <text x="24" y="392" fill="#8aa398" font-family="IBM Plex Mono, monospace" font-size="10">locale · no elevazione</text>
+  <rect x="168" y="0" width="552" height="64" fill="#121a17" stroke="#2a3a33"/>
+  <text x="188" y="28" fill="#e08a2a" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2">FLUSSO</text>
+  <rect x="188" y="38" width="86" height="18" fill="#16201c" stroke="#1fb88a"/>
+  <text x="231" y="51" text-anchor="middle" fill="#e8f2ec" font-family="IBM Plex Mono, monospace" font-size="10">01 Misura</text>
+  <rect x="282" y="38" width="96" height="18" fill="#16201c" stroke="#2a3a33"/>
+  <text x="330" y="51" text-anchor="middle" fill="#8aa398" font-family="IBM Plex Mono, monospace" font-size="10">02 Ottimizza</text>
+  <rect x="386" y="38" width="90" height="18" fill="#16201c" stroke="#2a3a33"/>
+  <text x="431" y="51" text-anchor="middle" fill="#8aa398" font-family="IBM Plex Mono, monospace" font-size="10">03 Verifica</text>
+  <text x="690" y="40" text-anchor="end" fill="#8aa398" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="12">Solo guadagni misurati</text>
+  <text x="196" y="100" fill="#e8f2ec" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="28" font-weight="700">Inizio</text>
+  <text x="196" y="128" fill="#8aa398" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="14">Misura, ottimizza, verifica sulla tua macchina.</text>
+  <rect x="196" y="152" width="480" height="220" fill="#16201c" stroke="#2a3a33"/>
+  <circle cx="286" cy="250" r="66" fill="none" stroke="#2a3a33" stroke-width="12"/>
+  <circle cx="286" cy="250" r="66" fill="none" stroke="#1fb88a" stroke-width="12" stroke-dasharray="320" stroke-dashoffset="70" transform="rotate(-90 286 250)"/>
+  <text x="286" y="246" text-anchor="middle" fill="#e8f2ec" font-family="IBM Plex Mono, monospace" font-size="28" font-weight="600">78%</text>
+  <text x="286" y="268" text-anchor="middle" fill="#8aa398" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2">SALUTE</text>
+  <text x="390" y="196" fill="#e8f2ec" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="16" font-weight="700">Prossimo passo</text>
+  <text x="390" y="218" fill="#8aa398" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="12">Score da indicatori reali. Nessun FPS inventato.</text>
+  <rect x="390" y="236" width="118" height="32" fill="#1fb88a"/>
+  <text x="449" y="256" text-anchor="middle" fill="#04140e" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="12" font-weight="700">1. Misura ora</text>
+  <rect x="518" y="236" width="110" height="32" fill="none" stroke="#3d5348"/>
+  <text x="573" y="256" text-anchor="middle" fill="#e8f2ec" font-family="Instrument Sans, Segoe UI, sans-serif" font-size="12" font-weight="600">2. Ottimizza</text>
+  <rect x="390" y="286" width="118" height="58" fill="#0c1210" stroke="#2a3a33"/>
+  <text x="402" y="306" fill="#8aa398" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1">CPU TOP</text>
+  <text x="402" y="328" fill="#e8f2ec" font-family="IBM Plex Mono, monospace" font-size="18" font-weight="600">12%</text>
+  <rect x="520" y="286" width="118" height="58" fill="#0c1210" stroke="#2a3a33"/>
+  <text x="532" y="306" fill="#8aa398" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1">TEMP CPU</text>
+  <text x="532" y="328" fill="#e8f2ec" font-family="IBM Plex Mono, monospace" font-size="18" font-weight="600">61 C</text>
 </svg>

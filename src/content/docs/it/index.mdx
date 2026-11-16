@@ -1,59 +1,55 @@
 ---
 title: Hertzline
-description: "Misura, spiega e annulla le modifiche alle prestazioni di giochi e desktop. Nessuna affermazione FPS non verificata."
+description: "Misura, spiega e annulla le modifiche alle prestazioni. Nessuna affermazione FPS non verificata."
 template: splash
 hero:
   title: Hertzline
-  tagline: Un click per le tre ottimizzazioni Windows sicure. Poi misura e verifica il guadagno reale sul tuo PC.
+  tagline: Modi Study, Programming e Performance che si adattano alla corrente. Poi misura il guadagno reale.
   actions:
     - text: Scarica per Windows
       link: /it/download/
       icon: download
       variant: primary
-    - text: Docs
-      link: /it/docs/
+    - text: Come funziona
+      link: /it/how-it-works/
       icon: document
       variant: minimal
 ---
 
 import { LinkButton } from '@astrojs/starlight/components'
 
-<p class="hz-mono-label">Cosa fa</p>
+<p class="hz-mono-label">Locale. Reversibile. Misurato.</p>
 
 <div class="hz-hero-band" aria-hidden="true">
   <svg class="hz-wave" viewBox="0 0 1200 180" preserveAspectRatio="none" role="presentation">
-    <path d="M0 90 C120 20 240 160 360 90 C480 20 600 160 720 90 C840 20 960 160 1080 90 C1140 55 1170 70 1200 90" fill="none" stroke="currentColor" stroke-width="2"/>
-    <path d="M0 110 C120 50 240 150 360 110 C480 50 600 150 720 110 C840 50 960 150 1080 110 C1140 80 1170 90 1200 110" fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.45"/>
+    <path d="M0 90 C120 20 240 160 360 90 C480 20 600 160 720 90 C840 20 960 160 1080 90 C1140 55 1170 70 1200 90" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    <path d="M0 110 C120 50 240 150 360 110 C480 50 600 150 720 110 C840 50 960 150 1080 110 C1140 80 1170 90 1200 110" fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.4"/>
   </svg>
 </div>
 
-<p class="hz-lead">Nessuna cattura prodotto in questa pagina. Installa Hertzline, apri Ottimizza, applica il pacchetto consigliato (Game Mode, piano prestazioni, Game Bar off), poi verifica con il tuo before/after.</p>
+<p class="hz-lead">Scegli un modo base. Hertzline imposta il piano alimentazione OS (non le curve ventola), legge AC vs batteria, e tiene ogni modifica reversibile.</p>
 
-## Come si usa
+## Modi base
 
 <div class="hz-rail">
   <div class="hz-rail__item">
-    <p class="hz-step-num">01</p>
-    <h2>Ottimizza</h2>
-    <p>Tre consigli chiari con un bottone Applica tutte. Ogni modifica e reversibile.</p>
+    <p class="hz-step-num">Study</p>
+    <h2>Risparmio max</h2>
+    <p>Piano power-saver. Macchina silenziosa per lettura e lavoro leggero.</p>
   </div>
   <div class="hz-rail__item">
-    <p class="hz-step-num">02</p>
-    <h2>Misura</h2>
-    <p>FPS, CPU, GPU, temperature quando i sensori esistono. I valori mancanti restano n/d.</p>
+    <p class="hz-step-num">Programming</p>
+    <h2>Spinge, resta quiet</h2>
+    <p>Bilanciato in AC, saver in batteria. Reattivo senza ventole al massimo.</p>
   </div>
   <div class="hz-rail__item">
-    <p class="hz-step-num">03</p>
-    <h2>Verifica</h2>
-    <p>Guadagno % before/after solo dalle tue run. Utile solo sopra la banda di rumore.</p>
+    <p class="hz-step-num">Performance</p>
+    <h2>Tutto fuori</h2>
+    <p>Alte prestazioni in AC. Le ventole possono sentirsi. Si adatta in batteria.</p>
   </div>
-</div>
-
-<div class="hz-callout">
-  <p><strong>Nessuna affermazione FPS non verificata.</strong> Mai percentuali marketing inventate.</p>
 </div>
 
 <div class="hz-cta-row">
   <LinkButton href="/it/download/" variant="primary">Scarica Windows</LinkButton>
-  <LinkButton href="/it/how-it-works/" variant="minimal">Come funziona</LinkButton>
+  <LinkButton href="/it/docs/" variant="minimal">Docs</LinkButton>
 </div>

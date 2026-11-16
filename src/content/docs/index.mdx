@@ -4,56 +4,76 @@ description: "Measure, explain, and reverse game and desktop performance changes
 template: splash
 hero:
   title: Hertzline
-  tagline: One click for the three safe Windows tips. Then measure and verify the real gain on your PC.
+  tagline: Study, Programming, and Performance modes that adapt when you plug in. Then measure the real gain.
   actions:
     - text: Download for Windows
       link: /download/
       icon: download
       variant: primary
-    - text: Docs
-      link: /docs/
+    - text: How it works
+      link: /how-it-works/
       icon: document
       variant: minimal
 ---
 
 import { LinkButton } from '@astrojs/starlight/components'
 
-<p class="hz-mono-label">What it does</p>
+<p class="hz-mono-label">Local. Reversible. Measured.</p>
 
 <div class="hz-hero-band" aria-hidden="true">
   <svg class="hz-wave" viewBox="0 0 1200 180" preserveAspectRatio="none" role="presentation">
-    <path d="M0 90 C120 20 240 160 360 90 C480 20 600 160 720 90 C840 20 960 160 1080 90 C1140 55 1170 70 1200 90" fill="none" stroke="currentColor" stroke-width="2"/>
-    <path d="M0 110 C120 50 240 150 360 110 C480 50 600 150 720 110 C840 50 960 150 1080 110 C1140 80 1170 90 1200 110" fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.45"/>
+    <path d="M0 90 C120 20 240 160 360 90 C480 20 600 160 720 90 C840 20 960 160 1080 90 C1140 55 1170 70 1200 90" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    <path d="M0 110 C120 50 240 150 360 110 C480 50 600 150 720 110 C840 50 960 150 1080 110 C1140 80 1170 90 1200 110" fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.4"/>
   </svg>
 </div>
 
-<p class="hz-lead">No product screenshot on this page. Install Hertzline, open Ottimizza, apply the recommended pack (Game Mode, performance power plan, Game Bar off), then verify with your own before/after.</p>
+<p class="hz-lead">Pick a base mode. Hertzline sets the OS power plan (not fan curves), senses AC vs battery, and keeps every change reversible. Verify with your own before/after.</p>
 
-## How you use it
+## Base modes
+
+<div class="hz-rail">
+  <div class="hz-rail__item">
+    <p class="hz-step-num">Study</p>
+    <h2>Max save</h2>
+    <p>Full power-saver plan. Quiet machine for reading and light work.</p>
+  </div>
+  <div class="hz-rail__item">
+    <p class="hz-step-num">Programming</p>
+    <h2>Push, stay quiet</h2>
+    <p>Balanced when plugged in, saver on battery. Responsive without max fans.</p>
+  </div>
+  <div class="hz-rail__item">
+    <p class="hz-step-num">Performance</p>
+    <h2>Full send</h2>
+    <p>High-performance when plugged in. Fans may be audible. Adapts on battery.</p>
+  </div>
+</div>
+
+## Flow
 
 <div class="hz-rail">
   <div class="hz-rail__item">
     <p class="hz-step-num">01</p>
     <h2>Optimize</h2>
-    <p>Three clear recommendations with one Apply-all button. Every change is reversible.</p>
+    <p>Recommended Windows tips + Apply all. Every change shows risk and undo.</p>
   </div>
   <div class="hz-rail__item">
     <p class="hz-step-num">02</p>
     <h2>Measure</h2>
-    <p>Local FPS, CPU, GPU, temps when sensors exist. Missing values stay unavailable.</p>
+    <p>Local FPS, CPU, GPU, temps when sensors exist. Missing stays unavailable.</p>
   </div>
   <div class="hz-rail__item">
     <p class="hz-step-num">03</p>
     <h2>Verify</h2>
-    <p>Before/after gain percent from your runs only. Helpful only above the noise band.</p>
+    <p>Before/after gain percent from your runs only. Useful above the noise band.</p>
   </div>
 </div>
 
 <div class="hz-callout">
-  <p><strong>No unverified FPS claims.</strong> We never invent marketing percentages.</p>
+  <p><strong>No unverified FPS claims.</strong> No fan curve editors. Power plans only, with honest limits.</p>
 </div>
 
 <div class="hz-cta-row">
   <LinkButton href="/download/" variant="primary">Download Windows</LinkButton>
-  <LinkButton href="/how-it-works/" variant="minimal">How it works</LinkButton>
+  <LinkButton href="/docs/" variant="minimal">Docs</LinkButton>
 </div>

@@ -1,37 +1,30 @@
 ---
 title: Come funziona
-description: "Flusso Hertzline: ottimizza con consigli one-click, misura, verifica before/after, ripristina se serve."
+description: "Modi desk, ottimizza, misura, verifica, ripristina."
 ---
 
-Hertzline e uno strumento desktop locale. Non sincronizza profili nel cloud e non inventa medie tra macchine. Il ciclo e: ottimizza, misura, verifica, ripristina.
+Hertzline e uno strumento desktop locale. L'app e in inglese.
 
-## 1. Ottimizza (consigliate)
+## Modi base
 
-Apri **Ottimizza**. Le tre consigliate Windows sono in cima:
+Apri **Profiles**. In cima ci sono tre modi:
 
-1. Game Mode
-2. Piano alimentazione Prestazioni
-3. Game Bar / capture off
+| Mode | In carica | In batteria |
+| --- | --- | --- |
+| Study | Battery saver | Battery saver |
+| Programming | Balanced | Battery saver |
+| Performance | High performance | Balanced |
 
-Un bottone **Applica tutte e 3** le esegue in sequenza. Ogni modifica mostra stato, rischio e come annullarla. L'elevazione e richiesta solo per azione.
+Hertzline legge AC vs batteria e applica il piano OS. Non modifica le curve ventola.
 
-## 2. Misura una sessione
+## Optimize → Measure → Verify
 
-Scegli un processo o una sessione di cattura. Hertzline registra metriche di frame-time quando una sorgente supportata e disponibile. Hardware, disco e rete completano cio che il sistema espone. Cio che manca resta non disponibile, mai inventato.
+1. **Optimize** — consigli Windows con Apply all.
+2. **Measure** — metriche locali; sensori assenti restano unavailable.
+3. **Verify** — before/after solo dalle tue run.
 
-## 3. Verifica before/after
+## Cosa non fa
 
-I benchmark usano durata fissa, warm-up e almeno tre passaggi. Una modifica e utile solo se il guadagno supera la banda di rumore su quella macchina. Sotto il rumore: "nessun effetto misurabile" e ripristino.
-
-## 4. Profili e Quotidiano
-
-I launcher documentati possono rilevare i giochi. I profili possono applicarsi all'avvio e ripristinarsi all'uscita. Quotidiano copre avvio, risorse, energia, pulizia con anteprima e termica.
-
-## Cosa Hertzline non fa
-
-- Pack registro "FPS boost", disattivazione Defender, optimizer TCP non misurati
-- Overclock / undervolt in v1
-- Injection o modifica file di gioco
-- Telemetria di default o claim "+X FPS" senza la tua misura
-
-Continua con il [catalogo azioni](/it/actions/), [anti-cheat](/it/anti-cheat/) e [privacy](/it/privacy/).
+- Editor curve ventola
+- Pack registro "FPS boost"
+- Injection o claim "+X FPS" senza la tua misura

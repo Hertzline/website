@@ -1,37 +1,35 @@
 ---
 title: How it works
-description: "Hertzline flow: one-click recommendations, measure, verify before/after, restore if needed."
+description: "Desk modes, optimize, measure, verify, restore."
 ---
 
-Hertzline is a local desktop tool. It does not sync profiles to the cloud and does not invent cross-machine averages. The loop is: optimize, measure, verify, restore.
+Hertzline is a local desktop tool. It does not sync profiles to the cloud and does not invent cross-machine averages.
 
-## 1. Optimize (recommended pack)
+## Base modes
 
-Open **Ottimizza**. The three Windows recommendations sit on top:
+Open **Profiles**. Three built-in modes sit on top:
 
-1. Game Mode
-2. High Performance power plan
-3. Game Bar / capture off
+| Mode | Plugged in | On battery |
+| --- | --- | --- |
+| Study | Battery saver | Battery saver |
+| Programming | Balanced | Battery saver |
+| Performance | High performance | Balanced |
 
-**Applica tutte e 3** runs them in sequence. Every change shows state, risk, and how to undo. Elevation is requested per action only.
+Hertzline reads AC vs battery and applies the matching OS power plan. It does **not** edit fan curves; quieter vs louder fans are an expected side effect of the plan.
 
-## 2. Measure a session
+## Optimize → Measure → Verify
 
-Pick a process or capture session. Hertzline records frame-time metrics when a supported source exists. Hardware, disk, and network fill in what the OS exposes. Missing values stay unavailable -- never invented.
+1. **Optimize** — recommended Windows tips with Apply all (Game Mode, performance plan, Game Bar off).
+2. **Measure** — local session metrics; missing sensors stay unavailable.
+3. **Verify** — before/after only from your runs; helpful above the noise band.
 
-## 3. Verify before/after
+## Per-game profiles
 
-Benchmarks use a fixed duration, warm-up, and at least three measure passes. A change is helpful only if the gain beats the noise band on that machine. Below noise: "no measurable effect" and restore.
-
-## 4. Profiles and Everyday
-
-Documented launchers can detect games. Profiles can apply on launch and restore on clean exit. Everyday covers startup impact, resource reports, power presets, cleanup with preview, and thermal.
+Separate from desk modes: action sets that apply when a game starts and restore on clean exit.
 
 ## What Hertzline does not do
 
-- Registry "FPS boost" packs, Defender disable, unmeasured TCP "optimizers"
-- Overclock / undervolt in v1
+- Fan curve editors or vendor overclock tools
+- Registry "FPS boost" packs or Defender disable
 - Injection or game file edits
-- Default telemetry or "+X FPS" claims without your measurement
-
-Continue with the [actions catalog](/actions/), [anti-cheat](/anti-cheat/), and [privacy](/privacy/).
+- "+X FPS" marketing without your measurement

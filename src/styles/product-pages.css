@@ -176,6 +176,47 @@
 	color: var(--hz-muted);
 }
 
+.hz-download-list {
+	list-style: none;
+	margin: var(--hz-space-3) 0 0;
+	padding: 0;
+	display: grid;
+	gap: var(--hz-space-3);
+}
+
+.hz-download-card {
+	padding: var(--hz-space-3) 0;
+	border-top: 1px solid var(--hz-border);
+}
+
+.hz-download-card:first-child {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.hz-download-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 2.75rem;
+	padding: 0.65rem 1.1rem;
+	border: 1px solid var(--hz-accent);
+	border-radius: var(--hz-radius);
+	background: var(--hz-accent);
+	color: var(--sl-color-text-invert);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.hz-download-btn:hover {
+	opacity: 0.92;
+}
+
+.hz-download-btn:focus-visible {
+	outline: 2px solid var(--hz-focus);
+	outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.hero,
 	.hz-rail__item,

@@ -4,50 +4,50 @@ description: "Measure, explain, and reverse game and desktop performance changes
 template: splash
 hero:
   title: Hertzline
-  tagline: Measure first. Change only what you can explain and undo. Never invent a gain.
+  tagline: See your system score, apply reversible optimizations, then verify the real gain on your machine.
   image:
     file: ../../assets/ui-preview-placeholder.svg
-    alt: Labeled UI preview placeholder. Not a product screenshot. Real captures land after the first public release.
+    alt: Hertzline Home preview with health score percent and stats tiles. Illustrated UI, not a live capture.
   actions:
+    - text: Download Windows
+      link: /download/
+      icon: download
+      variant: primary
     - text: How it works
       link: /how-it-works/
       icon: right-arrow
-      variant: primary
-    - text: Download
-      link: /download/
-      icon: download
       variant: minimal
 ---
 
 import { LinkButton } from '@astrojs/starlight/components'
 
-<p class="hz-mono-label">Product principle</p>
+<p class="hz-mono-label">How to use it</p>
 
-Hertzline makes games and the desktop smoother only through changes that are measured, explained, and reversible. It never claims a gain it has not measured on your machine.
+## Three steps
 
 <div class="hz-rail">
   <div class="hz-rail__item">
-    <h2>Measure</h2>
-    <p>Frame times, hardware stats, disk, and network when the OS exposes them. Missing sensors stay labeled unavailable.</p>
+    <h2>1. Measure</h2>
+    <p>Capture local FPS, CPU, GPU, temps, disk, and network when the OS exposes them. Missing sensors stay labeled unavailable.</p>
   </div>
   <div class="hz-rail__item">
-    <h2>Explain</h2>
-    <p>Every action shows what it does, the expected effect, the risk, and how to undo it before you apply it.</p>
+    <h2>2. Optimize</h2>
+    <p>Actions are ranked by priority. Each one shows expected effect, risk, and how to undo before you apply it.</p>
   </div>
   <div class="hz-rail__item">
-    <h2>Restore</h2>
-    <p>One-click restore all, crash recovery, and uninstall hooks. Snapshots are written before each change.</p>
+    <h2>3. Verify</h2>
+    <p>Before/after benchmark with a median FPS gain percent from your own runs. Helpful only if it beats the noise band.</p>
   </div>
 </div>
 
 <div class="hz-callout">
-  <p><strong>No unverified FPS claims.</strong> The app, docs, and this site do not advertise invented "+X FPS" numbers. Helpful changes are those that beat your own measured noise band.</p>
+  <p><strong>No unverified FPS claims.</strong> Health score and gain percent come from sensors and your measurements -- never invented marketing numbers.</p>
 </div>
 
 ## Status
 
-Windows v1.0.0 installers are on [Download](/download/) with SHA-256 checksums. Authenticode signing is still pending the owner certificate. See the [changelog](/changelog/).
+Windows v1.0.1 installers are on [Download](/download/) with SHA-256 checksums. Authenticode signing is still pending the owner certificate. winget PR is open for `Hertzline.Hertzline`.
 
-<LinkButton href="/download/" variant="secondary">Download</LinkButton>
+<LinkButton href="/download/" variant="primary">Download</LinkButton>
 <LinkButton href="/docs/" variant="minimal">Docs</LinkButton>
 <LinkButton href="https://github.com/Hertzline" variant="minimal" icon="external">GitHub</LinkButton>

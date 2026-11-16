@@ -26,6 +26,7 @@ type Artifact = {
 	url: string
 	sha256: string
 	sizeBytes?: number
+	filename?: string
 }
 
 const artifacts = releases.artifacts as Record<string, Artifact[]>
@@ -36,6 +37,12 @@ const macosArtifacts = artifacts.macos ?? []
 const allChecksums = [...windowsArtifacts, ...linuxArtifacts, ...macosArtifacts].filter(
 	(a) => a.sha256 && a.sha256.length > 0,
 )
+
+const formatSize = (bytes?: number) => {
+	if (!bytes) return ''
+	if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KiB`
+	return `${(bytes / (1024 * 1024)).toFixed(1)} MiB`
+}
 
 const softwareApplication = {
 	'@context': 'https://schema.org',
@@ -89,6 +96,15 @@ const jsonLd = JSON.stringify(softwareApplication)
 			</p>
 		)
 	}
+	{
+		isReleased && (
+			<p class="hz-download-meta">
+				{locale === 'it'
+					? 'Installer Windows pubblici con SHA-256. Authenticode ancora in attesa del certificato.'
+					: 'Public Windows installers with SHA-256. Authenticode still pending owner certificate.'}
+			</p>
+		)
+	}
 </div>
 
 {
@@ -105,6 +121,31 @@ const jsonLd = JSON.stringify(softwareApplication)
 	)
 }
 
+<section class="hz-download-slot" aria-labelledby="hz-windows">
+	<h2 id="hz-windows">{ui.windowsTitle}</h2>
+	<p>{releases.requirements.windows[locale]}</p>
+	{
+		windowsArtifacts.length === 0 ? (
+			<p class="hz-download-meta">{ui.slotEmpty}</p>
+		) : (
+			<ul class="hz-download-list">
+				{windowsArtifacts.map((a) => (
+					<li class="hz-download-card">
+						<a class="hz-download-btn" href={a.url}>
+							{a.label}
+						</a>
+						<p class="hz-download-meta">
+							{formatSize(a.sizeBytes)}
+							{formatSize(a.sizeBytes) ? ' -- ' : ''}
+							<code>SHA-256 {a.sha256}</code>
+						</p>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</section>
+
 <section class="hz-download-slot" aria-labelledby="hz-winget">
 	<h2 id="hz-winget">{ui.wingetTitle}</h2>
 	<p>{ui.wingetNote}</p>
@@ -115,29 +156,9 @@ const jsonLd = JSON.stringify(softwareApplication)
 		!releases.wingetPublished && (
 			<p class="hz-download-meta">
 				{locale === 'it'
-					? 'Stato: non pubblicato (nessun PR winget-pkgs senza approvazione del proprietario).'
-					: 'Status: not published (no winget-pkgs PR without owner approval).'}
+					? 'Stato: PR winget-pkgs aperto; non ancora nel catalogo ufficiale.'
+					: 'Status: winget-pkgs PR open; not yet in the official catalog.'}
 			</p>
-		)
-	}
-</section>
-
-<section class="hz-download-slot" aria-labelledby="hz-windows">
-	<h2 id="hz-windows">{ui.windowsTitle}</h2>
-	<p>{releases.requirements.windows[locale]}</p>
-	{
-		windowsArtifacts.length === 0 ? (
-			<p class="hz-download-meta">{ui.slotEmpty}</p>
-		) : (
-			<ul>
-				{windowsArtifacts.map((a) => (
-					<li>
-						<a href={a.url}>{a.label}</a>
-						{' -- '}
-						<code>SHA-256 {a.sha256}</code>
-					</li>
-				))}
-			</ul>
 		)
 	}
 </section>

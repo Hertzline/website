@@ -1,6 +1,6 @@
 {
 	"status": "released",
-	"updated": "2026-11-15",
+	"updated": "2026-11-16",
 	"wingetId": "Hertzline.Hertzline",
 	"wingetCommand": "winget install Hertzline.Hertzline",
 	"wingetPublished": false,
@@ -20,22 +20,22 @@
 	},
 	"requirements": {
 		"windows": {
-			"en": "Windows 10 or newer (64-bit). MSI/NSIS for v1.0.0 RC built in packaging; public signed downloads appear after owner Authenticode publish. Elevation only when an action needs it.",
-			"it": "Windows 10 o successivo (64-bit). MSI/NSIS per il RC v1.0.0 costruiti in packaging; i download firmati pubblici compaiono dopo la pubblicazione Authenticode del proprietario. Elevazione solo quando un'azione la richiede."
+			"en": "Windows 10 or newer (64-bit). MSI/NSIS for v1.0.1. Authenticode pending owner certificate. Elevation only when an action needs it.",
+			"it": "Windows 10 o successivo (64-bit). MSI/NSIS per v1.0.1. Authenticode in attesa del certificato. Elevazione solo quando un'azione la richiede."
 		},
 		"linux": {
-			"en": "x86_64. Flatpak, AppImage, .deb, .rpm, and AUR packaging for v1.0.0 is prepared; public signed downloads after owner publish. Privileged actions use polkit where required.",
-			"it": "x86_64. Packaging Flatpak, AppImage, .deb, .rpm e AUR per v1.0.0 e preparato; download firmati pubblici dopo pubblicazione del proprietario. Le azioni privilegiate usano polkit dove richiesto."
+			"en": "x86_64. Flatpak, AppImage, .deb, .rpm, and AUR packaging prepared; public signed downloads after owner publish. Privileged actions use polkit where required.",
+			"it": "x86_64. Packaging Flatpak, AppImage, .deb, .rpm e AUR preparato; download firmati pubblici dopo pubblicazione del proprietario. Le azioni privilegiate usano polkit dove richiesto."
 		},
 		"macos": {
-			"en": "macOS 13 or newer. DMG + Homebrew cask draft for v1.0.0 prepared; notarized public download after owner Apple Program signing. Fewer tunables than Windows/Linux; capability surface is honest.",
-			"it": "macOS 13 o successivo. Bozza DMG e cask Homebrew per v1.0.0 preparata; download pubblico notarizzato dopo firma Apple Program del proprietario. Meno regolazioni di Windows/Linux; la superficie di capacita e dichiarata onestamente."
+			"en": "macOS 13 or newer. DMG + Homebrew cask draft prepared; notarized public download after owner Apple Program signing.",
+			"it": "macOS 13 o successivo. Bozza DMG e cask Homebrew preparata; download pubblico notarizzato dopo firma Apple Program."
 		}
 	},
 	"latest": {
-		"version": "1.0.0",
-		"published": "2026-11-15",
-		"tag": "v1.0.0",
+		"version": "1.0.1",
+		"published": "2026-11-16",
+		"tag": "v1.0.1",
 		"minOs": {
 			"windows": "Windows 10 (64-bit)",
 			"linux": "x86_64 (Ubuntu 22.04 / Debian 12 baseline)",
@@ -47,18 +47,18 @@
 		"windows": [
 			{
 				"id": "windows-nsis",
-				"label": "Windows NSIS setup (Hertzline_1.0.0_x64-setup.exe)",
-				"url": "https://github.com/Hertzline/app/releases/download/v1.0.0/Hertzline_1.0.0_x64-setup.exe",
-				"sha256": "7d7e05a22733e9b02bc792b36d37e691f5c6a520b5c26e78b0fb6baf559a7d1e",
-				"filename": "Hertzline_1.0.0_x64-setup.exe",
-				"sizeBytes": 1470890
+				"label": "Windows setup (NSIS) — Hertzline 1.0.1",
+				"url": "https://github.com/Hertzline/app/releases/download/v1.0.1/Hertzline_1.0.1_x64-setup.exe",
+				"sha256": "244e3d68184c95bac0fccba2082bb4fb2ed021a557a72099b331f4785e8ff470",
+				"filename": "Hertzline_1.0.1_x64-setup.exe",
+				"sizeBytes": 1474421
 			},
 			{
 				"id": "windows-msi",
-				"label": "Windows MSI (Hertzline_1.0.0_x64_en-US.msi)",
-				"url": "https://github.com/Hertzline/app/releases/download/v1.0.0/Hertzline_1.0.0_x64_en-US.msi",
-				"sha256": "01a781e0382bdc36e149ab4685e30aadf5bbc7977b55eeb0642e3b97a74aa0f0",
-				"filename": "Hertzline_1.0.0_x64_en-US.msi",
+				"label": "Windows MSI — Hertzline 1.0.1",
+				"url": "https://github.com/Hertzline/app/releases/download/v1.0.1/Hertzline_1.0.1_x64_en-US.msi",
+				"sha256": "e1a267cfc83b34e6168661ff538104382fb4d0712353b3d3f95e6dfc34fd2bbe",
+				"filename": "Hertzline_1.0.1_x64_en-US.msi",
 				"sizeBytes": 2244608
 			}
 		],
@@ -66,6 +66,22 @@
 		"macos": []
 	},
 	"history": [
+		{
+			"version": "1.0.1",
+			"published": "2026-11-16",
+			"tag": "v1.0.1",
+			"highlights": {
+				"en": [
+					"Italian Home dashboard with health score % and clear Measure → Optimize → Verify flow",
+					"Prioritized actions and measured before/after gain percent"
+				],
+				"it": [
+					"Home in italiano con score salute % e flusso Misura → Ottimizza → Verifica",
+					"Azioni prioritizzate e guadagno % before/after misurato"
+				]
+			},
+			"artifactCount": 2
+		},
 		{
 			"version": "1.0.0",
 			"published": "2026-11-15",
@@ -86,30 +102,30 @@
 	"ui": {
 		"en": {
 			"statusLabel": "Release status",
-			"notReleased": "Not released yet. App packaging for v1.0.0 release candidate is ready in-repo, but there are no public installers, checksums, or store packages until the owner publishes signed artifacts.",
+			"notReleased": "Not released yet. Installers appear here after a public GitHub Release.",
 			"wingetTitle": "Windows (winget)",
-			"wingetNote": "Intended package ID Hertzline.Hertzline (manifest draft for 1.0.0 prepared locally). Not published until an approved winget-pkgs PR lands. Do not expect this command to succeed today.",
+			"wingetNote": "Package ID Hertzline.Hertzline. A winget-pkgs PR is open; the command works after Microsoft merges it.",
 			"windowsTitle": "Windows direct download",
 			"linuxTitle": "Linux",
 			"macosTitle": "macOS",
 			"slotEmpty": "No artifact yet.",
 			"checksumsTitle": "Checksums",
-			"checksumsEmpty": "SHA-256 checksums will appear here with the first signed release. None are published yet.",
+			"checksumsEmpty": "SHA-256 checksums appear with published Windows installers.",
 			"requirementsTitle": "Requirements",
 			"versionLabel": "Version",
 			"none": "none"
 		},
 		"it": {
 			"statusLabel": "Stato rilascio",
-			"notReleased": "Non ancora rilasciato. Il packaging dell'app per il release candidate v1.0.0 e pronto nel repository, ma non ci sono installer pubblici, checksum o pacchetti store finche il proprietario non pubblica artifact firmati.",
+			"notReleased": "Non ancora rilasciato. Gli installer compaiono qui dopo una GitHub Release pubblica.",
 			"wingetTitle": "Windows (winget)",
-			"wingetNote": "ID pacchetto previsto Hertzline.Hertzline (bozza manifest 1.0.0 preparata in locale). Non pubblicato finche non arriva un PR winget-pkgs approvato. Non aspettarti che questo comando funzioni oggi.",
+			"wingetNote": "ID pacchetto Hertzline.Hertzline. Un PR winget-pkgs e aperto; il comando funziona dopo il merge Microsoft.",
 			"windowsTitle": "Download diretto Windows",
 			"linuxTitle": "Linux",
 			"macosTitle": "macOS",
 			"slotEmpty": "Nessun artifact ancora.",
 			"checksumsTitle": "Checksum",
-			"checksumsEmpty": "I checksum SHA-256 compariranno qui con il primo rilascio firmato. Nessuno e pubblicato ancora.",
+			"checksumsEmpty": "I checksum SHA-256 compaiono con gli installer Windows pubblicati.",
 			"requirementsTitle": "Requisiti",
 			"versionLabel": "Versione",
 			"none": "nessuna"

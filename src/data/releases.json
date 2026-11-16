@@ -8,11 +8,7 @@
 		"name": "Hertzline",
 		"license": "MIT",
 		"applicationCategory": "UtilitiesApplication",
-		"operatingSystems": [
-			"Windows",
-			"Linux",
-			"macOS"
-		],
+		"operatingSystems": ["Windows", "Linux", "macOS"],
 		"description": {
 			"en": "Measure, explain, and reverse game and desktop performance changes. No unverified FPS claims.",
 			"it": "Misura, spiega e annulla le modifiche alle prestazioni di giochi e desktop. Nessun claim di FPS non verificato."
@@ -20,8 +16,8 @@
 	},
 	"requirements": {
 		"windows": {
-			"en": "Windows 10 or newer (64-bit). MSI/NSIS for v1.0.2. Authenticode pending owner certificate. Elevation only when an action needs it.",
-			"it": "Windows 10 o successivo (64-bit). MSI/NSIS per v1.0.2. Authenticode in attesa del certificato. Elevazione solo quando un'azione la richiede."
+			"en": "Windows 10 or newer (64-bit). MSI/NSIS for v1.0.3. Authenticode pending owner certificate. Elevation only when an action needs it.",
+			"it": "Windows 10 o successivo (64-bit). MSI/NSIS per v1.0.3. Authenticode in attesa del certificato. Elevazione solo quando un'azione la richiede."
 		},
 		"linux": {
 			"en": "x86_64. Flatpak, AppImage, .deb, .rpm, and AUR packaging prepared; public signed downloads after owner publish.",
@@ -33,9 +29,9 @@
 		}
 	},
 	"latest": {
-		"version": "1.0.2",
+		"version": "1.0.3",
 		"published": "2026-11-16",
-		"tag": "v1.0.2",
+		"tag": "v1.0.3",
 		"minOs": {
 			"windows": "Windows 10 (64-bit)",
 			"linux": "x86_64 (Ubuntu 22.04 / Debian 12 baseline)",
@@ -47,18 +43,18 @@
 		"windows": [
 			{
 				"id": "windows-nsis",
-				"label": "Windows setup (NSIS) — Hertzline 1.0.2",
-				"url": "https://github.com/Hertzline/app/releases/download/v1.0.2/Hertzline_1.0.2_x64-setup.exe",
-				"sha256": "5363bdc64639502b8598c88f57857e7133cacd4c8f5ac8de12d6f9028b164922",
-				"filename": "Hertzline_1.0.2_x64-setup.exe",
-				"sizeBytes": 1590334
+				"label": "Windows setup (NSIS) — Hertzline 1.0.3",
+				"url": "https://github.com/Hertzline/app/releases/download/v1.0.3/Hertzline_1.0.3_x64-setup.exe",
+				"sha256": "bc7b20d76606663e867256a88d82ca4955f948b7fe889edb623f50cc93ab23b0",
+				"filename": "Hertzline_1.0.3_x64-setup.exe",
+				"sizeBytes": 1590716
 			},
 			{
 				"id": "windows-msi",
-				"label": "Windows MSI — Hertzline 1.0.2",
-				"url": "https://github.com/Hertzline/app/releases/download/v1.0.2/Hertzline_1.0.2_x64_en-US.msi",
-				"sha256": "86279268cc0b9775f78b57fed895b98d38a901a5504ddd91059f2279d422a6ca",
-				"filename": "Hertzline_1.0.2_x64_en-US.msi",
+				"label": "Windows MSI — Hertzline 1.0.3",
+				"url": "https://github.com/Hertzline/app/releases/download/v1.0.3/Hertzline_1.0.3_x64_en-US.msi",
+				"sha256": "8278fa74c4ee52c0cf8cf817700dbbfb61f054ff3b44ca74368469cf67a0ac4f",
+				"filename": "Hertzline_1.0.3_x64_en-US.msi",
 				"sizeBytes": 2359296
 			}
 		],
@@ -67,18 +63,22 @@
 	},
 	"history": [
 		{
+			"version": "1.0.3",
+			"published": "2026-11-16",
+			"tag": "v1.0.3",
+			"highlights": {
+				"en": ["Home lite overview: score and stats load without hog/cleanup stall"],
+				"it": ["Home lite: score e stats senza blocco su hog/cleanup"]
+			},
+			"artifactCount": 2
+		},
+		{
 			"version": "1.0.2",
 			"published": "2026-11-16",
 			"tag": "v1.0.2",
 			"highlights": {
-				"en": [
-					"Dark precision-instrument UI with bundled fonts; Home no longer freezes on overview",
-					"Website visual refresh aligned to the product chrome"
-				],
-				"it": [
-					"UI instrument scura con font bundlati; Home non si blocca piu sulla panoramica",
-					"Refresh visuale del sito allineato al prodotto"
-				]
+				"en": ["Dark precision-instrument UI with bundled fonts"],
+				"it": ["UI instrument scura con font bundlati"]
 			},
 			"artifactCount": 2
 		},
@@ -87,12 +87,8 @@
 			"published": "2026-11-16",
 			"tag": "v1.0.1",
 			"highlights": {
-				"en": [
-					"Italian Home dashboard with health score % and clear Measure → Optimize → Verify flow"
-				],
-				"it": [
-					"Home in italiano con score salute % e flusso Misura → Ottimizza → Verifica"
-				]
+				"en": ["Italian Home dashboard with Measure → Optimize → Verify"],
+				"it": ["Home IT con Misura → Ottimizza → Verifica"]
 			},
 			"artifactCount": 2
 		},
@@ -101,12 +97,8 @@
 			"published": "2026-11-15",
 			"tag": "v1.0.0",
 			"highlights": {
-				"en": [
-					"First public v1.0.0 candidate with measured, reversible optimizations"
-				],
-				"it": [
-					"Primo candidato pubblico v1.0.0 con ottimizzazioni misurate e reversibili"
-				]
+				"en": ["First public v1.0.0 candidate"],
+				"it": ["Primo candidato pubblico v1.0.0"]
 			},
 			"artifactCount": 2
 		}

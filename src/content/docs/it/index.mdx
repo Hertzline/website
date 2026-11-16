@@ -4,21 +4,21 @@ description: "Misura, spiega e annulla le modifiche alle prestazioni di giochi e
 template: splash
 hero:
   title: Hertzline
-  tagline: Prima misura. Ottimizza solo cio che puoi annullare. Verifica il guadagno reale sulla tua macchina.
+  tagline: Un click per le tre ottimizzazioni Windows sicure. Poi misura e verifica il guadagno reale sul tuo PC.
   actions:
-    - text: Scarica Windows
+    - text: Scarica per Windows
       link: /it/download/
       icon: download
       variant: primary
-    - text: Come funziona
-      link: /it/how-it-works/
-      icon: right-arrow
+    - text: Docs
+      link: /it/docs/
+      icon: document
       variant: minimal
 ---
 
 import { LinkButton } from '@astrojs/starlight/components'
 
-<p class="hz-mono-label">Prodotto</p>
+<p class="hz-mono-label">Cosa fa</p>
 
 <div class="hz-hero-band" aria-hidden="true">
   <svg class="hz-wave" viewBox="0 0 1200 180" preserveAspectRatio="none" role="presentation">
@@ -27,38 +27,33 @@ import { LinkButton } from '@astrojs/starlight/components'
   </svg>
 </div>
 
-<p class="hz-lead">Hertzline e uno strumento locale per prestazioni di giochi e desktop. Nessuna cattura prodotto in questa pagina -- scarica l'app e misura sul tuo hardware.</p>
+<p class="hz-lead">Nessuna cattura prodotto in questa pagina. Installa Hertzline, apri Ottimizza, applica il pacchetto consigliato (Game Mode, piano prestazioni, Game Bar off), poi verifica con il tuo before/after.</p>
 
-## Tre passi
+## Come si usa
 
 <div class="hz-rail">
   <div class="hz-rail__item">
     <p class="hz-step-num">01</p>
-    <h2>Misura</h2>
-    <p>Tempi di frame, CPU, GPU, temperature, disco e rete quando il sistema li espone. I sensori mancanti restano n/d.</p>
+    <h2>Ottimizza</h2>
+    <p>Tre consigli chiari con un bottone Applica tutte. Ogni modifica e reversibile.</p>
   </div>
   <div class="hz-rail__item">
     <p class="hz-step-num">02</p>
-    <h2>Ottimizza</h2>
-    <p>Azioni prioritizzate e reversibili. Ognuna mostra effetto atteso, rischio e come annullare prima di applicare.</p>
+    <h2>Misura</h2>
+    <p>FPS, CPU, GPU, temperature quando i sensori esistono. I valori mancanti restano n/d.</p>
   </div>
   <div class="hz-rail__item">
     <p class="hz-step-num">03</p>
     <h2>Verifica</h2>
-    <p>Before/after con guadagno FPS mediano in percentuale dalle tue run. Utile solo se batte la banda di rumore.</p>
+    <p>Guadagno % before/after solo dalle tue run. Utile solo sopra la banda di rumore.</p>
   </div>
 </div>
 
 <div class="hz-callout">
-  <p><strong>Nessuna affermazione FPS non verificata.</strong> Score salute e guadagno % arrivano da sensori e dalle tue misure -- mai numeri marketing inventati.</p>
+  <p><strong>Nessuna affermazione FPS non verificata.</strong> Mai percentuali marketing inventate.</p>
 </div>
 
-## Scaricalo
-
-Gli installer Windows con SHA-256 sono in Download. Authenticode ancora in attesa del certificato. ID winget: `Hertzline.Hertzline`.
-
 <div class="hz-cta-row">
-  <LinkButton href="/it/download/" variant="primary">Download</LinkButton>
-  <LinkButton href="/it/docs/" variant="minimal">Docs</LinkButton>
-  <LinkButton href="https://github.com/Hertzline" variant="minimal" icon="external">GitHub</LinkButton>
+  <LinkButton href="/it/download/" variant="primary">Scarica Windows</LinkButton>
+  <LinkButton href="/it/how-it-works/" variant="minimal">Come funziona</LinkButton>
 </div>

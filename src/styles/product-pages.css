@@ -5,8 +5,9 @@
 [data-has-hero] .hero {
 	display: grid;
 	gap: var(--hz-space-4);
-	padding-block: var(--hz-space-6) var(--hz-space-5);
-	max-width: 48rem;
+	padding-block: var(--hz-space-7) var(--hz-space-5);
+	max-width: 44rem;
+	position: relative;
 }
 
 [data-has-hero] .hero .hero-html {
@@ -18,11 +19,15 @@
 }
 
 [data-has-hero] .hero h1.title {
-	font-size: clamp(3.2rem, 9vw, 5.5rem);
-	letter-spacing: -0.055em;
-	line-height: 0.92;
+	font-size: clamp(3.6rem, 11vw, 6.2rem);
+	letter-spacing: -0.06em;
+	line-height: 0.88;
 	font-weight: 700;
 	margin: 0;
+	background: linear-gradient(120deg, var(--hz-fg) 40%, var(--hz-accent-fg));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
 
 .hero .tagline {
